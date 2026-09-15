@@ -101,35 +101,47 @@ export default function Footer() {
                             >
                                 Contact
                             </h3>
-                            <div className="space-y-3">
+                            <div className="space-y-4">
+                                {/* Address */}
                                 <p
-                                    className="text-xs opacity-50 leading-relaxed"
-                                    style={{ color: "#d9c9a8", fontFamily: "var(--font-inter)", lineHeight: 1.6 }}
+                                    className="text-xs leading-relaxed opacity-60"
+                                    style={{ color: "#d9c9a8", fontFamily: "var(--font-inter)", lineHeight: 1.7 }}
                                 >
-                                    Tamil Nadu, India
+                                    9, Pirivu, 1010 Colony,<br />
+                                    Pidariyur, Mukasipidariyur,<br />
+                                    Tamil Nadu 638051
                                 </p>
-                                <p
-                                    className="text-xs opacity-50"
+                                {/* Phone */}
+                                <a
+                                    href="tel:+917708039583"
+                                    className="flex items-center gap-2 text-xs opacity-70 hover:opacity-100 transition-opacity duration-300"
                                     style={{ color: "#d9c9a8", fontFamily: "var(--font-inter)" }}
                                 >
-                                    Traditional Oil Mill
-                                </p>
-                                <div className="flex gap-3 pt-1">
-                                    {/* Social placeholders */}
-                                    {["Facebook", "Instagram", "WhatsApp"].map((s) => (
-                                        <span
-                                            key={s}
-                                            className="text-[8px] tracking-[0.2em] uppercase opacity-30 px-2 py-1"
-                                            style={{
-                                                border: "1px solid rgba(200,146,42,0.2)",
-                                                color: "#c8922a",
-                                                fontFamily: "var(--font-inter)",
-                                            }}
-                                        >
-                                            {s[0]}
-                                        </span>
-                                    ))}
-                                </div>
+                                    <span style={{ color: "#c8922a" }}>📞</span>
+                                    +91 77080 39583
+                                </a>
+                                {/* WhatsApp */}
+                                <a
+                                    href="https://wa.me/917708039583"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 text-xs opacity-70 hover:opacity-100 transition-opacity duration-300"
+                                    style={{ color: "#d9c9a8", fontFamily: "var(--font-inter)" }}
+                                >
+                                    <span>💬</span>
+                                    WhatsApp Order
+                                </a>
+                                {/* Instagram */}
+                                <a
+                                    href="https://instagram.com/kughan_oils"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 text-xs opacity-70 hover:opacity-100 transition-opacity duration-300"
+                                    style={{ color: "#d9c9a8", fontFamily: "var(--font-inter)" }}
+                                >
+                                    <span style={{ color: "#c8922a" }}>📷</span>
+                                    @kughan_oils
+                                </a>
                             </div>
                         </div>
                     </div>

@@ -101,20 +101,23 @@ export default function FinalCTA() {
                         <span className="relative z-10">Explore Our Oils</span>
                     </button>
 
-                    {/* Secondary CTA */}
-                    <button
-                        onClick={scrollToContact}
-                        aria-label="Contact us"
+                    {/* Secondary CTA — WhatsApp */}
+                    <a
+                        href="https://wa.me/917708039583?text=Hi%2C%20I%20would%20like%20to%20order%20oil%20from%20Sree%20Selvanayaki%20Amman%20Oil%20Mill"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Order via WhatsApp"
                         className="px-10 py-4 text-[11px] tracking-[0.25em] uppercase transition-all duration-300 hover:bg-[rgba(200,146,42,0.08)] focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e0e0c]"
                         style={{
                             border: "1px solid rgba(200,146,42,0.35)",
                             color: "#f0e8d5",
                             fontFamily: "var(--font-inter)",
                             borderRadius: "2px",
+                            display: "inline-block",
                         }}
                     >
-                        Contact Us
-                    </button>
+                        💬 Order on WhatsApp
+                    </a>
                 </div>
             </div>
 
