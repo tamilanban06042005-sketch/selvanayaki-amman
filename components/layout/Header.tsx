@@ -45,14 +45,14 @@ export default function Header() {
             >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
                     {/* Logo */}
-                    <Link href="/" className="group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-brown rounded flex items-center h-12 w-auto relative">
-                        {/* Mobile Monogram (aspect-square) */}
-                        <div className="md:hidden relative h-10 w-10 overflow-hidden mix-blend-multiply rounded border border-brand-brown/10">
-                            <Image src="/logo.jpeg" alt="SSA Monogram" fill className="object-cover object-center" sizes="40px" />
+                    <Link href="/" className="group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-brown rounded flex items-center h-20 w-auto relative">
+                        {/* Mobile Monogram */}
+                        <div className="md:hidden relative h-16 w-16 overflow-hidden mix-blend-multiply rounded border border-brand-brown/10">
+                            <Image src="/main-logo.jpg" alt="SSA Monogram" fill className="object-cover object-center" sizes="64px" />
                         </div>
                         {/* Desktop Lockup */}
-                        <div className="hidden md:block relative h-12 w-64 mix-blend-multiply">
-                            <Image src="/logo.jpeg" alt="Sree Selvanayaki Amman" fill className="object-contain object-left" sizes="256px" />
+                        <div className="hidden md:block relative h-20 w-[300px] mix-blend-multiply">
+                            <Image src="/main-logo.jpg" alt="Sree Selvanayaki Amman" fill className="object-contain object-left" sizes="300px" />
                         </div>
                     </Link>
 

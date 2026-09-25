@@ -46,8 +46,8 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
                     {/* Brand Info */}
                     <div>
-                        <Link href="/" className="block mb-6 relative h-16 w-56 bg-brand-beige/5 p-2 rounded">
-                            <Image src="/logo.jpeg" alt="Sree Selvanayaki Amman" fill className="object-contain object-left" sizes="224px" />
+                        <Link href="/" className="block mb-6 relative h-24 w-56 bg-brand-beige/5 p-2 rounded">
+                            <Image src="/main-logo.jpg" alt="Sree Selvanayaki Amman" fill className="object-contain object-left" sizes="224px" />
                         </Link>
                         <p className="text-brand-beige/70 text-sm leading-relaxed mb-6">
                             Authentic oils and essential food products, traditionally processed and beautifully delivered to your family from Pidariyur.
