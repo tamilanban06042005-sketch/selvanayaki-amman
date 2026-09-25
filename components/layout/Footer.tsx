@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { businessConfig } from "@/lib/config";
 import { MapPin, Phone, Mail } from "lucide-react";
 
@@ -40,13 +41,15 @@ function InstagramIcon() {
 
 export default function Footer() {
     return (
-        <footer className="bg-brand-green text-brand-cream-dark pt-16 pb-8 border-t-4 border-brand-gold">
+        <footer className="bg-brand-emerald text-brand-beige-dark pt-16 pb-8 border-t-4 border-brand-brass">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
                     {/* Brand Info */}
                     <div>
-                        <h3 className="font-playfair text-2xl font-bold mb-6 text-brand-gold-light">Sree Selvanayaki Amman</h3>
-                        <p className="text-brand-cream/70 text-sm leading-relaxed mb-6">
+                        <Link href="/" className="block mb-6 relative h-16 w-56 bg-brand-beige/5 p-2 rounded">
+                            <Image src="/logo.jpeg" alt="Sree Selvanayaki Amman" fill className="object-contain object-left" sizes="224px" />
+                        </Link>
+                        <p className="text-brand-beige/70 text-sm leading-relaxed mb-6">
                             Authentic oils and essential food products, traditionally processed and beautifully delivered to your family from Pidariyur.
                         </p>
                         <div className="flex flex-col space-y-4">
@@ -64,7 +67,7 @@ export default function Footer() {
                                     href={businessConfig.instagramUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 text-brand-cream/80 hover:text-brand-gold-light text-sm transition-colors w-fit"
+                                    className="inline-flex items-center gap-2 text-brand-beige/80 hover:text-brand-brass text-sm transition-colors w-fit"
                                 >
                                     <InstagramIcon />
                                     Follow our journey
@@ -76,13 +79,13 @@ export default function Footer() {
                     {/* Contact */}
                     <div>
                         <h4 className="font-playfair font-bold text-lg mb-6 text-white">Contact Us</h4>
-                        <div className="space-y-4 text-sm text-brand-cream/70">
+                        <div className="space-y-4 text-sm text-brand-beige/70">
                             <div className="flex items-start gap-3">
-                                <MapPin className="w-5 h-5 shrink-0 text-brand-gold" />
+                                <MapPin className="w-5 h-5 shrink-0 text-brand-brass" />
                                 <p>{businessConfig.businessAddress}</p>
                             </div>
                             <div className="flex items-center gap-3">
-                                <Phone className="w-5 h-5 shrink-0 text-brand-gold" />
+                                <Phone className="w-5 h-5 shrink-0 text-brand-brass" />
                                 <p>{businessConfig.phone}</p>
                             </div>
                         </div>
@@ -94,9 +97,9 @@ export default function Footer() {
                         <ul className="space-y-3 text-sm">
                             {PRODUCT_LINKS.map((link) => (
                                 <li key={link.href}>
-                                    <Link href={link.href} className="text-brand-cream/70 hover:text-brand-gold-light transition-colors relative group font-medium">
+                                    <Link href={link.href} className="text-brand-beige/70 hover:text-brand-brass transition-colors relative group font-medium">
                                         {link.label}
-                                        <span className="absolute -bottom-1 left-0 w-0 h-px bg-brand-gold-light transition-all group-hover:w-full"></span>
+                                        <span className="absolute -bottom-1 left-0 w-0 h-px bg-brand-brass transition-all group-hover:w-full"></span>
                                     </Link>
                                 </li>
                             ))}
@@ -109,9 +112,9 @@ export default function Footer() {
                         <ul className="space-y-3 text-sm">
                             {POLICY_LINKS.map((link) => (
                                 <li key={link.href}>
-                                    <Link href={link.href} className="text-brand-cream/70 hover:text-brand-gold-light transition-colors relative group font-medium">
+                                    <Link href={link.href} className="text-brand-beige/70 hover:text-brand-brass transition-colors relative group font-medium">
                                         {link.label}
-                                        <span className="absolute -bottom-1 left-0 w-0 h-px bg-brand-gold-light transition-all group-hover:w-full"></span>
+                                        <span className="absolute -bottom-1 left-0 w-0 h-px bg-brand-brass transition-all group-hover:w-full"></span>
                                     </Link>
                                 </li>
                             ))}
@@ -120,7 +123,7 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom bar */}
-                <div className="pt-8 border-t border-brand-green-light flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-brand-cream/50">
+                <div className="pt-8 border-t border-brand-emerald-light flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-brand-beige/50">
                     <p>© {new Date().getFullYear()} {businessConfig.businessName}. All rights reserved.</p>
                     <p>FSSAI License: {businessConfig.fssaiLicense}</p>
                 </div>

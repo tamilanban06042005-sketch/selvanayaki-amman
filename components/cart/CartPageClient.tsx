@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import Link from "next/link";
 import Image from "next/image";
 import { Minus, Plus, Trash2, ShoppingCart } from "lucide-react";
@@ -39,7 +39,7 @@ export default function CartPageClient() {
                             <p className="text-stone-500 mb-6">Your cart is empty.</p>
                             <Link
                                 href="/shop"
-                                className="inline-block bg-amber-700 text-white px-6 py-3 rounded-md font-semibold hover:bg-amber-800 transition-colors"
+                                className="inline-block bg-[var(--color-brand-brown)] text-white px-6 py-3 rounded-md font-semibold hover:bg-[var(--color-brand-ink)] transition-colors"
                             >
                                 Shop Products
                             </Link>
@@ -64,7 +64,7 @@ export default function CartPageClient() {
                                             <p className="font-semibold text-stone-800">{item.productName}</p>
                                             <p className="text-sm text-stone-500 mb-2">{item.variantName}</p>
                                             <p className="text-sm text-stone-500">
-                                                {formatPrice(item.unitPrice)} × {item.quantity} = <strong className="text-amber-700">{formatPrice(item.lineTotal)}</strong>
+                                                {formatPrice(item.unitPrice)} Ã— {item.quantity} = <strong className="text-[var(--color-brand-brown)]">{formatPrice(item.lineTotal)}</strong>
                                             </p>
                                             <div className="flex items-center gap-3 mt-3">
                                                 <button onClick={() => updateQuantity(item.productId, item.variantId, item.quantity - 1)} disabled={item.quantity <= 1} aria-label="Decrease" className="w-7 h-7 border border-stone-200 rounded flex items-center justify-center hover:bg-stone-50 disabled:opacity-30">
@@ -95,7 +95,7 @@ export default function CartPageClient() {
                                         <span>{summary.freeShipping ? <span className="text-green-700 font-medium">Free</span> : formatPrice(summary.shippingFee)}</span>
                                     </div>
                                     <div className="flex justify-between font-bold text-stone-800 pt-2 border-t border-stone-100">
-                                        <span>Total</span><span className="text-amber-700">{formatPrice(summary.total)}</span>
+                                        <span>Total</span><span className="text-[var(--color-brand-brown)]">{formatPrice(summary.total)}</span>
                                     </div>
                                 </div>
                                 {!summary.freeShipping && (
@@ -109,7 +109,7 @@ export default function CartPageClient() {
                                 >
                                     Order on WhatsApp
                                 </button>
-                                <Link href="/shop" className="block text-center text-sm text-stone-500 hover:text-amber-700 transition-colors">
+                                <Link href="/shop" className="block text-center text-sm text-stone-500 hover:text-[var(--color-brand-brown)] transition-colors">
                                     Continue Shopping
                                 </Link>
                             </div>
@@ -121,3 +121,4 @@ export default function CartPageClient() {
         </>
     );
 }
+

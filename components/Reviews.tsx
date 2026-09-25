@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -226,7 +226,7 @@ export default function Reviews() {
                         <br />
                         <em>Across Tamil Nadu</em>
                     </h2>
-                    <div className="gold-divider max-w-xs mx-auto mb-6" />
+                    <div className="w-20 h-0.5 bg-[var(--color-brand-brown)] max-w-xs mx-auto mb-6" />
                     <p
                         className="text-base opacity-60 max-w-xl mx-auto"
                         style={{ fontFamily: "var(--font-inter)", color: "#d9c9a8", lineHeight: 1.7 }}
@@ -242,7 +242,7 @@ export default function Reviews() {
                 >
                     {[
                         { value: "12", label: "Google Reviews" },
-                        { value: "5.0 ★", label: "Average Rating" },
+                        { value: "5.0 â˜…", label: "Average Rating" },
                         { value: "100%", label: "Five Star Reviews" },
                     ].map((stat) => (
                         <div key={stat.label} className="text-center">
@@ -354,7 +354,7 @@ export default function Reviews() {
                                         className="text-[10px] opacity-40 truncate"
                                         style={{ fontFamily: "var(--font-inter)", color: "#d9c9a8" }}
                                     >
-                                        {review.when} · Google Maps
+                                        {review.when} Â· Google Maps
                                     </div>
                                 </div>
                                 <StarRating count={review.rating} />
@@ -368,9 +368,10 @@ export default function Reviews() {
                     className="text-center text-[10px] tracking-[0.25em] uppercase opacity-30 mt-12"
                     style={{ fontFamily: "var(--font-inter)", color: "#d9c9a8" }}
                 >
-                    Verified Google Reviews · Sree Selvanayaki Amman Oil &amp; Flour Mill
+                    Verified Google Reviews Â· Sree Selvanayaki Amman Oil &amp; Flour Mill
                 </p>
             </div>
         </section>
     );
 }
+

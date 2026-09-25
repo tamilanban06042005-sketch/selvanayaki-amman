@@ -1,10 +1,13 @@
 "use client";
 
+import Link from "next/link";
+import Image from "next/image";
+
 const NAV_LINKS = [
-    { label: "Our Oils", href: "#our-oils" },
-    { label: "Our Story", href: "#our-story" },
-    { label: "Why Us", href: "#why-us" },
-    { label: "Contact", href: "#contact" },
+    { label: "Home", href: "/" },
+    { label: "Shop", href: "/shop" },
+    { label: "Our Story", href: "/about" },
+    { label: "Contact", href: "/contact" },
 ];
 
 const PRODUCTS = ["Gingelly Oil", "Groundnut Oil", "Coconut Oil"];
@@ -17,7 +20,7 @@ export default function Footer() {
     return (
         <footer
             id="contact"
-            style={{ background: "#0a0a09", borderTop: "1px solid rgba(200,146,42,0.12)" }}
+            className="bg-[var(--color-brand-emerald)] text-[var(--color-brand-beige)] border-t-4 border-[var(--color-brand-brown)]"
             aria-label="Site footer"
         >
             <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
@@ -25,21 +28,18 @@ export default function Footer() {
                 <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 mb-16">
                     {/* Brand */}
                     <div className="lg:w-1/3">
-                        <div
-                            className="text-[11px] tracking-[0.35em] uppercase mb-1"
-                            style={{ color: "#c8922a", fontFamily: "var(--font-inter)" }}
-                        >
-                            Sree Selvanayaki Amman
-                        </div>
-                        <div
-                            className="text-[9px] tracking-[0.3em] uppercase opacity-50 mb-6"
-                            style={{ color: "#d9c9a8", fontFamily: "var(--font-inter)" }}
-                        >
-                            Oil & Flour Mill
-                        </div>
+                        <Link href="/" className="mb-6 block transition-transform hover:scale-105 origin-left">
+                            <Image
+                                src="/images/logo-monogram.jpg"
+                                alt="Sree Selvanayaki Amman Logo"
+                                width={180}
+                                height={60}
+                                className="object-contain mix-blend-screen"
+                            />
+                        </Link>
                         <p
-                            className="text-sm leading-relaxed opacity-50 max-w-xs"
-                            style={{ fontFamily: "var(--font-inter)", color: "#d9c9a8", lineHeight: 1.7 }}
+                            className="text-sm leading-relaxed max-w-xs text-[var(--color-brand-beige-dark)]/80"
+                            style={{ fontFamily: "var(--font-inter)", lineHeight: 1.7 }}
                         >
                             Traditional goodness, made for today. Pure natural oils for every
                             South Indian kitchen.
@@ -51,21 +51,21 @@ export default function Footer() {
                         {/* Navigation */}
                         <div>
                             <h3
-                                className="text-[9px] tracking-[0.35em] uppercase mb-5 opacity-50"
-                                style={{ color: "#c8922a", fontFamily: "var(--font-inter)" }}
+                                className="text-[9px] font-semibold tracking-[0.35em] uppercase mb-5 text-[var(--color-brand-brass)]"
+                                style={{ fontFamily: "var(--font-inter)" }}
                             >
                                 Navigate
                             </h3>
                             <ul className="space-y-3">
                                 {NAV_LINKS.map((link) => (
                                     <li key={link.label}>
-                                        <button
-                                            onClick={() => scrollTo(link.href)}
-                                            className="text-xs opacity-50 hover:opacity-100 hover:text-amber-gold transition-all duration-300 focus:outline-none focus-visible:ring-1 focus-visible:ring-amber-400 rounded text-left"
-                                            style={{ color: "#d9c9a8", fontFamily: "var(--font-inter)" }}
+                                        <Link
+                                            href={link.href}
+                                            className="text-xs hover:text-[var(--color-brand-brass)] transition-all duration-300 focus:outline-none rounded text-left text-[var(--color-brand-beige-dark)]/80 hover:text-[var(--color-brand-beige)]"
+                                            style={{ fontFamily: "var(--font-inter)" }}
                                         >
                                             {link.label}
-                                        </button>
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>
@@ -74,8 +74,8 @@ export default function Footer() {
                         {/* Products */}
                         <div>
                             <h3
-                                className="text-[9px] tracking-[0.35em] uppercase mb-5 opacity-50"
-                                style={{ color: "#c8922a", fontFamily: "var(--font-inter)" }}
+                                className="text-[9px] font-semibold tracking-[0.35em] uppercase mb-5 text-[var(--color-brand-brass)]"
+                                style={{ fontFamily: "var(--font-inter)" }}
                             >
                                 Products
                             </h3>
@@ -83,8 +83,8 @@ export default function Footer() {
                                 {PRODUCTS.map((p) => (
                                     <li key={p}>
                                         <span
-                                            className="text-xs opacity-50"
-                                            style={{ color: "#d9c9a8", fontFamily: "var(--font-inter)" }}
+                                            className="text-xs text-[var(--color-brand-beige-dark)]/80"
+                                            style={{ fontFamily: "var(--font-inter)" }}
                                         >
                                             {p}
                                         </span>
@@ -96,16 +96,16 @@ export default function Footer() {
                         {/* Contact / Location */}
                         <div>
                             <h3
-                                className="text-[9px] tracking-[0.35em] uppercase mb-5 opacity-50"
-                                style={{ color: "#c8922a", fontFamily: "var(--font-inter)" }}
+                                className="text-[9px] font-semibold tracking-[0.35em] uppercase mb-5 text-[var(--color-brand-brass)]"
+                                style={{ fontFamily: "var(--font-inter)" }}
                             >
                                 Contact
                             </h3>
                             <div className="space-y-4">
                                 {/* Address */}
                                 <p
-                                    className="text-xs leading-relaxed opacity-60"
-                                    style={{ color: "#d9c9a8", fontFamily: "var(--font-inter)", lineHeight: 1.7 }}
+                                    className="text-xs leading-relaxed text-[var(--color-brand-beige-dark)]/80"
+                                    style={{ fontFamily: "var(--font-inter)", lineHeight: 1.7 }}
                                 >
                                     9, Pirivu, 1010 Colony,<br />
                                     Pidariyur, Mukasipidariyur,<br />
@@ -114,10 +114,10 @@ export default function Footer() {
                                 {/* Phone */}
                                 <a
                                     href="tel:+917708039583"
-                                    className="flex items-center gap-2 text-xs opacity-70 hover:opacity-100 transition-opacity duration-300"
-                                    style={{ color: "#d9c9a8", fontFamily: "var(--font-inter)" }}
+                                    className="flex items-center gap-2 text-xs text-[var(--color-brand-beige-dark)] hover:text-white transition-opacity duration-300"
+                                    style={{ fontFamily: "var(--font-inter)" }}
                                 >
-                                    <span style={{ color: "#c8922a" }}>📞</span>
+                                    <span>📞</span>
                                     +91 77080 39583
                                 </a>
                                 {/* WhatsApp */}
@@ -125,8 +125,8 @@ export default function Footer() {
                                     href="https://wa.me/917708039583"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2 text-xs opacity-70 hover:opacity-100 transition-opacity duration-300"
-                                    style={{ color: "#d9c9a8", fontFamily: "var(--font-inter)" }}
+                                    className="flex items-center gap-2 text-xs text-[var(--color-brand-beige-dark)] hover:text-white transition-opacity duration-300"
+                                    style={{ fontFamily: "var(--font-inter)" }}
                                 >
                                     <span>💬</span>
                                     WhatsApp Order
@@ -136,10 +136,10 @@ export default function Footer() {
                                     href="https://instagram.com/kughan_oils"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2 text-xs opacity-70 hover:opacity-100 transition-opacity duration-300"
-                                    style={{ color: "#d9c9a8", fontFamily: "var(--font-inter)" }}
+                                    className="flex items-center gap-2 text-xs text-[var(--color-brand-beige-dark)] hover:text-white transition-opacity duration-300"
+                                    style={{ fontFamily: "var(--font-inter)" }}
                                 >
-                                    <span style={{ color: "#c8922a" }}>📷</span>
+                                    <span>📷</span>
                                     @kughan_oils
                                 </a>
                             </div>
@@ -147,20 +147,20 @@ export default function Footer() {
                     </div>
                 </div>
 
-                {/* Gold divider */}
-                <div className="gold-divider mb-8" />
+                {/* Divider */}
+                <div className="h-px bg-[var(--color-brand-brown)]/50 mb-8" />
 
                 {/* Bottom row */}
                 <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                     <p
-                        className="text-[10px] opacity-40 italic"
-                        style={{ fontFamily: "var(--font-playfair)", color: "#d9c9a8" }}
+                        className="text-[10px] italic text-[var(--color-brand-beige-dark)]/70"
+                        style={{ fontFamily: "var(--font-playfair)" }}
                     >
                         &ldquo;Traditional goodness, made for today.&rdquo;
                     </p>
                     <p
-                        className="text-[9px] opacity-30 tracking-widest"
-                        style={{ fontFamily: "var(--font-inter)", color: "#d9c9a8" }}
+                        className="text-[9px] tracking-widest text-[var(--color-brand-beige-dark)]/60"
+                        style={{ fontFamily: "var(--font-inter)" }}
                     >
                         © 2026 Sree Selvanayaki Amman Oil & Flour Mill
                     </p>

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -83,7 +83,7 @@ export default function ThreeOilsSignature() {
                         <br />
                         <em>One Tradition.</em>
                     </h2>
-                    <div className="gold-divider max-w-xs mx-auto mt-8" />
+                    <div className="w-20 h-0.5 bg-[var(--color-brand-brown)] max-w-xs mx-auto mt-8" />
                 </div>
 
                 {/* Three bottles */}
@@ -104,7 +104,7 @@ export default function ThreeOilsSignature() {
 
                             <Image
                                 src={oil.image}
-                                alt={`${oil.name} — Sree Selvanayaki Amman`}
+                                alt={`${oil.name} â€” Sree Selvanayaki Amman`}
                                 width={i === 1 ? 280 : 220}
                                 height={i === 1 ? 420 : 340}
                                 className="object-contain relative z-10 drop-shadow-2xl"
@@ -141,3 +141,4 @@ export default function ThreeOilsSignature() {
         </section>
     );
 }
+

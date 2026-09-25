@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -68,7 +68,7 @@ export default function HeroSection() {
     const drawFrame = useCallback((index: number) => {
         const canvas = canvasRef.current;
         if (!canvas) return;
-        // Use cached context — avoid re-fetching every frame
+        // Use cached context â€” avoid re-fetching every frame
         if (!ctxRef.current) {
             ctxRef.current = canvas.getContext("2d");
         }
@@ -82,7 +82,7 @@ export default function HeroSection() {
         const w = canvas.width / dpr;
         const h = canvas.height / dpr;
 
-        // Cinematic cover — maintain aspect, cover the canvas
+        // Cinematic cover â€” maintain aspect, cover the canvas
         const iw = img.naturalWidth;
         const ih = img.naturalHeight;
         const scale = Math.max(w / iw, h / ih);
@@ -145,12 +145,12 @@ export default function HeroSection() {
         return () => window.removeEventListener("resize", resizeCanvas);
     }, [resizeCanvas, drawFrame]);
 
-    // GSAP ScrollTrigger — pin sticky, scrub frames, animate overlay and messages
+    // GSAP ScrollTrigger â€” pin sticky, scrub frames, animate overlay and messages
     useEffect(() => {
         if (loading) return;
 
         const ctx = gsap.context(() => {
-            // Frame scrubbing — scrub: 0.5 keeps canvas close to scroll position
+            // Frame scrubbing â€” scrub: 0.5 keeps canvas close to scroll position
             const obj = { frame: 0 };
             gsap.to(obj, {
                 frame: FRAME_COUNT - 1,
@@ -260,7 +260,7 @@ export default function HeroSection() {
             style={{ height: SCROLL_DISTANCE }}
             className="relative"
         >
-            {/* Sticky container — hosts the pinned cinematic experience */}
+            {/* Sticky container â€” hosts the pinned cinematic experience */}
             <div
                 ref={stickyRef}
                 className="sticky top-0 w-full h-screen overflow-hidden"
@@ -296,7 +296,7 @@ export default function HeroSection() {
                             </div>
                             <div className="w-48 h-px bg-[#2a2a28] relative -ml-24">
                                 <div
-                                    className="absolute left-0 top-0 h-full bg-amber-gold transition-all duration-200"
+                                    className="absolute left-0 top-0 h-full bg-[var(--color-brand-brown)] transition-all duration-200"
                                     style={{ width: `${loadPct}%`, background: "#c8922a" }}
                                 />
                             </div>
@@ -304,7 +304,7 @@ export default function HeroSection() {
                     </div>
                 )}
 
-                {/* Brand overlay — fades out on scroll */}
+                {/* Brand overlay â€” fades out on scroll */}
                 <div
                     ref={overlayRef}
                     className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pointer-events-none"
@@ -349,12 +349,12 @@ export default function HeroSection() {
                         Oil & Flour Mill
                     </p>
 
-                    {/* CTAs — pointer-events-auto so they are clickable */}
+                    {/* CTAs â€” pointer-events-auto so they are clickable */}
                     <div className="flex gap-4 flex-wrap justify-center pointer-events-auto">
                         <button
                             onClick={scrollToOils}
                             aria-label="Explore our oils"
-                            className="px-7 py-3 text-[11px] tracking-[0.2em] uppercase font-medium transition-all duration-300 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+                            className="px-7 py-3 text-[11px] tracking-[0.2em] uppercase font-medium transition-all duration-300 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-brown)]"
                             style={{
                                 background: "#c8922a",
                                 color: "#111110",
@@ -367,7 +367,7 @@ export default function HeroSection() {
                         <button
                             onClick={scrollToContact}
                             aria-label="Contact us"
-                            className="px-7 py-3 text-[11px] tracking-[0.2em] uppercase transition-all duration-300 hover:bg-[rgba(200,146,42,0.1)] focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+                            className="px-7 py-3 text-[11px] tracking-[0.2em] uppercase transition-all duration-300 hover:bg-[rgba(200,146,42,0.1)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-brown)]"
                             style={{
                                 border: "1px solid rgba(200,146,42,0.5)",
                                 color: "#f0e8d5",
@@ -439,7 +439,7 @@ export default function HeroSection() {
                         style={{ background: "rgba(200,146,42,0.3)" }}
                     >
                         <div
-                            className="absolute top-0 w-full bg-amber-gold"
+                            className="absolute top-0 w-full bg-[var(--color-brand-brown)]"
                             style={{
                                 height: "50%",
                                 background: "#c8922a",
@@ -452,3 +452,4 @@ export default function HeroSection() {
         </div>
     );
 }
+

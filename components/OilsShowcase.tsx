@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -25,7 +25,7 @@ const OILS = [
         name: "Groundnut Oil",
         secondary: "PEANUT OIL",
         description:
-            "Naturally rich groundnut oil bringing wholesome goodness to everyday meals. Light, pure and full of natural character — a staple in every South Indian kitchen.",
+            "Naturally rich groundnut oil bringing wholesome goodness to everyday meals. Light, pure and full of natural character â€” a staple in every South Indian kitchen.",
         ingredient: "Groundnuts",
         image: "/groundnut-oil.jpeg",
         accent: "#8b6340",
@@ -105,7 +105,7 @@ export default function OilsShowcase() {
                 >
                     Our Traditional Oils
                 </h2>
-                <div className="gold-divider max-w-xs mx-auto mb-6" />
+                <div className="w-20 h-0.5 bg-[var(--color-brand-brown)] max-w-xs mx-auto mb-6" />
                 <p
                     className="text-base opacity-60 max-w-xl mx-auto"
                     style={{ fontFamily: "var(--font-inter)", color: "#d9c9a8", lineHeight: 1.7 }}
@@ -125,7 +125,7 @@ export default function OilsShowcase() {
                     >
                         {/* Product image */}
                         <div className="relative flex-1 flex items-center justify-center group">
-                            {/* Ambient glow — box-shadow avoids expensive CSS blur filter during scroll */}
+                            {/* Ambient glow â€” box-shadow avoids expensive CSS blur filter during scroll */}
                             <div
                                 className="absolute inset-0 opacity-30 rounded-full scale-75"
                                 style={{
@@ -151,7 +151,7 @@ export default function OilsShowcase() {
                             >
                                 <Image
                                     src={oil.image}
-                                    alt={`${oil.name} bottle — Sree Selvanayaki Amman`}
+                                    alt={`${oil.name} bottle â€” Sree Selvanayaki Amman`}
                                     width={320}
                                     height={460}
                                     className="object-contain w-full h-auto drop-shadow-2xl"
@@ -167,7 +167,7 @@ export default function OilsShowcase() {
                                     className="text-[10px] tracking-[0.35em] uppercase"
                                     style={{ color: oil.accent, fontFamily: "var(--font-inter)" }}
                                 >
-                                    {oil.number} — {oil.secondary}
+                                    {oil.number} â€” {oil.secondary}
                                 </span>
                             </div>
 
@@ -242,3 +242,4 @@ export default function OilsShowcase() {
         </section>
     );
 }
+

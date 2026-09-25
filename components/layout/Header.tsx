@@ -1,12 +1,14 @@
-"use client";
+﻿"use client";
 import { useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ShoppingCart, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useCartStore } from "@/store/cartStore";
 import CartDrawer from "@/components/cart/CartDrawer";
 
 const NAV_LINKS = [
+    { label: "Home", href: "/" },
     { label: "Shop", href: "/shop" },
     { label: "Oils", href: "/oils" },
     { label: "Powders", href: "/powders" },
@@ -30,21 +32,28 @@ export default function Header() {
     return (
         <>
             {/* Announcement bar */}
-            <div className="bg-brand-terracotta text-white text-center py-2 text-xs tracking-widest uppercase">
-                Online ordering now available — Order via WhatsApp
+            <div className="bg-brand-brown text-white text-center py-2 text-xs tracking-widest uppercase">
+                Online ordering now available â€” Order via WhatsApp
             </div>
 
             <header
                 className={`sticky top-0 z-40 transition-all duration-300 border-b ${scrolled
-                        ? "bg-brand-cream/95 backdrop-blur-md border-brand-cream-dark py-3 shadow-sm"
-                        : "bg-brand-cream border-brand-cream-dark py-5"
+                    ? "bg-brand-beige/95 backdrop-blur-md border-brand-beige-dark py-3 shadow-sm"
+                    : "bg-brand-beige border-brand-beige-dark py-5"
                     }`}
                 role="banner"
             >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
                     {/* Logo */}
-                    <Link href="/" className="font-playfair font-bold text-2xl tracking-tight text-brand-ink group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-terracotta rounded">
-                        Sree Selvanayaki Amman<span className="text-brand-terracotta group-hover:text-brand-gold transition-colors">.</span>
+                    <Link href="/" className="group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-brown rounded flex items-center h-12 w-auto relative">
+                        {/* Mobile Monogram (aspect-square) */}
+                        <div className="md:hidden relative h-10 w-10 overflow-hidden mix-blend-multiply rounded border border-brand-brown/10">
+                            <Image src="/logo.jpeg" alt="SSA Monogram" fill className="object-cover object-center" sizes="40px" />
+                        </div>
+                        {/* Desktop Lockup */}
+                        <div className="hidden md:block relative h-12 w-64 mix-blend-multiply">
+                            <Image src="/logo.jpeg" alt="Sree Selvanayaki Amman" fill className="object-contain object-left" sizes="256px" />
+                        </div>
                     </Link>
 
                     {/* Desktop nav */}
@@ -53,7 +62,7 @@ export default function Header() {
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className="text-sm font-medium text-brand-ink hover:text-brand-terracotta transition-colors"
+                                className="text-sm font-medium text-brand-ink hover:text-brand-brown transition-colors"
                             >
                                 {link.label}
                             </Link>
@@ -64,13 +73,13 @@ export default function Header() {
                     <div className="flex items-center gap-4">
                         <button
                             onClick={openCart}
-                            className="flex items-center gap-2 text-brand-ink hover:text-brand-terracotta transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-terracotta rounded"
-                            aria-label={`Cart — ${summary.itemCount} items`}
+                            className="flex items-center gap-2 text-brand-ink hover:text-brand-brown transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-brown rounded"
+                            aria-label={`Cart â€” ${summary.itemCount} items`}
                         >
                             <div className="relative p-1">
                                 <ShoppingCart size={20} strokeWidth={1.5} />
                                 {summary.itemCount > 0 && (
-                                    <span className="absolute -top-1 -right-1 bg-brand-terracotta text-white text-[10px] font-bold w-4.5 h-4.5 min-w-[1.1rem] min-h-[1.1rem] rounded-full flex items-center justify-center leading-none px-1 border border-brand-cream">
+                                    <span className="absolute -top-1 -right-1 bg-brand-brown text-white text-[10px] font-bold w-4.5 h-4.5 min-w-[1.1rem] min-h-[1.1rem] rounded-full flex items-center justify-center leading-none px-1 border border-brand-beige">
                                         {summary.itemCount > 99 ? "99+" : summary.itemCount}
                                     </span>
                                 )}
@@ -79,7 +88,7 @@ export default function Header() {
                         </button>
 
                         <button
-                            className="md:hidden p-1 text-brand-ink hover:text-brand-terracotta transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-terracotta rounded"
+                            className="md:hidden p-1 text-brand-ink hover:text-brand-brown transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-brown rounded"
                             onClick={() => setMenuOpen(!menuOpen)}
                             aria-label={menuOpen ? "Close menu" : "Open menu"}
                             aria-expanded={menuOpen}
@@ -105,7 +114,7 @@ export default function Header() {
                                     key={link.href}
                                     href={link.href}
                                     onClick={() => setMenuOpen(false)}
-                                    className="text-sm font-medium text-stone-700 hover:text-amber-700 transition-colors py-1"
+                                    className="text-sm font-medium text-stone-700 hover:text-[var(--color-brand-brown)] transition-colors py-1"
                                 >
                                     {link.label}
                                 </Link>
@@ -113,7 +122,7 @@ export default function Header() {
                             <Link
                                 href="/cart"
                                 onClick={() => setMenuOpen(false)}
-                                className="text-sm font-medium text-stone-700 hover:text-amber-700 transition-colors py-1"
+                                className="text-sm font-medium text-stone-700 hover:text-[var(--color-brand-brown)] transition-colors py-1"
                             >
                                 Cart {summary.itemCount > 0 && `(${summary.itemCount})`}
                             </Link>
@@ -126,3 +135,4 @@ export default function Header() {
         </>
     );
 }
+

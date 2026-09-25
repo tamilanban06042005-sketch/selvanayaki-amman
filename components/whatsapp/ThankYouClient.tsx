@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import Link from "next/link";
 import { useCartStore } from "@/store/cartStore";
 import Header from "@/components/layout/Header";
@@ -20,7 +20,7 @@ export default function ThankYouClient() {
             <Header />
             <main className="min-h-screen bg-stone-50 flex items-center justify-center px-6">
                 <div className="max-w-lg w-full bg-white rounded-xl border border-stone-100 shadow-sm p-8 text-center">
-                    <div className="text-5xl mb-4">💬</div>
+                    <div className="text-5xl mb-4">ðŸ’¬</div>
                     <h1 className="text-2xl font-bold text-stone-800 mb-3">
                         {confirmed ? "Thank you for your order!" : "WhatsApp Order Prepared"}
                     </h1>
@@ -31,8 +31,8 @@ export default function ThankYouClient() {
                         </p>
                     ) : (
                         <>
-                            <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6 text-left">
-                                <p className="text-sm text-amber-800 leading-relaxed">
+                            <div className="bg-[var(--color-brand-beige)] border border-[var(--color-brand-brass)] rounded-lg p-4 mb-6 text-left">
+                                <p className="text-sm text-[var(--color-brand-ink)] leading-relaxed">
                                     Your WhatsApp order message has been prepared. Please make sure the message has been
                                     sent to our business WhatsApp.{" "}
                                     <strong>Our team will confirm availability, delivery charges and payment details.</strong>
@@ -48,7 +48,7 @@ export default function ThankYouClient() {
                                     onClick={handleConfirmed}
                                     className="w-full bg-green-700 hover:bg-green-600 text-white py-3 rounded-md font-semibold transition-colors"
                                 >
-                                    ✅ I Have Sent My Order
+                                    âœ… I Have Sent My Order
                                 </button>
                                 <Link
                                     href="/cart"
@@ -68,13 +68,13 @@ export default function ThankYouClient() {
                                 >
                                     Open WhatsApp directly
                                 </a>
-                                <p>or call us: <a href={`tel:${businessConfig.phone}`} className="text-amber-700 underline">{businessConfig.phone}</a></p>
+                                <p>or call us: <a href={`tel:${businessConfig.phone}`} className="text-[var(--color-brand-brown)] underline">{businessConfig.phone}</a></p>
                             </div>
                         </>
                     )}
 
                     <div className="mt-6 flex gap-3 justify-center">
-                        <Link href="/shop" className="text-sm text-amber-700 underline hover:text-amber-800">
+                        <Link href="/shop" className="text-sm text-[var(--color-brand-brown)] underline hover:text-[var(--color-brand-ink)]">
                             Continue Shopping
                         </Link>
                         <Link href="/" className="text-sm text-stone-500 underline hover:text-stone-700">
@@ -87,3 +87,4 @@ export default function ThankYouClient() {
         </>
     );
 }
+

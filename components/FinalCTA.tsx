@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -48,7 +48,7 @@ export default function FinalCTA() {
             />
 
             {/* Decorative top line */}
-            <div className="gold-divider max-w-xs mx-auto mb-16" />
+            <div className="w-20 h-0.5 bg-[var(--color-brand-brown)] max-w-xs mx-auto mb-16" />
 
             <div className="relative z-10 max-w-4xl mx-auto px-6">
                 <p
@@ -82,12 +82,12 @@ export default function FinalCTA() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    {/* Primary CTA — golden fill with shine */}
+                    {/* Primary CTA â€” golden fill with shine */}
                     <button
                         ref={btnRef}
                         onClick={scrollToOils}
                         aria-label="Explore our traditional oils"
-                        className="relative overflow-hidden px-10 py-4 text-[11px] tracking-[0.25em] uppercase font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e0e0c]"
+                        className="relative overflow-hidden px-10 py-4 text-[11px] tracking-[0.25em] uppercase font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-brown)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e0e0c]"
                         style={{
                             background: "linear-gradient(135deg, #c8922a 0%, #e8b84b 50%, #c8922a 100%)",
                             backgroundSize: "200% auto",
@@ -101,13 +101,13 @@ export default function FinalCTA() {
                         <span className="relative z-10">Explore Our Oils</span>
                     </button>
 
-                    {/* Secondary CTA — WhatsApp */}
+                    {/* Secondary CTA â€” WhatsApp */}
                     <a
                         href="https://wa.me/917708039583?text=Hi%2C%20I%20would%20like%20to%20order%20oil%20from%20Sree%20Selvanayaki%20Amman%20Oil%20Mill"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Order via WhatsApp"
-                        className="px-10 py-4 text-[11px] tracking-[0.25em] uppercase transition-all duration-300 hover:bg-[rgba(200,146,42,0.08)] focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e0e0c]"
+                        className="px-10 py-4 text-[11px] tracking-[0.25em] uppercase transition-all duration-300 hover:bg-[rgba(200,146,42,0.08)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-brown)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e0e0c]"
                         style={{
                             border: "1px solid rgba(200,146,42,0.35)",
                             color: "#f0e8d5",
@@ -116,12 +116,13 @@ export default function FinalCTA() {
                             display: "inline-block",
                         }}
                     >
-                        💬 Order on WhatsApp
+                        ðŸ’¬ Order on WhatsApp
                     </a>
                 </div>
             </div>
 
-            <div className="gold-divider max-w-xs mx-auto mt-16" />
+            <div className="w-20 h-0.5 bg-[var(--color-brand-brown)] max-w-xs mx-auto mt-16" />
         </section>
     );
 }
+

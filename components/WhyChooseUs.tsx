@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -11,21 +11,21 @@ const PANELS = [
         title: "Traditional Goodness",
         description:
             "Time-tested methods passed through generations, preserving the authentic character of every oil we produce.",
-        icon: "◈",
+        icon: "â—ˆ",
     },
     {
         number: "02",
         title: "Carefully Selected Ingredients",
         description:
-            "We source only the finest sesame seeds, groundnuts and coconuts — chosen for natural quality and freshness.",
-        icon: "◉",
+            "We source only the finest sesame seeds, groundnuts and coconuts â€” chosen for natural quality and freshness.",
+        icon: "â—‰",
     },
     {
         number: "03",
         title: "Quality You Can Trust",
         description:
-            "Every batch is made with care and attention. Pure, natural, without compromise — for families who deserve the best.",
-        icon: "◎",
+            "Every batch is made with care and attention. Pure, natural, without compromise â€” for families who deserve the best.",
+        icon: "â—Ž",
     },
 ];
 
@@ -78,7 +78,7 @@ export default function WhyChooseUs() {
                     >
                         Why Families Choose Us
                     </h2>
-                    <div className="gold-divider max-w-xs mx-auto" />
+                    <div className="w-20 h-0.5 bg-[var(--color-brand-brown)] max-w-xs mx-auto" />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -95,10 +95,10 @@ export default function WhyChooseUs() {
                             }}
                         >
                             {/* Corner accents */}
-                            <div className="absolute top-3 left-3 w-3 h-3 border-t border-l border-amber-gold opacity-40" />
-                            <div className="absolute top-3 right-3 w-3 h-3 border-t border-r border-amber-gold opacity-40" />
-                            <div className="absolute bottom-3 left-3 w-3 h-3 border-b border-l border-amber-gold opacity-40" />
-                            <div className="absolute bottom-3 right-3 w-3 h-3 border-b border-r border-amber-gold opacity-40" />
+                            <div className="absolute top-3 left-3 w-3 h-3 border-t border-l border-[var(--color-brand-brown)] opacity-40" />
+                            <div className="absolute top-3 right-3 w-3 h-3 border-t border-r border-[var(--color-brand-brown)] opacity-40" />
+                            <div className="absolute bottom-3 left-3 w-3 h-3 border-b border-l border-[var(--color-brand-brown)] opacity-40" />
+                            <div className="absolute bottom-3 right-3 w-3 h-3 border-b border-r border-[var(--color-brand-brown)] opacity-40" />
 
                             {/* Hover glow */}
                             <div
@@ -146,3 +146,4 @@ export default function WhyChooseUs() {
         </section>
     );
 }
+

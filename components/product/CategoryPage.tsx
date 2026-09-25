@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { Product } from "@/types/product";
 import ProductCard from "@/components/product/ProductCard";
 import Header from "@/components/layout/Header";
@@ -19,9 +19,9 @@ export default function CategoryPage({ categoryName, categorySlug, products }: P
                     {/* Breadcrumb */}
                     <nav aria-label="Breadcrumb" className="mb-6">
                         <ol className="flex items-center gap-2 text-xs text-stone-400">
-                            <li><Link href="/" className="hover:text-amber-700">Home</Link></li>
+                            <li><Link href="/" className="hover:text-[var(--color-brand-brown)]">Home</Link></li>
                             <li aria-hidden="true">/</li>
-                            <li><Link href="/shop" className="hover:text-amber-700">Shop</Link></li>
+                            <li><Link href="/shop" className="hover:text-[var(--color-brand-brown)]">Shop</Link></li>
                             <li aria-hidden="true">/</li>
                             <li className="text-stone-600 font-medium" aria-current="page">{categoryName}</li>
                         </ol>
@@ -33,7 +33,7 @@ export default function CategoryPage({ categoryName, categorySlug, products }: P
                     {products.length === 0 ? (
                         <div className="text-center py-20 text-stone-400">
                             <p className="mb-4">No products found in this category.</p>
-                            <Link href="/shop" className="text-amber-700 underline">View all products</Link>
+                            <Link href="/shop" className="text-[var(--color-brand-brown)] underline">View all products</Link>
                         </div>
                     ) : (
                         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
@@ -48,3 +48,4 @@ export default function CategoryPage({ categoryName, categorySlug, products }: P
         </>
     );
 }
+

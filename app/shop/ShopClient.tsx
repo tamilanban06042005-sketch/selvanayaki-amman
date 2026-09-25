@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState, useMemo } from "react";
 import { Product } from "@/types/product";
 import { Category } from "@/lib/data/categories";
@@ -72,9 +72,9 @@ export default function ShopClient({ products, categories }: Props) {
                                 type="search"
                                 value={search}
                                 onChange={(e) => setSearch(e.target.value)}
-                                placeholder="Search products…"
+                                placeholder="Search productsâ€¦"
                                 aria-label="Search products"
-                                className="w-full pl-9 pr-3 py-2 text-sm border border-stone-200 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-700 bg-white"
+                                className="w-full pl-9 pr-3 py-2 text-sm border border-stone-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-brown)] bg-white"
                             />
                         </div>
 
@@ -82,7 +82,7 @@ export default function ShopClient({ products, categories }: Props) {
                         <div className="flex flex-wrap gap-2">
                             <button
                                 onClick={() => setActiveCategory("all")}
-                                className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${activeCategory === "all" ? "bg-amber-700 text-white border-amber-700" : "border-stone-200 text-stone-600 hover:border-amber-700"}`}
+                                className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${activeCategory === "all" ? "bg-[var(--color-brand-brown)] text-white border-[var(--color-brand-brown)]" : "border-stone-200 text-stone-600 hover:border-[var(--color-brand-brown)]"}`}
                             >
                                 All
                             </button>
@@ -90,7 +90,7 @@ export default function ShopClient({ products, categories }: Props) {
                                 <button
                                     key={cat.id}
                                     onClick={() => setActiveCategory(cat.id)}
-                                    className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${activeCategory === cat.id ? "bg-amber-700 text-white border-amber-700" : "border-stone-200 text-stone-600 hover:border-amber-700"}`}
+                                    className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${activeCategory === cat.id ? "bg-[var(--color-brand-brown)] text-white border-[var(--color-brand-brown)]" : "border-stone-200 text-stone-600 hover:border-[var(--color-brand-brown)]"}`}
                                 >
                                     {cat.name}
                                 </button>
@@ -102,7 +102,7 @@ export default function ShopClient({ products, categories }: Props) {
                             value={sort}
                             onChange={(e) => setSort(e.target.value as SortOption)}
                             aria-label="Sort products"
-                            className="text-xs border border-stone-200 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-700 bg-white text-stone-700"
+                            className="text-xs border border-stone-200 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-brown)] bg-white text-stone-700"
                         >
                             <option value="featured">Featured</option>
                             <option value="price-asc">Price: Low to High</option>
@@ -116,7 +116,7 @@ export default function ShopClient({ products, categories }: Props) {
                             <p className="mb-4">No products found.</p>
                             <button
                                 onClick={() => { setSearch(""); setActiveCategory("all"); }}
-                                className="text-amber-700 underline text-sm"
+                                className="text-[var(--color-brand-brown)] underline text-sm"
                             >
                                 View all products
                             </button>
@@ -137,3 +137,4 @@ export default function ShopClient({ products, categories }: Props) {
         </>
     );
 }
+

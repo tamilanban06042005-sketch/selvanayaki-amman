@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   description:
     "Shop traditional Groundnut Oil, Gingelly Oil, Coconut Oil, Health Mix Powder and more directly from Sree Selvanayaki Amman Oil & Flour Mill, Pidariyur, Tamil Nadu. Order online via WhatsApp.",
   keywords:
-    "groundnut oil, gingelly oil, sesame oil, coconut oil, health mix powder, turmeric powder, shikakai powder, oil mill Pidariyur, traditional oils Tamil Nadu, Sree Selvanayaki Amman",
+    "groundnut oil, gingelly oil, sesame oil, coconut oil, health mix powder, turmeric powder, shikakai powder, oil mill Pidariyur, traditional oils Tamil Nadu, Sree Selvanayaki Amman, pure oils in Erode, traditional oil delivery Tamil Nadu, Pidariyur oil mill, natural oils Coimbatore, authentic oil mill Chennimalai",
   metadataBase: new URL("https://selvanayaki-amman.vercel.app"),
   openGraph: {
     title: "Sree Selvanayaki Amman Oil & Flour Mill",

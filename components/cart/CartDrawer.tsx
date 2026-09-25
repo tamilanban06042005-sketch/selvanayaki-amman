@@ -55,16 +55,16 @@ export default function CartDrawer() {
             >
                 {/* Header */}
                 <div className="flex items-center justify-between px-5 py-4 border-b border-stone-100">
-                    <h2 className="font-bold text-stone-800 flex items-center gap-2">
+                    <h2 className="font-bold text-stone-800 flex items-center gap-2 font-playfair tracking-wide">
                         <ShoppingCart size={18} /> Cart
                         {summary.itemCount > 0 && (
-                            <span className="text-xs bg-amber-700 text-white rounded-full px-2 py-0.5">{summary.itemCount}</span>
+                            <span className="text-xs bg-[var(--color-brand-brown)] text-white rounded-full px-2 py-0.5">{summary.itemCount}</span>
                         )}
                     </h2>
                     <button
                         onClick={closeCart}
                         aria-label="Close cart"
-                        className="p-1 text-stone-500 hover:text-stone-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-700 rounded"
+                        className="p-1 text-stone-500 hover:text-[var(--color-brand-brown)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-brown)] rounded"
                     >
                         <X size={20} />
                     </button>
@@ -72,15 +72,16 @@ export default function CartDrawer() {
 
                 {/* Free shipping bar */}
                 {summary.subtotal > 0 && !summary.freeShipping && (
-                    <div className="bg-amber-50 border-b border-amber-100 px-5 py-2">
-                        <p className="text-xs text-amber-800">
-                            Add <strong>{formatPrice(remaining)}</strong> more for free delivery
+                    <div className="bg-[var(--color-brand-emerald)]/10 border-b border-[var(--color-brand-emerald)]/20 px-5 py-3 relative overflow-hidden">
+                        <div className="absolute left-0 bottom-0 h-1 bg-[var(--color-brand-emerald)]/30 transition-all" style={{ width: `${Math.min(100, (summary.subtotal / shippingConfig.freeShippingThreshold) * 100)}%` }} />
+                        <p className="text-xs text-[var(--color-brand-emerald)]">
+                            Add <strong className="font-semibold">{formatPrice(remaining)}</strong> more for free delivery
                         </p>
                     </div>
                 )}
                 {summary.freeShipping && (
-                    <div className="bg-green-50 border-b border-green-100 px-5 py-2">
-                        <p className="text-xs text-green-800 font-medium">🎉 You qualify for free delivery!</p>
+                    <div className="bg-[var(--color-brand-emerald)] border-b border-[var(--color-brand-emerald-light)] px-5 py-3">
+                        <p className="text-xs text-[var(--color-brand-beige)] font-medium tracking-wide">🎉 You qualify for free delivery!</p>
                     </div>
                 )}
 
@@ -93,7 +94,7 @@ export default function CartDrawer() {
                             <Link
                                 href="/shop"
                                 onClick={closeCart}
-                                className="text-sm font-medium text-amber-700 underline hover:text-amber-800"
+                                className="text-sm font-medium text-[var(--color-brand-brown)] underline hover:text-[var(--color-brand-brown-light)]"
                             >
                                 Shop Products →
                             </Link>
@@ -113,9 +114,9 @@ export default function CartDrawer() {
 
                                     {/* Details */}
                                     <div className="flex-1 min-w-0">
-                                        <p className="text-sm font-semibold text-stone-800 truncate">{item.productName}</p>
+                                        <p className="text-sm font-semibold text-[var(--color-brand-ink)] truncate font-playfair">{item.productName}</p>
                                         <p className="text-xs text-stone-500">{item.variantName}</p>
-                                        <p className="text-sm font-bold text-amber-700 mt-0.5">{formatPrice(item.lineTotal)}</p>
+                                        <p className="text-sm font-bold text-[var(--color-brand-emerald)] mt-0.5">{formatPrice(item.lineTotal)}</p>
                                         {/* Qty + Remove */}
                                         <div className="flex items-center gap-2 mt-2">
                                             <button
@@ -126,7 +127,7 @@ export default function CartDrawer() {
                                             >
                                                 <Minus size={12} />
                                             </button>
-                                            <span className="text-sm w-5 text-center">{item.quantity}</span>
+                                            <span className="text-sm w-5 text-center font-medium">{item.quantity}</span>
                                             <button
                                                 onClick={() => updateQuantity(item.productId, item.variantId, item.quantity + 1)}
                                                 aria-label="Increase quantity"
@@ -159,10 +160,10 @@ export default function CartDrawer() {
                             </div>
                             <div className="flex justify-between text-stone-600">
                                 <span>Delivery</span>
-                                <span>{summary.freeShipping ? <span className="text-green-700 font-medium">Free</span> : formatPrice(summary.shippingFee)}</span>
+                                <span>{summary.freeShipping ? <span className="text-[var(--color-brand-emerald)] font-medium">Free</span> : formatPrice(summary.shippingFee)}</span>
                             </div>
-                            <div className="flex justify-between font-bold text-stone-800 pt-1 border-t border-stone-100">
-                                <span>Total</span><span className="text-amber-700">{formatPrice(summary.total)}</span>
+                            <div className="flex justify-between font-bold text-stone-800 pt-2 border-t border-stone-100">
+                                <span>Total</span><span className="text-[var(--color-brand-brown)]">{formatPrice(summary.total)}</span>
                             </div>
                         </div>
                         <Link
@@ -174,7 +175,7 @@ export default function CartDrawer() {
                         </Link>
                         <button
                             onClick={handleWhatsApp}
-                            className="block w-full text-center text-sm bg-green-700 hover:bg-green-600 text-white py-2.5 rounded-md transition-colors font-semibold"
+                            className="w-full flex items-center justify-center gap-2 bg-[var(--color-brand-whatsapp)] hover:bg-[var(--color-brand-whatsapp-hover)] text-white py-3 rounded-md transition-all font-medium text-sm shadow-sm hover:-translate-y-0.5"
                         >
                             Order on WhatsApp
                         </button>

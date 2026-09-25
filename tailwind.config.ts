@@ -14,25 +14,23 @@ const config: Config = {
                     deep: "#111110",
                     soft: "#252521",
                 },
-                amber: {
-                    gold: "#c8922a",
-                    warm: "#d4a03a",
-                    light: "#e8b84b",
-                    pale: "#f5d87a",
+                gold: {
+                    DEFAULT: "#c8922a", // Minimal highlight
                 },
-                cream: {
-                    DEFAULT: "#f0e8d5",
-                    warm: "#ede0c4",
-                    dark: "#d9c9a8",
+                beige: {
+                    DEFAULT: "#f5f2eb",
+                    paper: "#eae6dc",
+                    cream: "#f9f7f1",
                 },
-                wood: {
-                    brown: "#6b4c2a",
-                    light: "#8b6340",
-                    dark: "#4a3018",
+                brown: {
+                    DEFAULT: "#4a3018", // espresso
+                    light: "#6b4c2a",   // walnut
+                    dark: "#2c1c0e",    // rich
                 },
-                earth: {
-                    green: "#4a5c3a",
-                    muted: "#5a6b48",
+                green: {
+                    DEFAULT: "#1b4d3e", // forest green
+                    light: "#2a705a",
+                    dark: "#113327",
                 },
             },
             fontFamily: {

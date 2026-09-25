@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -21,7 +21,7 @@ export default function NotFound() {
                 </Link>
                 <Link
                     href="/shop"
-                    className="px-6 py-3 border border-amber-700 text-amber-700 rounded-md hover:bg-amber-50 transition-colors"
+                    className="px-6 py-3 border border-[var(--color-brand-brown)] text-[var(--color-brand-brown)] rounded-md hover:bg-[var(--color-brand-beige)] transition-colors"
                 >
                     Shop Products
                 </Link>
@@ -29,3 +29,4 @@ export default function NotFound() {
         </main>
     );
 }
+

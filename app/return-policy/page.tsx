@@ -1,4 +1,4 @@
-// /return-policy — placeholder requiring owner confirmation
+﻿// /return-policy â€” placeholder requiring owner confirmation
 import { buildMetadata } from "@/lib/seo";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -16,9 +16,9 @@ export default function ReturnPolicyPage() {
             <main className="min-h-screen bg-stone-50 pt-20">
                 <div className="max-w-3xl mx-auto px-6 py-16 prose prose-stone">
                     <h1>Return &amp; Refund Policy</h1>
-                    <div className="bg-amber-50 border border-amber-200 rounded p-4 not-prose mb-6">
-                        <p className="text-amber-800 text-sm font-medium">
-                            ⚠️ This policy is pending owner confirmation. Please update with your actual return
+                    <div className="bg-[var(--color-brand-beige)] border border-[var(--color-brand-brass)] rounded p-4 not-prose mb-6">
+                        <p className="text-[var(--color-brand-ink)] text-sm font-medium">
+                            âš ï¸ This policy is pending owner confirmation. Please update with your actual return
                             and refund rules before publishing.
                         </p>
                     </div>
@@ -40,3 +40,4 @@ export default function ReturnPolicyPage() {
         </>
     );
 }
+

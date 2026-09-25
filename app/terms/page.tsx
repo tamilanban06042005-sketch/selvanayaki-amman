@@ -1,4 +1,4 @@
-// /terms — editable placeholder
+﻿// /terms â€” editable placeholder
 import { buildMetadata } from "@/lib/seo";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -16,9 +16,9 @@ export default function TermsPage() {
             <main className="min-h-screen bg-stone-50 pt-20">
                 <div className="max-w-3xl mx-auto px-6 py-16 prose prose-stone">
                     <h1>Terms &amp; Conditions</h1>
-                    <div className="bg-amber-50 border border-amber-200 rounded p-4 not-prose mb-6">
-                        <p className="text-amber-800 text-sm font-medium">
-                            ⚠️ This is a placeholder. Please update with your actual terms before publishing.
+                    <div className="bg-[var(--color-brand-beige)] border border-[var(--color-brand-brass)] rounded p-4 not-prose mb-6">
+                        <p className="text-[var(--color-brand-ink)] text-sm font-medium">
+                            âš ï¸ This is a placeholder. Please update with your actual terms before publishing.
                         </p>
                     </div>
                     <p>
@@ -31,7 +31,7 @@ export default function TermsPage() {
                         confirm your order and payment details.
                     </p>
                     <h2>Prices</h2>
-                    <p>Prices shown on this website are in Indian Rupees (₹) and include applicable taxes.</p>
+                    <p>Prices shown on this website are in Indian Rupees (â‚¹) and include applicable taxes.</p>
                     <h2>Contact</h2>
                     <p>
                         For any queries: <a href="tel:+917708039583">+91 7708039583</a>
@@ -42,3 +42,4 @@ export default function TermsPage() {
         </>
     );
 }
+

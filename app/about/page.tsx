@@ -1,4 +1,4 @@
-// /about page
+﻿// /about page
 import { buildMetadata } from "@/lib/seo";
 import { businessConfig } from "@/lib/config";
 import Header from "@/components/layout/Header";
@@ -7,7 +7,7 @@ import Footer from "@/components/layout/Footer";
 export const metadata = buildMetadata({
     title: "About Us",
     description:
-        "Learn about Sree Selvanayaki Amman Oil & Flour Mill — traditional oils and everyday essentials from Pidariyur, Tamil Nadu.",
+        "Learn about Sree Selvanayaki Amman Oil & Flour Mill â€” traditional oils and everyday essentials from Pidariyur, Tamil Nadu.",
     path: "/about",
 });
 
@@ -25,7 +25,7 @@ export default function AboutPage() {
                     </p>
                     <p className="text-stone-600 leading-relaxed mb-6">
                         Our products include Groundnut Oil, Gingelly Oil, Coconut Oil, Health Mix Powder,
-                        Turmeric Powder, Green Gram Powder and Shikakai Powder — all processed and packed at
+                        Turmeric Powder, Green Gram Powder and Shikakai Powder â€” all processed and packed at
                         our mill.
                     </p>
                     <p className="text-stone-600 leading-relaxed mb-6">
@@ -33,7 +33,7 @@ export default function AboutPage() {
                     </p>
                     <p className="text-stone-600 leading-relaxed">
                         To order or inquire, call or WhatsApp us at{" "}
-                        <a href={`tel:${businessConfig.phone}`} className="text-amber-700 underline">
+                        <a href={`tel:${businessConfig.phone}`} className="text-[var(--color-brand-brown)] underline">
                             {businessConfig.phone}
                         </a>
                         .
@@ -44,3 +44,4 @@ export default function AboutPage() {
         </>
     );
 }
+

@@ -58,11 +58,11 @@ export default function ProductPageClient({ product }: Props) {
                     {/* Breadcrumb */}
                     <nav aria-label="Breadcrumb" className="mb-6">
                         <ol className="flex flex-wrap items-center gap-2 text-xs text-stone-400">
-                            <li><Link href="/" className="hover:text-amber-700">Home</Link></li>
+                            <li><Link href="/" className="hover:text-[var(--color-brand-brown)]">Home</Link></li>
                             <li aria-hidden="true">/</li>
-                            <li><Link href={`/${product.category}`} className="hover:text-amber-700">{categoryLabel}</Link></li>
+                            <li><Link href={`/${product.category}`} className="hover:text-[var(--color-brand-brown)]">{categoryLabel}</Link></li>
                             <li aria-hidden="true">/</li>
-                            <li className="text-stone-600 font-medium" aria-current="page">{product.name}</li>
+                            <li className="text-[var(--color-brand-emerald)] font-medium" aria-current="page">{product.name}</li>
                         </ol>
                     </nav>
 
@@ -89,11 +89,11 @@ export default function ProductPageClient({ product }: Props) {
 
                         {/* Info */}
                         <div>
-                            <p className="text-xs uppercase tracking-widest text-amber-700 mb-2 font-semibold">
+                            <p className="text-xs uppercase tracking-widest text-[var(--color-brand-brass)] mb-2 font-semibold">
                                 {categoryLabel}
                             </p>
-                            <h1 className="text-3xl font-bold text-stone-800 mb-2">{product.name}</h1>
-                            <p className="text-stone-500 mb-6 leading-relaxed">{product.shortDescription}</p>
+                            <h1 className="text-3xl font-bold font-playfair text-[var(--color-brand-ink)] mb-3">{product.name}</h1>
+                            <p className="text-[var(--color-brand-ink)]/70 mb-6 leading-relaxed bg-[var(--color-brand-beige)] p-4 border-l-4 border-[var(--color-brand-emerald)]">{product.shortDescription}</p>
 
                             {/* Variant selector */}
                             {product.variants.length > 1 && (
@@ -106,10 +106,10 @@ export default function ProductPageClient({ product }: Props) {
                                                 onClick={() => setSelectedVariantId(v.id)}
                                                 disabled={!v.available}
                                                 className={`px-4 py-2 text-sm rounded-md border transition-colors ${selectedVariantId === v.id
-                                                        ? "border-amber-700 bg-amber-700 text-white"
-                                                        : v.available
-                                                            ? "border-stone-200 text-stone-700 hover:border-amber-700"
-                                                            : "border-stone-100 text-stone-300 cursor-not-allowed"
+                                                    ? "border-[var(--color-brand-emerald)] bg-[var(--color-brand-emerald)] text-white shadow-sm"
+                                                    : v.available
+                                                        ? "border-stone-200 text-stone-700 hover:border-[var(--color-brand-brown)] hover:text-[var(--color-brand-brown)]"
+                                                        : "border-stone-100 text-stone-300 cursor-not-allowed"
                                                     }`}
                                                 aria-pressed={selectedVariantId === v.id}
                                             >
@@ -123,13 +123,13 @@ export default function ProductPageClient({ product }: Props) {
 
                             {/* Price */}
                             {variant && (
-                                <div className="flex items-baseline gap-3 mb-6">
-                                    <span className="text-3xl font-bold text-amber-700">{formatPrice(variant.sellingPrice)}</span>
+                                <div className="flex items-baseline gap-3 mb-8 pb-6 border-b border-stone-200">
+                                    <span className="text-3xl font-bold font-playfair text-[var(--color-brand-emerald)]">{formatPrice(variant.sellingPrice)}</span>
                                     {variant.mrp > variant.sellingPrice && (
                                         <>
                                             <span className="text-lg text-stone-400 line-through">MRP {formatPrice(variant.mrp)}</span>
                                             {discount && (
-                                                <span className="text-sm bg-amber-100 text-amber-800 rounded px-2 py-0.5 font-bold">{discount}% off</span>
+                                                <span className="text-sm bg-[var(--color-brand-emerald)]/10 text-[var(--color-brand-emerald)] rounded-full px-3 py-1 font-bold">Save {discount}%</span>
                                             )}
                                         </>
                                     )}
@@ -157,52 +157,49 @@ export default function ProductPageClient({ product }: Props) {
                             </div>
 
                             {/* CTAs */}
-                            <div className="flex gap-3 mb-6">
+                            <div className="mb-8">
                                 <button
                                     onClick={handleAddToCart}
                                     disabled={!variant?.available}
-                                    className="flex-1 flex items-center justify-center gap-2 bg-stone-800 hover:bg-amber-700 text-white py-3 rounded-md transition-colors font-semibold disabled:opacity-40"
+                                    className="w-full flex items-center justify-center gap-3 bg-[var(--color-brand-brown)] hover:bg-[var(--color-brand-brown-light)] hover:shadow-lg text-[var(--color-brand-beige)] py-4 rounded-md transition-all font-semibold disabled:opacity-40 text-lg"
                                 >
-                                    <ShoppingCart size={16} /> Add to Cart
+                                    <ShoppingCart size={20} /> Add to Order
                                 </button>
-                                <a
-                                    href={whatsAppUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    onClick={() => track("whatsapp_order_started")}
-                                    className="flex-1 text-center bg-green-700 hover:bg-green-600 text-white py-3 rounded-md transition-colors font-semibold"
-                                >
-                                    Order on WhatsApp
-                                </a>
+                                <p className="text-xs text-center text-stone-500 mt-3 flex items-center justify-center gap-1">
+                                    <span className="text-[var(--color-brand-emerald)]">✓</span> Add to cart to place your secure order via WhatsApp
+                                </p>
                             </div>
 
                             {/* Delivery info */}
-                            <div className="bg-stone-50 border border-stone-100 rounded-md p-4 text-sm text-stone-600 space-y-1">
-                                <p>🚚 Standard delivery: <strong>₹50</strong> · Free above ₹1,000</p>
-                                <p>⏱ Estimated delivery: <strong>2–4 working days</strong></p>
-                                <p>📞 Questions? <a href="tel:+917708039583" className="text-amber-700 underline">+91 7708039583</a></p>
+                            <div className="bg-[var(--color-brand-emerald)]/5 border border-[var(--color-brand-emerald)]/10 rounded-md p-5 text-sm text-[var(--color-brand-ink)]/80 space-y-2.5 mb-8">
+                                <p className="flex items-center gap-2"><span className="text-lg">🚚</span> <span>Standard delivery: <strong>₹50</strong> · <span className="text-[var(--color-brand-emerald)] font-semibold border-b border-[var(--color-brand-emerald)]/30">Free above ₹1,000</span></span></p>
+                                <p className="flex items-center gap-2"><span className="text-lg">⏱</span> <span>Estimated delivery: <strong>2–4 working days</strong></span></p>
+                                <p className="flex items-start gap-2"><span className="text-lg">📍</span> <span><span className="font-semibold">Coverage:</span> Tamil Nadu, Kerala, Karnataka, Andhra Pradesh & Telangana.</span></p>
                             </div>
 
                             {/* Product details */}
-                            <div className="mt-6 space-y-3 text-sm text-stone-600">
+                            <div className="mt-8 space-y-3 text-sm text-[var(--color-brand-ink)]/80">
                                 {product.description && product.description !== product.shortDescription && (
-                                    <div>
-                                        <p className="font-semibold text-stone-800 mb-1">About</p>
+                                    <div className="mb-6">
+                                        <h3 className="font-bold text-lg font-playfair text-[var(--color-brand-ink)] mb-2">More Information</h3>
                                         <p className="leading-relaxed">{product.description}</p>
                                     </div>
                                 )}
-                                {product.intendedUse && (
-                                    <p><span className="font-semibold text-stone-700">Intended Use:</span> {product.intendedUse}</p>
-                                )}
-                                {product.storageInstructions && (
-                                    <p><span className="font-semibold text-stone-700">Storage:</span> {product.storageInstructions}</p>
-                                )}
-                                {product.shelfLife && (
-                                    <p><span className="font-semibold text-stone-700">Shelf Life:</span> {product.shelfLife}</p>
-                                )}
-                                <p><span className="font-semibold text-stone-700">Brand:</span> {product.brand}</p>
-                                <p><span className="font-semibold text-stone-700">Manufacturer:</span> {product.manufacturer}</p>
-                                <p><span className="font-semibold text-stone-700">FSSAI:</span> {product.fssai}</p>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-white p-6 rounded-md border border-stone-100">
+                                    {product.intendedUse && (
+                                        <p><span className="font-semibold text-stone-700 block text-xs uppercase tracking-wider mb-1">Intended Use</span> {product.intendedUse}</p>
+                                    )}
+                                    {product.storageInstructions && (
+                                        <p><span className="font-semibold text-stone-700 block text-xs uppercase tracking-wider mb-1">Storage</span> {product.storageInstructions}</p>
+                                    )}
+                                    {product.shelfLife && (
+                                        <p><span className="font-semibold text-stone-700 block text-xs uppercase tracking-wider mb-1">Shelf Life</span> {product.shelfLife}</p>
+                                    )}
+                                    <p><span className="font-semibold text-stone-700 block text-xs uppercase tracking-wider mb-1">Pressed On</span> Freshly pressed every week</p>
+                                    <p><span className="font-semibold text-stone-700 block text-xs uppercase tracking-wider mb-1">Best Before</span> 6 months from pressing</p>
+                                    <p><span className="font-semibold text-stone-700 block text-xs uppercase tracking-wider mb-1">Brand</span> {product.brand}</p>
+                                    <p><span className="font-semibold text-stone-700 block text-xs uppercase tracking-wider mb-1">FSSAI</span> {product.fssai}</p>
+                                </div>
                             </div>
                         </div>
                     </div>

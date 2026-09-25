@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -11,7 +11,7 @@ const INGREDIENTS = [
         tagline: "Traditional richness",
         description:
             "Carefully selected sesame seeds pressed the traditional way to preserve their natural depth and aroma.",
-        emoji: "🌾",
+        emoji: "ðŸŒ¾",
         accent: "#c8922a",
     },
     {
@@ -19,7 +19,7 @@ const INGREDIENTS = [
         tagline: "Wholesome goodness",
         description:
             "Ripe groundnuts sourced for their natural richness, bringing everyday warmth to every dish.",
-        emoji: "🥜",
+        emoji: "ðŸ¥œ",
         accent: "#8b6340",
     },
     {
@@ -27,7 +27,7 @@ const INGREDIENTS = [
         tagline: "Natural nourishment",
         description:
             "Fresh coconuts at their peak, expressing the full tropical richness of nature's finest ingredient.",
-        emoji: "🥥",
+        emoji: "ðŸ¥¥",
         accent: "#4a5c3a",
     },
 ];
@@ -81,7 +81,7 @@ export default function IngredientStory() {
                     >
                         Nature Is Our First Ingredient
                     </h2>
-                    <div className="gold-divider max-w-xs mx-auto" />
+                    <div className="w-20 h-0.5 bg-[var(--color-brand-brown)] max-w-xs mx-auto" />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-0.5">
@@ -141,3 +141,4 @@ export default function IngredientStory() {
         </section>
     );
 }
+

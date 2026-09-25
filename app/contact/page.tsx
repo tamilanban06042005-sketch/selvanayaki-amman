@@ -1,4 +1,4 @@
-// /contact page
+﻿// /contact page
 import { buildMetadata } from "@/lib/seo";
 import { businessConfig } from "@/lib/config";
 import Header from "@/components/layout/Header";
@@ -30,7 +30,7 @@ export default function ContactPage() {
                         <div>
                             <dt className="text-xs font-semibold uppercase tracking-widest text-stone-400 mb-1">Phone / WhatsApp</dt>
                             <dd>
-                                <a href={`tel:${businessConfig.phone}`} className="text-amber-700 underline">
+                                <a href={`tel:${businessConfig.phone}`} className="text-[var(--color-brand-brown)] underline">
                                     {businessConfig.phone}
                                 </a>
                             </dd>
@@ -59,3 +59,4 @@ export default function ContactPage() {
         </>
     );
 }
+

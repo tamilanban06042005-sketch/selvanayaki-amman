@@ -1,4 +1,4 @@
-// /faq page
+﻿// /faq page
 import { buildMetadata } from "@/lib/seo";
 import { faqs } from "@/lib/data/faqs";
 import Header from "@/components/layout/Header";
@@ -26,7 +26,7 @@ export default function FAQPage() {
                     <h1 className="text-3xl font-bold text-stone-800 mb-10">Frequently Asked Questions</h1>
                     {Object.entries(grouped).map(([category, items]) => (
                         <section key={category} className="mb-10">
-                            <h2 className="text-sm font-bold uppercase tracking-widest text-amber-700 mb-4">{category}</h2>
+                            <h2 className="text-sm font-bold uppercase tracking-widest text-[var(--color-brand-brown)] mb-4">{category}</h2>
                             <div className="space-y-6">
                                 {items.map((faq) => (
                                     <div key={faq.id}>
@@ -43,3 +43,4 @@ export default function FAQPage() {
         </>
     );
 }
+
