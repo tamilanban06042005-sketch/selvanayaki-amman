@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { businessConfig } from "@/lib/config";
-import { Phone } from "lucide-react";
+import { MapPin, Phone, Mail } from "lucide-react";
 
 const PRODUCT_LINKS = [
     { label: "Groundnut Oil", href: "/oils/groundnut-oil" },
@@ -14,97 +14,115 @@ const PRODUCT_LINKS = [
 
 const POLICY_LINKS = [
     { label: "Shipping Policy", href: "/shipping-policy" },
-    { label: "Return Policy", href: "/return-policy" },
+    { label: "Return & Refund", href: "/return-policy" },
     { label: "Privacy Policy", href: "/privacy-policy" },
     { label: "Terms & Conditions", href: "/terms" },
     { label: "FAQ", href: "/faq" },
 ];
 
+function WhatsAppIcon() {
+    return (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+    );
+}
+
+function InstagramIcon() {
+    return (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+        </svg>
+    );
+}
+
 export default function Footer() {
     return (
-        <footer className="bg-stone-900 text-stone-300 border-t border-stone-700">
-            <div className="max-w-7xl mx-auto px-6 py-14">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-                    {/* Brand */}
+        <footer className="bg-brand-green text-brand-cream-dark pt-16 pb-8 border-t-4 border-brand-gold">
+            <div className="max-w-7xl mx-auto px-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+                    {/* Brand Info */}
                     <div>
-                        <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-amber-500 mb-0.5">
-                            Sree Selvanayaki Amman
+                        <h3 className="font-playfair text-2xl font-bold mb-6 text-brand-gold-light">Sree Selvanayaki Amman</h3>
+                        <p className="text-brand-cream/70 text-sm leading-relaxed mb-6">
+                            Authentic oils and essential food products, traditionally processed and beautifully delivered to your family from Pidariyur.
                         </p>
-                        <p className="text-[9px] uppercase tracking-[0.3em] text-stone-500 mb-4">
-                            Oil &amp; Flour Mill
-                        </p>
-                        <p className="text-sm leading-relaxed text-stone-400 mb-4">
-                            Traditional oils and everyday essentials from Pidariyur, Tamil Nadu.
-                        </p>
-                        <p className="text-xs text-stone-500">
-                            FSSAI: {businessConfig.fssaiLicense}
-                        </p>
-                    </div>
-
-                    {/* Products */}
-                    <div>
-                        <h3 className="text-[10px] uppercase tracking-widest text-stone-400 mb-4 font-semibold">Products</h3>
-                        <ul className="space-y-2">
-                            {PRODUCT_LINKS.map((l) => (
-                                <li key={l.href}>
-                                    <Link href={l.href} className="text-sm text-stone-400 hover:text-amber-400 transition-colors">
-                                        {l.label}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    {/* Policies */}
-                    <div>
-                        <h3 className="text-[10px] uppercase tracking-widest text-stone-400 mb-4 font-semibold">Info</h3>
-                        <ul className="space-y-2">
-                            <li><Link href="/about" className="text-sm text-stone-400 hover:text-amber-400 transition-colors">About Us</Link></li>
-                            <li><Link href="/contact" className="text-sm text-stone-400 hover:text-amber-400 transition-colors">Contact</Link></li>
-                            {POLICY_LINKS.map((l) => (
-                                <li key={l.href}>
-                                    <Link href={l.href} className="text-sm text-stone-400 hover:text-amber-400 transition-colors">
-                                        {l.label}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    {/* Contact */}
-                    <div>
-                        <h3 className="text-[10px] uppercase tracking-widest text-stone-400 mb-4 font-semibold">Contact</h3>
-                        <address className="not-italic space-y-3">
-                            <p className="text-sm text-stone-400 leading-relaxed">
-                                {businessConfig.businessAddress}
-                            </p>
-                            <a
-                                href={`tel:${businessConfig.phone}`}
-                                className="flex items-center gap-2 text-sm text-stone-400 hover:text-amber-400 transition-colors"
-                            >
-                                <Phone size={13} />
-                                {businessConfig.phone}
-                            </a>
+                        <div className="flex flex-col space-y-4">
                             <a
                                 href={`https://wa.me/${businessConfig.whatsappNumber}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 text-sm bg-green-700 hover:bg-green-600 text-white px-3 py-1.5 rounded transition-colors"
+                                className="inline-flex items-center gap-2 bg-brand-whatsapp hover:bg-brand-whatsapp-hover text-white text-sm font-medium py-2.5 px-4 rounded transition-colors w-fit shadow-md"
                             >
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                                </svg>
-                                WhatsApp Order
+                                <WhatsAppIcon />
+                                Order on WhatsApp
                             </a>
-                        </address>
+                            {businessConfig.instagramUrl && (
+                                <a
+                                    href={businessConfig.instagramUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 text-brand-cream/80 hover:text-brand-gold-light text-sm transition-colors w-fit"
+                                >
+                                    <InstagramIcon />
+                                    Follow our journey
+                                </a>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Contact */}
+                    <div>
+                        <h4 className="font-playfair font-bold text-lg mb-6 text-white">Contact Us</h4>
+                        <div className="space-y-4 text-sm text-brand-cream/70">
+                            <div className="flex items-start gap-3">
+                                <MapPin className="w-5 h-5 shrink-0 text-brand-gold" />
+                                <p>{businessConfig.businessAddress}</p>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <Phone className="w-5 h-5 shrink-0 text-brand-gold" />
+                                <p>{businessConfig.phone}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Products */}
+                    <div>
+                        <h4 className="font-playfair font-bold text-lg mb-6 text-white">Our Products</h4>
+                        <ul className="space-y-3 text-sm">
+                            {PRODUCT_LINKS.map((link) => (
+                                <li key={link.href}>
+                                    <Link href={link.href} className="text-brand-cream/70 hover:text-brand-gold-light transition-colors relative group font-medium">
+                                        {link.label}
+                                        <span className="absolute -bottom-1 left-0 w-0 h-px bg-brand-gold-light transition-all group-hover:w-full"></span>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Links */}
+                    <div>
+                        <h4 className="font-playfair font-bold text-lg mb-6 text-white">Information</h4>
+                        <ul className="space-y-3 text-sm">
+                            {POLICY_LINKS.map((link) => (
+                                <li key={link.href}>
+                                    <Link href={link.href} className="text-brand-cream/70 hover:text-brand-gold-light transition-colors relative group font-medium">
+                                        {link.label}
+                                        <span className="absolute -bottom-1 left-0 w-0 h-px bg-brand-gold-light transition-all group-hover:w-full"></span>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
 
-                <div className="border-t border-stone-700 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
-                    <p className="text-xs text-stone-500">
-                        © 2026 Sree Selvanayaki Amman Oil &amp; Flour Mill. All rights reserved.
-                    </p>
-                    <p className="text-xs text-stone-600">Made with care in Tamil Nadu, India</p>
+                {/* Bottom bar */}
+                <div className="pt-8 border-t border-brand-green-light flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-brand-cream/50">
+                    <p>© {new Date().getFullYear()} {businessConfig.businessName}. All rights reserved.</p>
+                    <p>FSSAI License: {businessConfig.fssaiLicense}</p>
                 </div>
             </div>
         </footer>

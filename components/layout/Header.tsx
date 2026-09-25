@@ -30,35 +30,30 @@ export default function Header() {
     return (
         <>
             {/* Announcement bar */}
-            <div className="bg-amber-700 text-white text-center py-2 text-xs tracking-widest uppercase">
+            <div className="bg-brand-terracotta text-white text-center py-2 text-xs tracking-widest uppercase">
                 Online ordering now available — Order via WhatsApp
             </div>
 
             <header
-                className={`sticky top-0 z-40 transition-all duration-300 ${scrolled
-                        ? "bg-white/95 backdrop-blur shadow-sm border-b border-stone-100"
-                        : "bg-white border-b border-stone-100"
+                className={`sticky top-0 z-40 transition-all duration-300 border-b ${scrolled
+                        ? "bg-brand-cream/95 backdrop-blur-md border-brand-cream-dark py-3 shadow-sm"
+                        : "bg-brand-cream border-brand-cream-dark py-5"
                     }`}
                 role="banner"
             >
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
                     {/* Logo */}
-                    <Link href="/" className="flex flex-col leading-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-700 rounded">
-                        <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-amber-700">
-                            Sree Selvanayaki Amman
-                        </span>
-                        <span className="text-[9px] uppercase tracking-[0.3em] text-stone-400">
-                            Oil &amp; Flour Mill
-                        </span>
+                    <Link href="/" className="font-playfair font-bold text-2xl tracking-tight text-brand-ink group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-terracotta rounded">
+                        Sree Selvanayaki Amman<span className="text-brand-terracotta group-hover:text-brand-gold transition-colors">.</span>
                     </Link>
 
                     {/* Desktop nav */}
-                    <nav className="hidden md:flex items-center gap-6" aria-label="Main navigation">
+                    <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
                         {NAV_LINKS.map((link) => (
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className="text-[11px] uppercase tracking-widest text-stone-600 hover:text-amber-700 transition-colors font-medium"
+                                className="text-sm font-medium text-brand-ink hover:text-brand-terracotta transition-colors"
                             >
                                 {link.label}
                             </Link>
@@ -66,28 +61,31 @@ export default function Header() {
                     </nav>
 
                     {/* Cart + Hamburger */}
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-4">
                         <button
                             onClick={openCart}
-                            className="relative p-2 text-stone-700 hover:text-amber-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-700 rounded"
+                            className="flex items-center gap-2 text-brand-ink hover:text-brand-terracotta transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-terracotta rounded"
                             aria-label={`Cart — ${summary.itemCount} items`}
                         >
-                            <ShoppingCart size={20} />
-                            {summary.itemCount > 0 && (
-                                <span className="absolute -top-1 -right-1 bg-amber-700 text-white text-[10px] font-bold w-4.5 h-4.5 min-w-[1.1rem] min-h-[1.1rem] rounded-full flex items-center justify-center leading-none px-1">
-                                    {summary.itemCount > 99 ? "99+" : summary.itemCount}
-                                </span>
-                            )}
+                            <div className="relative p-1">
+                                <ShoppingCart size={20} strokeWidth={1.5} />
+                                {summary.itemCount > 0 && (
+                                    <span className="absolute -top-1 -right-1 bg-brand-terracotta text-white text-[10px] font-bold w-4.5 h-4.5 min-w-[1.1rem] min-h-[1.1rem] rounded-full flex items-center justify-center leading-none px-1 border border-brand-cream">
+                                        {summary.itemCount > 99 ? "99+" : summary.itemCount}
+                                    </span>
+                                )}
+                            </div>
+                            <span className="text-sm font-medium hidden lg:block">Cart</span>
                         </button>
 
                         <button
-                            className="md:hidden p-2 text-stone-700 hover:text-amber-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-700 rounded"
+                            className="md:hidden p-1 text-brand-ink hover:text-brand-terracotta transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-terracotta rounded"
                             onClick={() => setMenuOpen(!menuOpen)}
                             aria-label={menuOpen ? "Close menu" : "Open menu"}
                             aria-expanded={menuOpen}
                             aria-controls="mobile-menu"
                         >
-                            {menuOpen ? <X size={20} /> : <Menu size={20} />}
+                            {menuOpen ? <X size={24} /> : <Menu size={24} />}
                         </button>
                     </div>
                 </div>

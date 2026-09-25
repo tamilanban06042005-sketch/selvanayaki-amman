@@ -9,9 +9,23 @@
   --color-charcoal-deep: #111110;
   --color-amber-gold: #c8922a;
   --color-amber-warm: #d4a03a;
+  /* Old cream */
   --color-cream: #f0e8d5;
   --color-cream-dark: #d9c9a8;
   --color-wood-brown: #6b4c2a;
+
+  /* Modern Heritage Palette */
+  --color-brand-terracotta: #A13D2D;
+  --color-brand-terracotta-dark: #822C1F;
+  --color-brand-gold: #D6A848;
+  --color-brand-gold-light: #E7C678;
+  --color-brand-cream: #FDFBF7;
+  --color-brand-cream-dark: #F5F1E6;
+  --color-brand-green: #2B4C3B;
+  --color-brand-green-light: #3A614D;
+  --color-brand-ink: #2C2825;
+  --color-brand-whatsapp: #25D366;
+  --color-brand-whatsapp-hover: #1EBE5A;
 }
 
 *,
@@ -27,12 +41,26 @@ html {
 }
 
 body {
-  background-color: #ffffff;
-  color: #1c1917;
+  background-color: var(--color-brand-cream);
+  color: var(--color-brand-ink);
   font-family: var(--font-inter);
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+}
+
+@theme {
+  --color-brand-terracotta: var(--color-brand-terracotta);
+  --color-brand-terracotta-dark: var(--color-brand-terracotta-dark);
+  --color-brand-gold: var(--color-brand-gold);
+  --color-brand-gold-light: var(--color-brand-gold-light);
+  --color-brand-cream: var(--color-brand-cream);
+  --color-brand-cream-dark: var(--color-brand-cream-dark);
+  --color-brand-green: var(--color-brand-green);
+  --color-brand-green-light: var(--color-brand-green-light);
+  --color-brand-ink: var(--color-brand-ink);
+  --color-brand-whatsapp: var(--color-brand-whatsapp);
+  --color-brand-whatsapp-hover: var(--color-brand-whatsapp-hover);
 }
 
 /* Scrollbar */
