@@ -46,7 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="antialiased font-inter bg-white text-stone-800">
+      <body className="antialiased font-inter">
         {children}
       </body>
     </html>

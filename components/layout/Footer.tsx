@@ -2,16 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { businessConfig } from "@/lib/config";
 import { MapPin, Phone, Mail } from "lucide-react";
-
-const PRODUCT_LINKS = [
-    { label: "Groundnut Oil", href: "/oils/groundnut-oil" },
-    { label: "Gingelly Oil", href: "/oils/gingelly-oil" },
-    { label: "Coconut Oil", href: "/oils/coconut-oil" },
-    { label: "Health Mix Powder", href: "/powders/health-mix" },
-    { label: "Turmeric Powder", href: "/powders/turmeric" },
-    { label: "Shikakai Powder", href: "/personal-care/shikakai" },
-    { label: "Green Gram Powder", href: "/personal-care/green-gram" },
-];
+import { getProductsByCategory } from "@/lib/data/products";
 
 const POLICY_LINKS = [
     { label: "Shipping Policy", href: "/shipping-policy" },
@@ -24,7 +15,7 @@ const POLICY_LINKS = [
 function WhatsAppIcon() {
     return (
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347" />
         </svg>
     );
 }
@@ -40,34 +31,37 @@ function InstagramIcon() {
 }
 
 export default function Footer() {
+    const oils = getProductsByCategory("oils");
+    const powders = getProductsByCategory("powders");
+
     return (
-        <footer className="bg-brand-emerald text-brand-beige-dark pt-16 pb-8 border-t-4 border-brand-brass">
-            <div className="max-w-7xl mx-auto px-6">
+        <footer className="bg-brand-dark text-brand-beige border-t border-brand-heritage">
+            <div className="max-w-7xl mx-auto px-6 py-16 lg:py-24">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
                     {/* Brand Info */}
                     <div>
-                        <Link href="/" className="block mb-6 relative h-24 w-56 bg-brand-beige/5 p-2 rounded">
-                            <Image src="/main-logo.jpg" alt="Sree Selvanayaki Amman" fill className="object-contain object-left" sizes="224px" />
+                        <Link href="/" className="block mb-6 relative h-28 w-64 bg-brand-soft-cream rounded-sm p-4 border border-brand-heritage/30">
+                            <Image src="/main-logo.jpg" alt="Sree Selvanayaki Amman" fill className="object-contain" sizes="256px" />
                         </Link>
-                        <p className="text-brand-beige/70 text-sm leading-relaxed mb-6">
-                            Authentic oils and essential food products, traditionally processed and beautifully delivered to your family from Pidariyur.
+                        <p className="text-brand-beige/80 text-sm leading-relaxed mb-8">
+                            Premium traditional oils and natural food essentials, carefully processed and packed for your family in Pidariyur.
                         </p>
                         <div className="flex flex-col space-y-4">
                             <a
-                                href={`https://wa.me/${businessConfig.whatsappNumber}`}
+                                href={`https://wa.me/${businessConfig.whatsappNumber}?text=Hello, I would like to enquire about your products.`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 bg-brand-whatsapp hover:bg-brand-whatsapp-hover text-white text-sm font-medium py-2.5 px-4 rounded transition-colors w-fit shadow-md"
+                                className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1EBE5A] text-white text-[13px] uppercase tracking-wider font-semibold py-3 px-5 rounded-sm transition-colors w-full shadow-sm"
                             >
                                 <WhatsAppIcon />
-                                Order on WhatsApp
+                                INQUIRE ON WHATSAPP
                             </a>
                             {businessConfig.instagramUrl && (
                                 <a
                                     href={businessConfig.instagramUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 text-brand-beige/80 hover:text-brand-brass text-sm transition-colors w-fit"
+                                    className="inline-flex items-center gap-2 text-brand-beige/60 hover:text-brand-gold text-sm transition-colors w-fit"
                                 >
                                     <InstagramIcon />
                                     Follow our journey
@@ -76,45 +70,54 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* Contact */}
-                    <div>
-                        <h4 className="font-playfair font-bold text-lg mb-6 text-white">Contact Us</h4>
-                        <div className="space-y-4 text-sm text-brand-beige/70">
-                            <div className="flex items-start gap-3">
-                                <MapPin className="w-5 h-5 shrink-0 text-brand-brass" />
-                                <p>{businessConfig.businessAddress}</p>
-                            </div>
-                            <div className="flex items-center gap-3">
-                                <Phone className="w-5 h-5 shrink-0 text-brand-brass" />
-                                <p>{businessConfig.phone}</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Products */}
-                    <div>
-                        <h4 className="font-playfair font-bold text-lg mb-6 text-white">Our Products</h4>
-                        <ul className="space-y-3 text-sm">
-                            {PRODUCT_LINKS.map((link) => (
-                                <li key={link.href}>
-                                    <Link href={link.href} className="text-brand-beige/70 hover:text-brand-brass transition-colors relative group font-medium">
-                                        {link.label}
-                                        <span className="absolute -bottom-1 left-0 w-0 h-px bg-brand-brass transition-all group-hover:w-full"></span>
+                    {/* Products Column 1 */}
+                    <div className="lg:pl-8">
+                        <h4 className="heading-editorial text-lg mb-6 text-brand-ivory text-xl">Traditional Oils</h4>
+                        <ul className="space-y-4 text-sm">
+                            {oils.map((product) => (
+                                <li key={product.id}>
+                                    <Link href={`/shop/${product.slug}`} className="text-brand-beige/70 hover:text-brand-gold transition-colors block">
+                                        {product.name}
                                     </Link>
                                 </li>
                             ))}
                         </ul>
                     </div>
 
-                    {/* Links */}
+                    {/* Products Column 2 */}
                     <div>
-                        <h4 className="font-playfair font-bold text-lg mb-6 text-white">Information</h4>
-                        <ul className="space-y-3 text-sm">
+                        <h4 className="heading-editorial text-lg mb-6 text-brand-ivory text-xl">Everyday Essentials</h4>
+                        <ul className="space-y-4 text-sm">
+                            {powders.map((product) => (
+                                <li key={product.id}>
+                                    <Link href={`/shop/${product.slug}`} className="text-brand-beige/70 hover:text-brand-gold transition-colors block">
+                                        {product.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Contact & Legal */}
+                    <div>
+                        <h4 className="heading-editorial text-lg mb-6 text-brand-ivory text-xl">Contact Us</h4>
+                        <div className="space-y-4 text-sm text-brand-beige/70 mb-10">
+                            <div className="flex items-start gap-4">
+                                <MapPin className="w-5 h-5 shrink-0 text-brand-gold opacity-80" />
+                                <p className="leading-relaxed">{businessConfig.businessAddress}</p>
+                            </div>
+                            <div className="flex items-center gap-4">
+                                <Phone className="w-5 h-5 shrink-0 text-brand-gold opacity-80" />
+                                <p>{businessConfig.phone}</p>
+                            </div>
+                        </div>
+
+                        <h4 className="heading-editorial text-sm mb-4 text-brand-ivory uppercase tracking-widest">Information</h4>
+                        <ul className="space-y-3 text-sm grid grid-cols-2 gap-x-4">
                             {POLICY_LINKS.map((link) => (
                                 <li key={link.href}>
-                                    <Link href={link.href} className="text-brand-beige/70 hover:text-brand-brass transition-colors relative group font-medium">
+                                    <Link href={link.href} className="text-brand-beige/50 hover:text-brand-beige transition-colors">
                                         {link.label}
-                                        <span className="absolute -bottom-1 left-0 w-0 h-px bg-brand-brass transition-all group-hover:w-full"></span>
                                     </Link>
                                 </li>
                             ))}
@@ -123,9 +126,9 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom bar */}
-                <div className="pt-8 border-t border-brand-emerald-light flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-brand-beige/50">
+                <div className="pt-8 border-t border-brand-heritage/40 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-brand-beige/40">
                     <p>© {new Date().getFullYear()} {businessConfig.businessName}. All rights reserved.</p>
-                    <p>FSSAI License: {businessConfig.fssaiLicense}</p>
+                    <p className="tracking-widest">FSSAI: {businessConfig.fssaiLicense}</p>
                 </div>
             </div>
         </footer>

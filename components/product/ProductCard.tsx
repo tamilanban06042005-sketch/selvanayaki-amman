@@ -1,44 +1,43 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Product, ProductVariant } from "@/types/product";
+import { useState } from "react";
+import { Product } from "@/types/product";
 import { useCartStore } from "@/store/cartStore";
-import { buildSingleProductWhatsAppMessage, buildWhatsAppUrl } from "@/lib/whatsapp";
-import { formatPrice } from "@/lib/utils";
-import { Plus, Check, ChevronDown } from "lucide-react";
+import { businessConfig } from "@/lib/config";
 
 export default function ProductCard({ product }: { product: Product }) {
-    const [selectedVariantId, setSelectedVariantId] = useState<string>(product.variants[0].id);
-    const addItem = useCartStore((state) => state.addItem);
-    const openCart = useCartStore((state) => state.openCart);
-    const [added, setAdded] = useState(false);
+    const { addItem, openCart } = useCartStore();
+    const [selectedVariantId, setSelectedVariantId] = useState(
+        product.variants.length > 0 ? product.variants[0].id : null
+    );
 
-    const selectedVariant = product.variants.find((v) => v.id === selectedVariantId) || product.variants[0];
+    const selectedVariant = product.variants.find((v) => v.id === selectedVariantId);
+
+    // Check if price exists and is > 0
+    const hasPrice = selectedVariant && selectedVariant.sellingPrice > 0;
 
     const handleAddToCart = () => {
+        if (!selectedVariant) return;
         addItem({
-            productId: product.id,
             variantId: selectedVariant.id,
+            productId: product.id,
             productName: product.name,
             variantName: selectedVariant.size,
-            quantity: 1,
             unitPrice: selectedVariant.sellingPrice,
-            image: product.images?.[0] || "",
+            image: product.images[0] || "",
+            quantity: 1,
             lineTotal: selectedVariant.sellingPrice * 1,
         });
-        setAdded(true);
         openCart();
-        setTimeout(() => setAdded(false), 2000);
     };
 
-    const hasDiscount = selectedVariant.mrp > selectedVariant.sellingPrice;
-
     return (
-        <div className="group bg-white rounded-2xl border border-brand-brown/10 overflow-hidden shadow-md hover:shadow-[0_20px_40px_-5px_rgba(74,48,24,0.15)] transition-all duration-500 hover:-translate-y-2 flex flex-col h-full relative">
-            <Link href={`/${product.category}/${product.slug}`} className="block relative aspect-[4/3] bg-brand-beige-dark overflow-hidden">
-                {product.images?.[0] ? (
+        <div className="group flex flex-col bg-brand-soft-cream border border-brand-heritage/10 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+            {/* Image Box */}
+            <Link href={`/shop/${product.slug}`} className="relative aspect-[4/3] w-full overflow-hidden bg-brand-beige/50 block">
+                {product.images.length > 0 ? (
                     <Image
                         src={product.images[0]}
                         alt={product.name}
@@ -46,62 +45,88 @@ export default function ProductCard({ product }: { product: Product }) {
                         className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
                 ) : (
-                    <div className="absolute inset-0 flex items-center justify-center text-brand-ink/30 text-sm">
-                        No Image
+                    <div className="w-full h-full flex flex-col items-center justify-center text-brand-heritage/30">
+                        <span className="text-sm font-medium tracking-widest uppercase">Coming Soon</span>
                     </div>
                 )}
-                <div className="absolute inset-0 bg-brand-ink/5 mix-blend-multiply group-hover:bg-transparent transition-colors z-10" />
+                {/* Subtle gold line accent */}
+                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-brand-gold opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </Link>
 
-            <div className="p-6 flex flex-col flex-grow bg-white">
-                <Link href={`/${product.category}/${product.slug}`} className="block mb-2 mt-2">
-                    <h3 className="text-xl font-bold font-playfair text-brand-ink group-hover:text-brand-brown transition-colors line-clamp-1">{product.name}</h3>
+            <div className="p-6 flex flex-col flex-1">
+                <Link href={`/shop/${product.slug}`}>
+                    <h3 className="heading-editorial text-2xl text-brand-deep-green mb-2 group-hover:text-brand-primary transition-colors">
+                        {product.name}
+                    </h3>
                 </Link>
-                <p className="text-sm text-brand-ink/60 line-clamp-2 mb-6 flex-grow">{product.shortDescription}</p>
+                <p className="text-sm text-brand-dark/70 line-clamp-2 mb-6 font-light leading-relaxed">
+                    {product.shortDescription}
+                </p>
 
-                {/* Variant Selector */}
-                <div className="relative mb-4">
-                    <select
-                        value={selectedVariantId}
-                        onChange={(e) => setSelectedVariantId(e.target.value)}
-                        className="w-full appearance-none bg-brand-beige-dark/30 border border-brand-beige-dark text-brand-ink font-medium text-sm rounded-md pl-4 pr-10 py-3 focus:outline-none focus:ring-1 focus:ring-brand-emerald transition-shadow cursor-pointer"
-                        aria-label="Select size"
-                    >
-                        {product.variants.map((v) => (
-                            <option key={v.id} value={v.id}>
-                                {v.size}
-                            </option>
-                        ))}
-                    </select>
-                    <ChevronDown className="w-4 h-4 text-brand-ink/50 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" />
-                </div>
-
-                {/* Pricing */}
-                <div className="flex items-end gap-3 mb-6">
-                    <span className="text-2xl font-bold text-brand-emerald font-playfair">
-                        {formatPrice(selectedVariant.sellingPrice)}
-                    </span>
-                    {hasDiscount && (
-                        <span className="text-sm text-brand-ink/40 line-through mb-1">
-                            {formatPrice(selectedVariant.mrp)}
-                        </span>
+                <div className="mt-auto space-y-5">
+                    {/* Size Selector */}
+                    {product.variants.length > 0 && (
+                        <div className="flex flex-wrap gap-2">
+                            {product.variants.map((v) => (
+                                <button
+                                    key={v.id}
+                                    onClick={() => setSelectedVariantId(v.id)}
+                                    className={`px-3 py-1.5 text-xs font-medium uppercase tracking-wider rounded border transition-colors ${selectedVariantId === v.id
+                                        ? "border-brand-primary bg-brand-primary text-white"
+                                        : "border-brand-heritage/20 text-brand-heritage hover:border-brand-primary"
+                                        }`}
+                                >
+                                    {v.size}
+                                </button>
+                            ))}
+                        </div>
                     )}
-                    {hasDiscount && (
-                        <span className="ml-auto bg-brand-emerald/10 text-brand-emerald text-xs font-bold px-2.5 py-1 rounded-full">
-                            Save {formatPrice(selectedVariant.mrp - selectedVariant.sellingPrice)}
-                        </span>
-                    )}
-                </div>
 
-                {/* Actions */}
-                <div className="mt-auto">
-                    <button
-                        onClick={handleAddToCart}
-                        className="w-full group/btn flex items-center justify-center gap-2 bg-brand-brown hover:bg-brand-brown-light text-white rounded-md py-3 font-medium transition-colors text-sm shadow-sm"
-                    >
-                        {added ? <Check className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
-                        {added ? "Added to Cart" : "Add to Cart"}
-                    </button>
+                    {/* Price Display */}
+                    <div className="pt-2 border-t border-brand-heritage/10">
+                        {hasPrice ? (
+                            <div className="flex items-end gap-3">
+                                <span className="text-xl font-semibold text-brand-dark">₹{selectedVariant.sellingPrice}</span>
+                                {selectedVariant.mrp > selectedVariant.sellingPrice && (
+                                    <span className="text-sm text-brand-dark/40 line-through mb-0.5">₹{selectedVariant.mrp}</span>
+                                )}
+                            </div>
+                        ) : (
+                            <span className="text-sm font-semibold uppercase tracking-widest text-brand-gold">
+                                Contact for Price
+                            </span>
+                        )}
+                    </div>
+
+                    {/* CTAs */}
+                    <div className="grid grid-cols-2 gap-3 pt-2">
+                        {hasPrice ? (
+                            <button
+                                onClick={handleAddToCart}
+                                className="w-full bg-brand-beige text-brand-primary text-xs uppercase tracking-widest font-semibold py-3 rounded hover:bg-brand-heritage hover:text-white transition-colors border border-brand-heritage/10"
+                            >
+                                Add to Cart
+                            </button>
+                        ) : (
+                            <Link
+                                href={`/shop/${product.slug}`}
+                                className="w-full text-center bg-brand-beige text-brand-primary text-xs uppercase tracking-widest font-semibold py-3 rounded hover:bg-brand-heritage hover:text-white transition-colors border border-brand-heritage/10"
+                            >
+                                View Details
+                            </Link>
+                        )}
+                        <a
+                            href={`https://wa.me/${businessConfig.whatsappNumber}?text=Hi, I am interested in ordering ${product.name}${selectedVariant ? ` (${selectedVariant.size})` : ''}.`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1EBE5A] text-white text-xs uppercase tracking-widest font-semibold py-3 rounded transition-colors"
+                        >
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347" />
+                            </svg>
+                            WhatsApp
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

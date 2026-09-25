@@ -32,7 +32,10 @@ export interface Product {
     subcategory?: string;
     shortDescription: string;
     description: string;
+    about?: string;
     ingredients?: string;
+    howToUse?: string;
+    packaging?: string;
     processingMethod?: string;
     intendedUse?: string;
     variants: ProductVariant[];
