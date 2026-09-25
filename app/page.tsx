@@ -34,22 +34,39 @@ export default function Home() {
       <main className="bg-brand-soft-cream">
 
         {/* ─── 1. HERO SECTION ────────────────────────────────────────────── */}
-        <section className="relative pt-32 lg:pt-40 pb-20 px-6 lg:px-12 flex flex-col lg:flex-row items-center max-w-[1600px] mx-auto min-h-[90vh]">
-          {/* Left: Typography & CTAs */}
-          <div className="flex-1 w-full z-10 lg:pr-12 animate-fade-up">
-            <span className="block text-brand-gold text-xs tracking-[0.25em] font-semibold uppercase mb-6">
-              FROM OUR MILL
+        <section className="relative min-h-[90vh] md:min-h-screen w-full flex items-center justify-center overflow-hidden border-b border-brand-heritage/10">
+          {/* Main Background Logo Wrapper */}
+          <div className="absolute inset-0 z-0 bg-brand-soft-cream flex items-center justify-center">
+            {/* The Logo scaled up as an artistic background texture */}
+            <div className="relative w-[150vw] h-[150vw] md:w-[80vw] md:h-[80vw] opacity-[0.07] mix-blend-multiply animate-fade-up">
+              <Image
+                src="/main-logo.jpg"
+                alt="Sree Selvanayaki Amman Background Logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+            {/* Beautiful fading gradients over the logo to ensure readability and add tone */}
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-soft-cream via-transparent to-brand-soft-cream/30"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_var(--tw-gradient-stops))] from-transparent via-brand-soft-cream/40 to-brand-soft-cream/90 pointer-events-none"></div>
+          </div>
+
+          <div className="relative z-10 max-w-4xl mx-auto px-6 text-center mt-12 animate-fade-up" style={{ animationDelay: '200ms' }}>
+            <span className="inline-block text-brand-gold bg-brand-heritage/5 border border-brand-gold/20 backdrop-blur-sm px-6 py-2 rounded-full text-[10px] md:text-xs tracking-[0.3em] font-semibold uppercase mb-8 shadow-sm">
+              FROM OUR MILL TO YOUR HOME
             </span>
-            <h1 className="heading-editorial text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-brand-deep-green mb-8">
-              PURE.<br />TRADITIONAL.<br />MADE WITH CARE.
+            <h1 className="heading-editorial text-5xl md:text-7xl lg:text-8xl text-brand-deep-green mb-8 leading-[1.1] drop-shadow-sm">
+              PURE.<br />TRADITIONAL.<br />
+              <span className="text-brand-heritage italic font-light font-playfair pr-2 md:pr-4">MADE WITH CARE.</span>
             </h1>
-            <p className="text-brand-dark/80 text-lg md:text-xl max-w-xl mb-12 font-light leading-relaxed">
-              Traditional oils, wholesome flours and everyday essentials crafted with care at Sree Selvanayaki Amman Oil & Flour Mill.
+            <p className="text-brand-dark/80 text-lg md:text-xl lg:text-2xl max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+              Traditional oils, wholesome flours, and everyday essentials crafted cleanly in Pidariyur.
             </p>
-            <div className="flex flex-col sm:flex-row gap-5">
+            <div className="flex flex-col sm:flex-row gap-5 justify-center">
               <Link
                 href="/shop"
-                className="bg-brand-heritage hover:bg-brand-dark text-brand-soft-cream text-center text-sm font-semibold uppercase tracking-widest px-10 py-4 transition-colors rounded-sm"
+                className="bg-brand-deep-green hover:bg-brand-heritage text-brand-soft-cream text-center text-sm font-semibold uppercase tracking-widest px-10 py-5 transition-all duration-300 rounded-sm shadow-xl hover:shadow-2xl md:hover:-translate-y-1"
               >
                 Shop Products
               </Link>
@@ -57,23 +74,11 @@ export default function Home() {
                 href={`https://wa.me/${businessConfig.whatsappNumber}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-transparent border border-brand-heritage text-brand-heritage hover:bg-brand-beige text-center text-sm font-semibold uppercase tracking-widest px-10 py-4 transition-colors rounded-sm flex items-center justify-center gap-2"
+                className="bg-white/80 backdrop-blur-md border border-brand-heritage/20 text-brand-heritage hover:bg-white hover:border-brand-heritage text-center text-sm font-semibold uppercase tracking-widest px-10 py-5 transition-all duration-300 rounded-sm flex items-center justify-center gap-3 shadow-md hover:shadow-xl md:hover:-translate-y-1"
               >
                 Order on WhatsApp
               </a>
             </div>
-          </div>
-          {/* Right: Comp Composition */}
-          <div className="flex-1 w-full mt-16 lg:mt-0 relative aspect-[4/5] lg:aspect-auto lg:h-[700px] rounded-sm overflow-hidden bg-brand-ivory animate-reveal-soft delay-150">
-            <Image
-              src="/groundnut-oil.jpeg"
-              alt="Premium Product Compilation"
-              fill
-              className="object-cover object-center"
-              priority
-            />
-            {/* Subtle editorial overlay */}
-            <div className="absolute inset-0 bg-brand-heritage mix-blend-multiply opacity-10"></div>
           </div>
         </section>
 
