@@ -1,13 +1,11 @@
-﻿// /faq page
-import { buildMetadata } from "@/lib/seo";
+﻿import { buildMetadata } from "@/lib/seo";
 import { faqs } from "@/lib/data/faqs";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export const metadata = buildMetadata({
     title: "Frequently Asked Questions",
-    description:
-        "Answers to common questions about ordering, delivery and products from Sree Selvanayaki Amman Oil & Flour Mill.",
+    description: "Answers to common questions about ordering, delivery and products from Sree Selvanayaki Amman Oil & Flour Mill.",
     path: "/faq",
 });
 
@@ -20,23 +18,34 @@ export default function FAQPage() {
 
     return (
         <>
-            <Header />
-            <main className="min-h-screen bg-stone-50 pt-20">
-                <div className="max-w-3xl mx-auto px-6 py-16">
-                    <h1 className="text-3xl font-bold text-stone-800 mb-10">Frequently Asked Questions</h1>
-                    {Object.entries(grouped).map(([category, items]) => (
-                        <section key={category} className="mb-10">
-                            <h2 className="text-sm font-bold uppercase tracking-widest text-[var(--color-brand-brown)] mb-4">{category}</h2>
-                            <div className="space-y-6">
-                                {items.map((faq) => (
-                                    <div key={faq.id}>
-                                        <h3 className="font-semibold text-stone-800 mb-1">{faq.question}</h3>
-                                        <p className="text-stone-600 leading-relaxed">{faq.answer}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </section>
-                    ))}
+            <Navbar />
+            <main className="bg-[#F9F7F2] font-inter pt-32 pb-24 min-h-screen border-t-[8px] border-[#183921]">
+                <div className="max-w-[800px] mx-auto px-6 lg:px-12 mt-12">
+                    <h1 className="text-4xl md:text-5xl font-playfair font-bold text-[#4A3930] mb-16">
+                        Frequently Asked Questions
+                    </h1>
+
+                    <div className="space-y-16">
+                        {Object.entries(grouped).map(([category, items]) => (
+                            <section key={category}>
+                                <h2 className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#183921] mb-8 pb-4 border-b border-[#4A3930]/10">
+                                    {category}
+                                </h2>
+                                <div className="space-y-8">
+                                    {items.map((faq) => (
+                                        <div key={faq.id}>
+                                            <h3 className="text-xl font-playfair font-bold text-[#4A3930] mb-3">
+                                                {faq.question}
+                                            </h3>
+                                            <p className="text-[#4A3930]/80 font-light leading-relaxed">
+                                                {faq.answer}
+                                            </p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </section>
+                        ))}
+                    </div>
                 </div>
             </main>
             <Footer />

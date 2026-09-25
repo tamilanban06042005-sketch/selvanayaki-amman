@@ -10,23 +10,14 @@ export const categories: Category[] = [
     {
         id: "oils",
         slug: "oils",
-        name: "Oils",
-        description:
-            "Groundnut Oil, Gingelly Oil and Coconut Oil — carefully processed and hygienically packed.",
+        name: "Traditional Oils",
+        description: "Groundnut Oil, Gingelly Oil, and Coconut Oil — processed with heritage wisdom.",
     },
     {
         id: "powders",
         slug: "powders",
-        name: "Food & Powders",
-        description:
-            "Health Mix Powder, Turmeric Powder and Green Gram Powder — hygienically processed and packed.",
-    },
-    {
-        id: "personal-care",
-        slug: "personal-care",
-        name: "Personal Care",
-        description:
-            "Shikakai Powder — traditional personal care products from our mill.",
+        name: "Powders",
+        description: "Turmeric, Shikakai, Green Gram, and Health Mix — essential powders for everyday use.",
     },
 ];
 

@@ -1,11 +1,12 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { getProductBySlug, products } from "@/lib/data/products";
 import AddToCartBlock from "./AddToCartBlock";
-import { businessConfig } from "@/lib/config";
+
+const whatsAppNumber = "919965005891";
 
 export function generateStaticParams() {
     return products.map((product) => ({
@@ -23,24 +24,24 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
     return (
         <>
-            <Header />
-            <main className="bg-brand-soft-cream pt-32 pb-24 min-h-screen">
+            <Navbar />
+            <main className="bg-[#F9F7F2] font-inter pt-32 pb-24 min-h-screen border-t-[8px] border-[#183921]">
                 <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
 
                     {/* Breadcrumbs */}
-                    <nav className="text-xs font-semibold uppercase tracking-widest text-brand-dark/50 mb-12 flex items-center gap-2">
-                        <Link href="/" className="hover:text-brand-gold transition-colors">Home</Link>
+                    <nav className="text-[10px] uppercase font-semibold tracking-widest text-[#4A3930]/50 mb-12 flex items-center gap-3">
+                        <Link href="/" className="hover:text-[#183921] transition-colors">Home</Link>
                         <span>/</span>
-                        <Link href="/shop" className="hover:text-brand-gold transition-colors">Shop</Link>
+                        <Link href="/shop" className="hover:text-[#183921] transition-colors">Shop</Link>
                         <span>/</span>
-                        <span className="text-brand-dark">{product.name}</span>
+                        <span className="text-[#4A3930]">{product.name}</span>
                     </nav>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
 
                         {/* Left: Product Images */}
-                        <div className="space-y-6">
-                            <div className="relative aspect-[4/5] bg-brand-ivory rounded-sm overflow-hidden border border-brand-heritage/10">
+                        <div className="lg:col-span-6 space-y-6">
+                            <div className="relative aspect-[4/5] bg-white rounded-sm overflow-hidden border border-[#4A3930]/10 flex items-center justify-center p-8">
                                 {product.images.length > 0 ? (
                                     <Image
                                         src={product.images[0]}
@@ -50,80 +51,57 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                                         priority
                                     />
                                 ) : (
-                                    <div className="w-full h-full flex items-center justify-center text-brand-heritage/40 uppercase tracking-widest text-sm font-semibold">
+                                    <div className="w-full h-full flex items-center justify-center text-[#4A3930]/40 uppercase tracking-widest text-sm font-semibold">
                                         Image Available Soon
                                     </div>
                                 )}
-                                {/* Subtle grading */}
-                                <div className="absolute inset-0 bg-brand-heritage mix-blend-multiply opacity-[0.03]"></div>
                             </div>
                         </div>
 
                         {/* Right: Product Details & Buying Actions */}
-                        <div className="flex flex-col">
-                            <span className="text-brand-gold text-xs font-semibold uppercase tracking-[0.2em] mb-4">
+                        <div className="lg:col-span-6 flex flex-col pt-4 lg:pt-8">
+                            <span className="text-[#183921] text-[10px] font-bold uppercase tracking-[0.3em] mb-4">
                                 {product.brand}
                             </span>
-                            <h1 className="heading-editorial text-4xl md:text-5xl lg:text-6xl text-brand-deep-green mb-6 leading-none">
+                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-playfair font-bold text-[#4A3930] mb-6 leading-tight">
                                 {product.name}
                             </h1>
-                            <p className="text-lg text-brand-dark/70 font-light leading-relaxed pb-8 border-b border-brand-heritage/10 mb-8">
+                            <p className="text-base text-[#4A3930]/70 font-light leading-relaxed pb-8 border-b border-[#4A3930]/10 mb-8">
                                 {product.description}
                             </p>
 
                             {/* Buying Block (Client Component) */}
-                            <AddToCartBlock product={product} whatsappNumber={businessConfig.whatsappNumber} />
+                            <AddToCartBlock product={product} whatsappNumber={whatsAppNumber} />
 
                             {/* Trust markers */}
-                            <div className="grid grid-cols-2 gap-4 my-12 pt-8 border-t border-brand-heritage/10">
-                                <div className="flex items-center gap-3 text-sm text-brand-dark/80">
-                                    <span className="w-1 h-1 bg-brand-gold rounded-full"></span> FSSAI Licensed
+                            <div className="grid grid-cols-2 gap-4 my-12 pt-8 border-t border-[#4A3930]/10">
+                                <div className="flex items-center gap-3 text-[11px] uppercase tracking-wider font-semibold text-[#4A3930]/70">
+                                    <span className="w-1.5 h-1.5 bg-[#4A3930] rounded-full"></span> FSSAI Licensed
                                 </div>
-                                <div className="flex items-center gap-3 text-sm text-brand-dark/80">
-                                    <span className="w-1 h-1 bg-brand-gold rounded-full"></span> Carefully Processed
+                                <div className="flex items-center gap-3 text-[11px] uppercase tracking-wider font-semibold text-[#4A3930]/70">
+                                    <span className="w-1.5 h-1.5 bg-[#4A3930] rounded-full"></span> Carefully Processed
                                 </div>
-                                <div className="flex items-center gap-3 text-sm text-brand-dark/80">
-                                    <span className="w-1 h-1 bg-brand-gold rounded-full"></span> Direct from our Mill
+                                <div className="flex items-center gap-3 text-[11px] uppercase tracking-wider font-semibold text-[#4A3930]/70">
+                                    <span className="w-1.5 h-1.5 bg-[#4A3930] rounded-full"></span> Direct from our Mill
                                 </div>
-                                <div className="flex items-center gap-3 text-sm text-brand-dark/80">
-                                    <span className="w-1 h-1 bg-brand-gold rounded-full"></span> South Indian Heritage
+                                <div className="flex items-center gap-3 text-[11px] uppercase tracking-wider font-semibold text-[#4A3930]/70">
+                                    <span className="w-1.5 h-1.5 bg-[#4A3930] rounded-full"></span> South Indian Heritage
                                 </div>
                             </div>
 
                             {/* Verified Product Information Block */}
-                            <div className="mt-8 space-y-8">
+                            <div className="mt-4 space-y-12">
                                 {product.about && (
                                     <div>
-                                        <h3 className="heading-editorial text-2xl text-brand-primary mb-3">About this Product</h3>
-                                        <p className="text-brand-dark/80 font-light leading-relaxed">{product.about}</p>
-                                    </div>
-                                )}
-
-                                {product.ingredients && (
-                                    <div>
-                                        <h3 className="heading-editorial text-2xl text-brand-primary mb-3">Ingredients</h3>
-                                        <p className="text-brand-dark/80 font-light leading-relaxed">{product.ingredients}</p>
-                                    </div>
-                                )}
-
-                                {product.howToUse && (
-                                    <div>
-                                        <h3 className="heading-editorial text-2xl text-brand-primary mb-3">How to Use</h3>
-                                        <p className="text-brand-dark/80 font-light leading-relaxed">{product.howToUse}</p>
+                                        <h3 className="text-xl font-playfair font-semibold text-[#4A3930] mb-3">About this Product</h3>
+                                        <p className="text-[#4A3930]/80 font-light leading-relaxed text-sm md:text-base">{product.about}</p>
                                     </div>
                                 )}
 
                                 {product.storageInstructions && (
                                     <div>
-                                        <h3 className="heading-editorial text-2xl text-brand-primary mb-3">Storage Instruction</h3>
-                                        <p className="text-brand-dark/80 font-light leading-relaxed">{product.storageInstructions}</p>
-                                    </div>
-                                )}
-
-                                {product.packaging && (
-                                    <div>
-                                        <h3 className="heading-editorial text-2xl text-brand-primary mb-3">Packaging Details</h3>
-                                        <p className="text-brand-dark/80 font-light leading-relaxed">{product.packaging}</p>
+                                        <h3 className="text-xl font-playfair font-semibold text-[#4A3930] mb-3">Storage Instruction</h3>
+                                        <p className="text-[#4A3930]/80 font-light leading-relaxed text-sm md:text-base">{product.storageInstructions}</p>
                                     </div>
                                 )}
                             </div>
