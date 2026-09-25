@@ -27,8 +27,8 @@ html {
 }
 
 body {
-  background-color: var(--color-charcoal-deep);
-  color: var(--color-cream);
+  background-color: #ffffff;
+  color: #1c1917;
   font-family: var(--font-inter);
   margin: 0;
   padding: 0;

@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /cart
+Disallow: /thank-you-whatsapp
+Allow: /
+
+Sitemap: https://selvanayaki-amman.vercel.app/sitemap.xml

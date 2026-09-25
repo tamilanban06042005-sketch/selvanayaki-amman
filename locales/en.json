@@ -1,0 +1,70 @@
+{
+  "nav": {
+    "home": "Home",
+    "shop": "Shop",
+    "oils": "Oils",
+    "powders": "Powders",
+    "personalCare": "Personal Care",
+    "ourStory": "Our Story",
+    "contact": "Contact",
+    "cart": "Cart",
+    "menu": "Menu",
+    "closeMenu": "Close menu",
+    "openMenu": "Open menu"
+  },
+  "product": {
+    "addToCart": "Add to Cart",
+    "orderOnWhatsApp": "Order on WhatsApp",
+    "selectVariant": "Select size",
+    "quantity": "Quantity",
+    "mrp": "MRP",
+    "price": "Price",
+    "inStock": "In Stock",
+    "outOfStock": "Out of Stock",
+    "lowStock": "Low Stock",
+    "viewProduct": "View Product",
+    "shopProducts": "Shop Products"
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty.",
+    "emptyAction": "Shop Products",
+    "viewCart": "View Cart",
+    "checkout": "Order on WhatsApp",
+    "subtotal": "Subtotal",
+    "shipping": "Delivery",
+    "freeShipping": "Free delivery",
+    "total": "Total",
+    "remove": "Remove",
+    "items": "items",
+    "freeShippingRemaining": "Add {amount} more for free delivery"
+  },
+  "shipping": {
+    "checkDelivery": "Check delivery to your area",
+    "enterPincode": "Enter 6-digit PIN code",
+    "check": "Check",
+    "standardFee": "Standard delivery: ₹50",
+    "freeAbove": "Free delivery on orders above ₹1,000",
+    "estimated": "Estimated delivery: 2–4 working days",
+    "unknownPin": "We couldn't automatically confirm delivery for this PIN code. Please order through WhatsApp so our team can confirm delivery availability and shipping charges.",
+    "invalidPin": "Please enter a valid 6-digit PIN code."
+  },
+  "whatsapp": {
+    "orderStarted": "Your WhatsApp order message has been prepared.",
+    "orderSentConfirm": "I Have Sent My Order",
+    "returnToCart": "Return to Cart",
+    "cannotOpen": "WhatsApp could not be opened automatically.",
+    "copyMessage": "Copy Order Message",
+    "showNumber": "Show WhatsApp Number",
+    "callUs": "Call Us"
+  },
+  "trust": {
+    "fssai": "FSSAI Licensed",
+    "hygienicProcessing": "Hygienically Processed & Packed",
+    "directFromMill": "Direct from Our Mill",
+    "onlineOrdering": "Online Ordering Available"
+  },
+  "announcement": {
+    "message": "Online ordering now available"
+  }
+}
