@@ -5,13 +5,16 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getProductBySlug, products } from "@/lib/data/products";
 import AddToCartBlock from "./AddToCartBlock";
+import { businessConfig } from "@/lib/config";
 
-const whatsAppNumber = "919965005891";
+const IMAGE_MAP: Record<string, string> = {
+    "groundnut-oil": "/groundnut oil.jpeg",
+    "gingelly-oil": "/gingelly oil.jpeg",
+    "coconut-oil": "/coconut oil.jpeg",
+};
 
 export function generateStaticParams() {
-    return products.map((product) => ({
-        slug: product.slug,
-    }));
+    return products.map((product) => ({ slug: product.slug }));
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -22,92 +25,113 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         notFound();
     }
 
+    const img = IMAGE_MAP[product.slug];
+
     return (
         <>
             <Navbar />
-            <main className="bg-[#F9F7F2] font-inter pt-32 pb-24 min-h-screen border-t-[8px] border-[#183921]">
-                <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <main className="bg-[#FFFDF7] min-h-screen pt-28 lg:pt-36 pb-24">
+                <div className="container-wide">
 
                     {/* Breadcrumbs */}
-                    <nav className="text-[10px] uppercase font-semibold tracking-widest text-[#4A3930]/50 mb-12 flex items-center gap-3">
-                        <Link href="/" className="hover:text-[#183921] transition-colors">Home</Link>
+                    <nav className="flex items-center gap-2 label-caps text-[9px] text-[#4A281B]/50 mb-10">
+                        <Link href="/" className="hover:text-[#164A32] transition-colors">Home</Link>
                         <span>/</span>
-                        <Link href="/shop" className="hover:text-[#183921] transition-colors">Shop</Link>
+                        <Link href="/shop" className="hover:text-[#164A32] transition-colors">Shop</Link>
                         <span>/</span>
-                        <span className="text-[#4A3930]">{product.name}</span>
+                        <span className="text-[#2B1812]">{product.name}</span>
                     </nav>
 
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
 
-                        {/* Left: Product Images */}
-                        <div className="lg:col-span-6 space-y-6">
-                            <div className="relative aspect-[4/5] bg-white rounded-sm overflow-hidden border border-[#4A3930]/10 flex items-center justify-center p-8">
-                                {product.images.length > 0 ? (
+                        {/* Left: Product Image */}
+                        <div className="lg:col-span-6">
+                            <div className="relative aspect-[4/5] bg-[#F7F1E5] rounded-3xl overflow-hidden border border-[#4A281B]/10 p-8 lg:p-12 mb-8">
+                                {img ? (
                                     <Image
-                                        src={product.images[0]}
+                                        src={img}
                                         alt={product.name}
                                         fill
                                         className="object-cover"
                                         priority
+                                        sizes="(max-width: 1024px) 100vw, 50vw"
                                     />
                                 ) : (
-                                    <div className="w-full h-full flex items-center justify-center text-[#4A3930]/40 uppercase tracking-widest text-sm font-semibold">
-                                        Image Available Soon
+                                    <div className="w-full h-full flex flex-col items-center justify-center">
+                                        <span className="text-6xl opacity-30 mb-4">🫙</span>
+                                        <span className="label-caps text-[#4A281B]/40">Coming Soon</span>
                                     </div>
                                 )}
+                                {/* Brand label floating */}
+                                <div className="absolute top-6 left-6 bg-[#164A32] text-[#F7F1E5] px-4 py-2 rounded-lg">
+                                    <span className="font-cormorant font-semibold text-sm">Made in Pidariyur</span>
+                                </div>
                             </div>
                         </div>
 
-                        {/* Right: Product Details & Buying Actions */}
-                        <div className="lg:col-span-6 flex flex-col pt-4 lg:pt-8">
-                            <span className="text-[#183921] text-[10px] font-bold uppercase tracking-[0.3em] mb-4">
-                                {product.brand}
-                            </span>
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-playfair font-bold text-[#4A3930] mb-6 leading-tight">
-                                {product.name}
-                            </h1>
-                            <p className="text-base text-[#4A3930]/70 font-light leading-relaxed pb-8 border-b border-[#4A3930]/10 mb-8">
-                                {product.description}
-                            </p>
+                        {/* Right: Details & Buying */}
+                        <div className="lg:col-span-6 flex flex-col">
 
-                            {/* Buying Block (Client Component) */}
-                            <AddToCartBlock product={product} whatsappNumber={whatsAppNumber} />
-
-                            {/* Trust markers */}
-                            <div className="grid grid-cols-2 gap-4 my-12 pt-8 border-t border-[#4A3930]/10">
-                                <div className="flex items-center gap-3 text-[11px] uppercase tracking-wider font-semibold text-[#4A3930]/70">
-                                    <span className="w-1.5 h-1.5 bg-[#4A3930] rounded-full"></span> FSSAI Licensed
-                                </div>
-                                <div className="flex items-center gap-3 text-[11px] uppercase tracking-wider font-semibold text-[#4A3930]/70">
-                                    <span className="w-1.5 h-1.5 bg-[#4A3930] rounded-full"></span> Carefully Processed
-                                </div>
-                                <div className="flex items-center gap-3 text-[11px] uppercase tracking-wider font-semibold text-[#4A3930]/70">
-                                    <span className="w-1.5 h-1.5 bg-[#4A3930] rounded-full"></span> Direct from our Mill
-                                </div>
-                                <div className="flex items-center gap-3 text-[11px] uppercase tracking-wider font-semibold text-[#4A3930]/70">
-                                    <span className="w-1.5 h-1.5 bg-[#4A3930] rounded-full"></span> South Indian Heritage
-                                </div>
+                            <div className="mb-8">
+                                <span className="label-caps text-[#B88745] mb-4 block">
+                                    {product.brand}
+                                </span>
+                                <h1 className="heading-display text-4xl lg:text-5xl text-[#2B1812] mb-6">
+                                    {product.name}
+                                </h1>
+                                <p className="text-[#2B1812]/70 font-inter leading-relaxed bg-[#F7F1E5] p-5 border-l-2 border-[#164A32]">
+                                    {product.description}
+                                </p>
                             </div>
 
-                            {/* Verified Product Information Block */}
-                            <div className="mt-4 space-y-12">
-                                {product.about && (
-                                    <div>
-                                        <h3 className="text-xl font-playfair font-semibold text-[#4A3930] mb-3">About this Product</h3>
-                                        <p className="text-[#4A3930]/80 font-light leading-relaxed text-sm md:text-base">{product.about}</p>
-                                    </div>
-                                )}
+                            {/* Buying Block */}
+                            <AddToCartBlock product={product} whatsappNumber={businessConfig.whatsappNumber} />
 
+                            {/* Verified Product Info */}
+                            <div className="mt-12 pt-10 border-t border-[#4A281B]/10 space-y-8">
                                 {product.storageInstructions && (
                                     <div>
-                                        <h3 className="text-xl font-playfair font-semibold text-[#4A3930] mb-3">Storage Instruction</h3>
-                                        <p className="text-[#4A3930]/80 font-light leading-relaxed text-sm md:text-base">{product.storageInstructions}</p>
+                                        <h3 className="font-cormorant font-semibold text-[#2B1812] text-xl mb-2">
+                                            Storage Instructions
+                                        </h3>
+                                        <p className="text-[#2B1812]/60 font-inter text-sm leading-relaxed">
+                                            {product.storageInstructions}
+                                        </p>
                                     </div>
                                 )}
+                                {product.shelfLife && (
+                                    <div>
+                                        <h3 className="font-cormorant font-semibold text-[#2B1812] text-xl mb-2">
+                                            Shelf Life
+                                        </h3>
+                                        <p className="text-[#2B1812]/60 font-inter text-sm leading-relaxed">
+                                            {product.shelfLife}
+                                        </p>
+                                    </div>
+                                )}
+                                <div>
+                                    <h3 className="font-cormorant font-semibold text-[#2B1812] text-xl mb-4">
+                                        Assurance
+                                    </h3>
+                                    <div className="grid grid-cols-2 gap-4">
+                                        {[
+                                            "FSSAI Licensed",
+                                            "Carefully Processed",
+                                            "Direct from our Mill",
+                                            "South Indian Heritage"
+                                        ].map((item) => (
+                                            <div key={item} className="flex items-center gap-2">
+                                                <span className="text-[#164A32] text-sm">✓</span>
+                                                <span className="font-inter text-xs text-[#2B1812]/70">{item}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
                     </div>
+
                 </div>
             </main>
             <Footer />

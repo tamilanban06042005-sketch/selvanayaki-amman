@@ -1,90 +1,93 @@
-"use client";
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-
-const PROCESS_STEPS = [
-    { step: "01", label: "SELECT", icon: "🌱" },
-    { step: "02", label: "PREPARE", icon: "💧" },
-    { step: "03", label: "PROCESS", icon: "⚙️" },
-    { step: "04", label: "QUALITY CHECK", icon: "✔️" },
-    { step: "05", label: "PACK", icon: "📦" },
-    { step: "06", label: "DELIVER", icon: "🚚" }, // Assuming simple emoji icons or SVGs for now
+const STEPS = [
+    {
+        num: "01",
+        title: "Source",
+        body: "We select raw groundnuts, sesame, coconuts, and spices from trusted local suppliers in Erode district.",
+    },
+    {
+        num: "02",
+        title: "Clean",
+        body: "Every batch is cleaned by hand and machine to remove impurities before entering the mill.",
+    },
+    {
+        num: "03",
+        title: "Press & Mill",
+        body: "Oils are pressed and flours are ground using our traditional mill — no heat distortion, no chemical solvents.",
+    },
+    {
+        num: "04",
+        title: "Pack",
+        body: "Products are hygienically packed, sealed, and labelled with our FSSAI-licensed details.",
+    },
+    {
+        num: "05",
+        title: "Deliver",
+        body: "Orders are dispatched within 2–4 working days across Tamil Nadu, Kerala, Karnataka, AP and Telangana.",
+    },
 ];
 
 export default function ProcessTimeline() {
-    const containerRef = useRef<HTMLElement>(null);
-    const stepsRef = useRef<(HTMLDivElement | null)[]>([]);
-
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            stepsRef.current.forEach((step, index) => {
-                if (!step) return;
-                gsap.fromTo(step,
-                    { y: 30, opacity: 0 },
-                    {
-                        y: 0,
-                        opacity: 1,
-                        duration: 0.6,
-                        delay: index * 0.1,
-                        scrollTrigger: {
-                            trigger: containerRef.current,
-                            start: "top 80%",
-                        }
-                    }
-                );
-            });
-        });
-        return () => ctx.revert();
-    }, []);
-
     return (
-        <section ref={containerRef} id="process" className="py-24 bg-[#F5F2EB] px-6 border-b border-[#E8E4D9]">
-            <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+        <section id="process" className="section-pad bg-[#164A32] relative overflow-hidden">
 
-                {/* Left side: Text/Story */}
-                <div className="lg:w-1/3">
-                    <h2 className="text-3xl md:text-5xl font-playfair text-[#4A3930] mb-6 leading-tight">
-                        FROM OUR MILL<br />TO YOUR HOME
+            {/* Faint giant numeral background */}
+            <div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[30vw] font-cormorant font-bold text-white/[0.025] pointer-events-none select-none leading-none"
+                aria-hidden="true"
+            >
+                MILL
+            </div>
+
+            <div className="container-wide relative z-10">
+
+                {/* Header */}
+                <div className="text-center mb-16">
+                    <div className="flex items-center justify-center gap-3 mb-4">
+                        <span className="divider-gold" />
+                        <span className="label-caps text-[#B88745]">Our Process</span>
+                        <span className="divider-gold" />
+                    </div>
+                    <h2 className="heading-display text-4xl md:text-5xl text-[#F7F1E5]">
+                        From Our Mill<br />
+                        <span className="text-[#B88745] italic">to Your Home.</span>
                     </h2>
-                    <p className="text-[#4A3930]/80 text-sm md:text-base leading-relaxed font-inter font-light mb-8 max-w-sm">
-                        Sree Selvanayaki Amman Oil & Flour Mill is based in Pidariyur, Erode, Tamil Nadu. We offer traditional oils, natural powders and everyday essentials with a focus on quality and customer trust.
-                    </p>
-                    <a href="/about" className="inline-flex items-center gap-2 bg-[#183921] text-white px-6 py-3 rounded-full text-[10px] uppercase tracking-widest font-semibold hover:bg-[#112918] transition-colors">
-                        Our Story <span aria-hidden="true">→</span>
-                    </a>
                 </div>
 
-                {/* Right side: Timeline */}
-                <div className="lg:w-2/3 w-full">
-                    <h3 className="text-xl md:text-2xl font-playfair text-[#4A3930] mb-12 lg:mb-16">
-                        HOW IT COMES TO YOU
-                    </h3>
+                {/* Steps */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-4">
+                    {STEPS.map((step, i) => (
+                        <div key={step.num} className="relative flex flex-col gap-4 group">
+                            {/* Connector line (desktop only) */}
+                            {i < STEPS.length - 1 && (
+                                <div className="hidden lg:block absolute top-8 left-full w-full h-px bg-[#F7F1E5]/10 z-0 -translate-x-1/2" />
+                            )}
 
-                    <div className="relative flex justify-between items-start w-full overflow-x-auto pb-4 hide-scrollbar">
-                        {/* Connecting Line */}
-                        <div className="absolute top-6 left-8 right-8 h-px bg-[#4A3930]/20 border-b border-dashed border-[#4A3930]/30 hidden md:block"></div>
-
-                        {PROCESS_STEPS.map((s, i) => (
-                            <div
-                                key={s.step}
-                                ref={el => { stepsRef.current[i] = el; }}
-                                className="relative flex flex-col items-center min-w-[80px] z-10"
-                            >
-                                {/* Circular Icon Wrapper */}
-                                <div className="w-12 h-12 bg-[#F5F2EB] rounded-full border border-[#4A3930]/20 flex items-center justify-center text-xl mb-4 text-[#4A3930]">
-                                    {s.icon}
-                                </div>
-                                <div className="text-[10px] font-playfair italic text-[#4A3930]/80 mb-1">
-                                    {s.step}
-                                </div>
-                                <div className="text-[9px] font-bold uppercase tracking-widest text-[#4A3930] text-center w-full">
-                                    {s.label}
-                                </div>
+                            {/* Step number disc */}
+                            <div className="relative z-10 w-14 h-14 rounded-full border border-[#B88745]/40 flex items-center justify-center bg-[#245C40] group-hover:bg-[#B88745] transition-colors duration-300">
+                                <span className="font-cormorant font-bold text-[#B88745] group-hover:text-[#164A32] text-lg transition-colors">
+                                    {step.num}
+                                </span>
                             </div>
-                        ))}
+
+                            <div>
+                                <h3 className="font-cormorant font-semibold text-[#F7F1E5] text-xl mb-2">
+                                    {step.title}
+                                </h3>
+                                <p className="text-[#F7F1E5]/60 text-sm font-inter leading-relaxed">
+                                    {step.body}
+                                </p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Bottom trust note */}
+                <div className="mt-16 pt-10 border-t border-[#F7F1E5]/10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+                    <p className="font-cormorant font-medium text-[#F7F1E5]/80 text-xl italic">
+                        "Every batch made to the same standard as if it were for our own family."
+                    </p>
+                    <div className="bg-[#245C40] px-6 py-3 rounded-full flex-shrink-0">
+                        <p className="label-caps text-[8px] text-[#B88745]">FSSAI · 22419058000081</p>
                     </div>
                 </div>
 

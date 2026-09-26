@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { businessConfig } from "@/lib/config";
 
 const siteName = "Sree Selvanayaki Amman Oil & Flour Mill";
-const baseUrl = businessConfig.website;
+const baseUrl = businessConfig.website ?? "https://selvanayaki-amman.vercel.app";
 
 export function buildMetadata({
     title,

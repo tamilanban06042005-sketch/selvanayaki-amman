@@ -14,7 +14,7 @@ export function calcCartSummary(items: CartItem[]): CartSummary {
         items.reduce((sum, item) => sum + item.lineTotal, 0).toFixed(2)
     );
     const freeShipping = subtotal >= shippingConfig.freeShippingThreshold;
-    const shippingFee = freeShipping ? 0 : subtotal > 0 ? shippingConfig.standardShippingFee : 0;
+    const shippingFee = freeShipping ? 0 : subtotal > 0 ? shippingConfig.shippingFee : 0;
     const total = parseFloat((subtotal + shippingFee).toFixed(2));
     const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
     return { subtotal, shippingFee, freeShipping, total, itemCount };

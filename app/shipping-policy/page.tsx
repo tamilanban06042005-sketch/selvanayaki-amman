@@ -13,8 +13,8 @@ export default function ShippingPolicyPage() {
     return (
         <>
             <Navbar />
-            <main className="bg-[#F9F7F2] font-inter pt-32 pb-24 min-h-screen border-t-[8px] border-[#183921]">
-                <div className="max-w-[800px] mx-auto px-6 lg:px-12 prose prose-lg mt-12 text-[#4A3930]/80 marker:text-[#4A3930]/40 prose-h1:text-4xl prose-h1:font-playfair prose-h1:text-[#4A3930] prose-h2:font-playfair prose-h2:text-[#4A3930] prose-a:text-[#183921]">
+            <main className="bg-[#FFFDF7] min-h-screen pt-28 lg:pt-36 pb-24">
+                <div className="container-narrow prose prose-lg prose-stone text-[#2B1812]/80 marker:text-[#2B1812]/40 prose-h1:font-cormorant prose-h1:text-5xl prose-h1:text-[#2B1812] prose-h2:font-cormorant prose-h2:text-3xl prose-h2:text-[#2B1812] prose-a:text-[#164A32] prose-a:font-semibold">
                     <h1>Shipping Policy</h1>
                     <h2>Delivery Charges</h2>
                     <p>Standard shipping fee: <strong className="text-[#4A3930]">₹50</strong> per order.</p>

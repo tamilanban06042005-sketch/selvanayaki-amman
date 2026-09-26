@@ -1,22 +1,79 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Inter:wght@300;400;500;600&display=swap");
+/* ── Fonts — must be first per CSS spec ──────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap");
 
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   SREE SELVANAYAKI AMMAN — GLOBAL CSS
+   Master design system: Colors, Typography, Utilities, Accessibility
+───────────────────────────────────────────────────────────────────────────── */
+/* ── Design Tokens ──────────────────────────────────────────────────────────── */
 :root {
-  --font-playfair: "Playfair Display", Georgia, serif;
-  --font-inter: "Inter", system-ui, sans-serif;
+  /* Brand Colors — exact palette from master prompt */
+  --green-primary: #164A32;
+  --green-forest: #245C40;
+  --brown-heritage: #4A281B;
+  --brown-dark: #2B1812;
+  --gold-antique: #B88745;
+  --ivory: #F7F1E5;
+  --cream: #FFFDF7;
+  --beige: #E9DDCA;
 
-  /* Brand Pipeline for CSS fallback */
-  --color-brand-primary: #164A32;
-  --color-brand-deep-green: #245C40;
-  --color-brand-heritage: #4A281B;
-  --color-brand-dark: #2B1812;
-  --color-brand-gold: #B88745;
-  --color-brand-ivory: #F7F1E5;
-  --color-brand-soft-cream: #FFFDF7;
-  --color-brand-beige: #E9DDCA;
+  /* Semantic Aliases */
+  --color-bg: var(--cream);
+  --color-surface: var(--ivory);
+  --color-border: #4A281B1A;
+  /* brown-heritage / 10% */
+  --color-text: var(--brown-dark);
+  --color-text-muted: #4A281B99;
+  /* brown-heritage / 60% */
+  --color-accent: var(--gold-antique);
+  --color-cta: var(--green-primary);
+  --color-cta-hover: var(--green-forest);
+
+  /* Fonts */
+  --font-heading: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Legacy aliases used by existing components */
+  --font-playfair: var(--font-heading);
+  --font-cormorant: var(--font-heading);
+  --font-inter: var(--font-body);
+  --color-brand-primary: var(--green-primary);
+  --color-brand-deep-green: var(--green-forest);
+  --color-brand-heritage: var(--brown-heritage);
+  --color-brand-dark: var(--brown-dark);
+  --color-brand-gold: var(--gold-antique);
+  --color-brand-ivory: var(--ivory);
+  --color-brand-soft-cream: var(--cream);
+  --color-brand-beige: var(--beige);
+  --color-brand-emerald: var(--green-primary);
+  --color-brand-ink: var(--brown-dark);
+  --color-brand-brass: var(--gold-antique);
+  --color-brand-brown: var(--brown-heritage);
+  --color-brand-brown-light: var(--green-forest);
 }
 
+/* ── @theme for Tailwind v4 ─────────────────────────────────────────────────── */
+@theme {
+  --color-brand-primary: var(--green-primary);
+  --color-brand-deep-green: var(--green-forest);
+  --color-brand-heritage: var(--brown-heritage);
+  --color-brand-dark: var(--brown-dark);
+  --color-brand-gold: var(--gold-antique);
+  --color-brand-ivory: var(--ivory);
+  --color-brand-soft-cream: var(--cream);
+  --color-brand-beige: var(--beige);
+  --color-brand-emerald: var(--green-primary);
+
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-inter: "Inter", system-ui, sans-serif;
+  --font-playfair: "Cormorant Garamond", Georgia, serif;
+  --font-cormorant: "Cormorant Garamond", Georgia, serif;
+}
+
+/* ── Reset / Base ───────────────────────────────────────────────────────────── */
 *,
 *::before,
 *::after {
@@ -27,43 +84,259 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-  background-color: var(--color-brand-soft-cream);
-  color: var(--color-brand-dark);
-  font-family: var(--font-inter);
+  background-color: var(--cream);
+  color: var(--brown-dark);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
 }
 
-@theme {
-  --color-brand-primary: var(--color-brand-primary);
-  --color-brand-deep-green: var(--color-brand-deep-green);
-  --color-brand-heritage: var(--color-brand-heritage);
-  --color-brand-dark: var(--color-brand-dark);
-  --color-brand-gold: var(--color-brand-gold);
-  --color-brand-ivory: var(--color-brand-ivory);
-  --color-brand-soft-cream: var(--color-brand-soft-cream);
-  --color-brand-beige: var(--color-brand-beige);
+img,
+video {
+  max-width: 100%;
+  display: block;
 }
 
-/* Scrollbar */
+/* ── Scrollbar ──────────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-brand-soft-cream);
+  background: var(--ivory);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-brand-gold);
+  background: var(--gold-antique);
   border-radius: 2px;
 }
 
-/* Reduced motion */
+/* ── Focus ──────────────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--gold-antique);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ── Typography Utilities ───────────────────────────────────────────────────── */
+
+/* Serif headline — Cormorant Garamond */
+.heading-serif {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+}
+
+/* Large editorial display heading */
+.heading-display {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+}
+
+/* Small caps label / eyebrow text */
+.label-caps {
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  /* 10px */
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Legacy alias from previous codebase */
+.heading-editorial {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+
+/* ── Background Rhythm ──────────────────────────────────────────────────────── */
+.bg-section-cream {
+  background-color: var(--cream);
+}
+
+.bg-section-ivory {
+  background-color: var(--ivory);
+}
+
+.bg-section-beige {
+  background-color: var(--beige);
+}
+
+.bg-section-green {
+  background-color: var(--green-primary);
+}
+
+.bg-section-brown {
+  background-color: var(--brown-heritage);
+}
+
+/* ── Paper Texture Overlay (ultra-subtle) ───────────────────────────────────── */
+.texture-paper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Button Primitives ──────────────────────────────────────────────────────── */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background-color: var(--green-primary);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background-color 220ms ease, transform 180ms ease, box-shadow 220ms ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background-color: var(--green-forest);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(22, 74, 50, 0.25);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background-color: transparent;
+  color: var(--green-primary);
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  border: 2px solid var(--green-primary);
+  cursor: pointer;
+  transition: background-color 220ms ease, color 220ms ease, transform 180ms ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-outline:hover {
+  background-color: var(--green-primary);
+  color: var(--cream);
+  transform: translateY(-1px);
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background-color: #22C55E;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 220ms ease, transform 180ms ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-whatsapp:hover {
+  background-color: #16A34A;
+  transform: translateY(-1px);
+}
+
+/* ── Card Primitive ─────────────────────────────────────────────────────────── */
+.card-product {
+  background: var(--ivory);
+  border: 1px solid rgba(74, 40, 27, 0.08);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: box-shadow 300ms ease, transform 300ms ease;
+}
+
+.card-product:hover {
+  box-shadow: 0 16px 48px rgba(74, 40, 27, 0.1);
+  transform: translateY(-3px);
+}
+
+/* ── Section Spacing ────────────────────────────────────────────────────────── */
+.section-pad {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+@media (max-width: 768px) {
+  .section-pad {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+.container-wide {
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.container-narrow {
+  max-width: 900px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .container-wide {
+    padding-inline: 3rem;
+  }
+
+  .container-narrow {
+    padding-inline: 3rem;
+  }
+}
+
+/* ── Divider / ornament ─────────────────────────────────────────────────────── */
+.divider-gold {
+  width: 3rem;
+  height: 1px;
+  background-color: var(--gold-antique);
+  display: block;
+}
+
+/* ── Reduced Motion ─────────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
 
   *,
@@ -72,18 +345,63 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
-/* Editorial serif heading */
-.heading-editorial {
-  font-family: var(--font-playfair);
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  line-height: 1.1;
+/* ── Animations ─────────────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Utility to ensure animations are only applied generally if not suppressed */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes revealMask {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0% 0 0);
+  }
+}
+
 .animate-fade-up {
-  opacity: 0;
+  animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease both;
+}
+
+.animate-reveal {
+  animation: revealMask 1s cubic-bezier(0.77, 0, 0.175, 1) both;
+}
+
+/* ── Announcement Bar ───────────────────────────────────────────────────────── */
+.announcement-bar {
+  background: var(--green-primary);
+  color: var(--cream);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.5rem 1rem;
 }

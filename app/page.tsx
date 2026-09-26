@@ -1,42 +1,31 @@
-import LoadingScreen from "@/components/LoadingScreen";
 import Navbar from "@/components/Navbar";
-import Hero3D from "@/components/Hero3D";
-import Categories from "@/components/Categories";
-import InteractiveProductGrid from "@/components/InteractiveProductGrid";
+import Hero from "@/components/Hero";
+import ProductsGrid from "@/components/ProductsGrid";
 import BrandStory from "@/components/BrandStory";
 import ProcessTimeline from "@/components/ProcessTimeline";
-import IngredientsShowcase from "@/components/IngredientsShowcase";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Footer from "@/components/Footer";
 
-// We will add more sections below, structured for GSAP based smooth scroll
 export default function Home() {
   return (
     <>
-      <LoadingScreen />
       <Navbar />
 
-      <main className="bg-brand-cream-soft overflow-hidden">
+      <main className="overflow-hidden">
 
-        {/* 01. FULL-SCREEN 3D HERO WITH SSAOFM LOGO BACKGROUND */}
-        <Hero3D />
+        {/* 01 — Hero */}
+        <Hero />
 
-        {/* 03. SHOP BY CATEGORY */}
-        <Categories />
+        {/* 02 — Products Grid (all 7) */}
+        <ProductsGrid />
 
-        {/* 04. INTERACTIVE PRODUCT GRID */}
-        <InteractiveProductGrid />
-
-        {/* 05. BRAND STORY */}
+        {/* 03 — Brand Story / About Bridge */}
         <BrandStory />
 
-        {/* 06. PROCESS TIMELINE */}
+        {/* 04 — Process Timeline */}
         <ProcessTimeline />
 
-        {/* 07. INGREDIENTS SHOWCASE */}
-        <IngredientsShowcase />
-
-        {/* 08. WHY CHOOSE US & BRING THE MILL HOME */}
+        {/* 05 — Why Choose Us + CTA */}
         <WhyChooseUs />
 
       </main>

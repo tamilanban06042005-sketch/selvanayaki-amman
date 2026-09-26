@@ -1,88 +1,52 @@
-"use client";
-import { useEffect, useRef } from "react";
-import Image from "next/image";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export default function BrandStory() {
-    const sectionRef = useRef<HTMLElement>(null);
-    const textRef = useRef<HTMLDivElement>(null);
-    const imageRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.from(textRef.current?.children || [], {
-                y: 50,
-                opacity: 0,
-                duration: 1,
-                stagger: 0.15,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: textRef.current,
-                    start: "top 80%",
-                }
-            });
-
-            gsap.from(imageRef.current, {
-                scale: 0.9,
-                opacity: 0,
-                duration: 1.5,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: imageRef.current,
-                    start: "top 80%",
-                }
-            });
-        });
-        return () => ctx.revert();
-    }, []);
-
     return (
-        <section ref={sectionRef} id="our-story" className="py-24 md:py-32 bg-brand-charcoal-deep text-brand-cream-soft px-6 lg:px-12 border-y border-brand-brown-heritage/30">
-            <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+        <section className="section-pad bg-[#FFFDF7] border-y border-[#4A281B]/8">
+            <div className="container-narrow text-center">
 
-                {/* Text Content */}
-                <div ref={textRef} className="flex-1 max-w-2xl">
-                    <span className="block text-[10px] tracking-[0.3em] font-semibold uppercase text-brand-green-primary mb-6">
-                        OUR HERITAGE
-                    </span>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-playfair mb-10 leading-tight">
-                        Rooted in tradition.<br className="hidden md:block" />
-                        Made for today.
-                    </h2>
-                    <p className="text-brand-cream-beige/70 text-base md:text-lg leading-relaxed font-light mb-8">
-                        We believe in the slow, meticulous art of extraction. At Sree Selvanayaki Amman, our products are crafted using traditional methods that naturally prevent nutrient degradation. No harsh chemicals, no artificial processes—just the unadulterated essence of the finest seeds, sourced ethically and packed cleanly in our Pidariyur mill.
-                    </p>
-                    <p className="text-brand-cream-beige/70 text-base md:text-lg leading-relaxed font-light mb-12">
-                        Operating directly out of Pidariyur, Erode, we serve our customers with dedication and transparency, bringing everyday essentials right to your home.
-                    </p>
+                <div className="flex items-center justify-center gap-3 mb-6">
+                    <span className="divider-gold" />
+                    <span className="label-caps text-[#B88745]">Our Story</span>
+                    <span className="divider-gold" />
+                </div>
 
-                    <Link href="/about" className="group inline-flex items-center gap-4 border-b border-brand-green-primary pb-2 text-[11px] uppercase tracking-[0.25em] font-semibold text-brand-cream-ivory hover:text-brand-green-primary transition-colors">
-                        <span>Discover Our Legacy</span>
-                        <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                <h2 className="heading-display text-4xl md:text-5xl text-[#2B1812] mb-8">
+                    A Mill. A Family.<br />
+                    <span className="text-[#164A32] italic">A Tradition of Care.</span>
+                </h2>
+
+                <p className="text-[#2B1812]/70 text-base md:text-lg font-inter font-light leading-relaxed mb-6 max-w-2xl mx-auto">
+                    Sree Selvanayaki Amman Oil &amp; Flour Mill is based in Pidariyur, Erode district, Tamil Nadu.
+                    Our mill presses oils and grinds flours for families who value honest, traditionally made products.
+                </p>
+
+                <p className="text-[#2B1812]/60 text-sm md:text-base font-inter font-light leading-relaxed mb-12 max-w-xl mx-auto">
+                    We keep it simple: select the best raw materials, process them carefully, pack them hygienically,
+                    and deliver directly to you — with the same standards we hold for our own family.
+                </p>
+
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <Link href="/about" className="btn-outline text-[10px] px-8 py-3.5">
+                        Read Our Story →
+                    </Link>
+                    <Link href="/shop" className="btn-primary text-[10px] px-8 py-3.5">
+                        Shop Products
                     </Link>
                 </div>
 
-                {/* Hero Image */}
-                <div ref={imageRef} className="flex-1 w-full max-w-md lg:max-w-none relative aspect-[4/5] object-cover bg-brand-charcoal overflow-hidden p-4 rounded-sm border border-brand-charcoal-light">
-                    <div className="absolute inset-4 overflow-hidden bg-brand-charcoal-deep">
-                        {/* We use a placeholder since user will provide their own photos later, we use an existing image if available or just fallback to color/texture */}
-                        <Image
-                            src="/coconut-oil.jpeg"
-                            alt="Traditional Mill Process"
-                            fill
-                            className="object-cover opacity-60 mix-blend-luminosity hover:opacity-100 transition-opacity duration-700 hover:scale-105"
-                        />
-                        <div className="absolute inset-0 bg-brand-charcoal-deep/20"></div>
-                    </div>
-                    {/* Decorative Corner Accents */}
-                    <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-brand-brown-heritage opacity-50"></div>
-                    <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-brand-brown-heritage opacity-50"></div>
-                    <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-brand-brown-heritage opacity-50"></div>
-                    <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-brand-brown-heritage opacity-50"></div>
+                {/* Stat row */}
+                <div className="grid grid-cols-3 gap-8 mt-16 pt-10 border-t border-[#4A281B]/10">
+                    {[
+                        { num: "7", label: "Products" },
+                        { num: "5+", label: "States Delivered" },
+                        { num: "100%", label: "FSSAI Licensed" },
+                    ].map((s) => (
+                        <div key={s.label} className="flex flex-col items-center gap-1">
+                            <span className="font-cormorant font-bold text-[#164A32] text-4xl md:text-5xl">{s.num}</span>
+                            <span className="label-caps text-[9px] text-[#2B1812]/50">{s.label}</span>
+                        </div>
+                    ))}
                 </div>
 
             </div>

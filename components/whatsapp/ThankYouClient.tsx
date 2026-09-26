@@ -18,66 +18,63 @@ export default function ThankYouClient() {
     return (
         <>
             <Navbar />
-            <main className="bg-[#F9F7F2] font-inter pt-32 pb-24 min-h-screen border-t-[8px] border-[#183921] flex items-center justify-center -mt-20">
-                <div className="max-w-xl w-full bg-white rounded-sm border border-[#4A3930]/10 shadow-sm p-12 text-center mt-20">
+            <main className="bg-[#FFFDF7] font-inter pt-32 pb-24 min-h-screen flex items-center justify-center">
+                <div className="max-w-xl w-full bg-white rounded-3xl border border-[#4A281B]/10 shadow-[0_8px_30px_rgba(74,40,27,0.04)] p-10 md:p-14 text-center mx-4">
+
                     <div className="text-5xl mb-6">💬</div>
-                    <h1 className="text-3xl font-playfair font-bold text-[#4A3930] mb-6">
-                        {confirmed ? "Thank you for your order" : "Complete your Order"}
+
+                    <h1 className="heading-display text-3xl md:text-4xl text-[#2B1812] mb-6">
+                        {confirmed ? "Thank You For Your Order" : "Complete Your Order"}
                     </h1>
 
                     {confirmed ? (
-                        <p className="text-[#4A3930]/70 leading-relaxed mb-8 font-light text-lg">
-                            Your cart has been cleared. Our team will be in touch via WhatsApp to confirm your delivery and payment details quickly.
+                        <p className="text-[#2B1812]/70 leading-relaxed mb-8 font-inter">
+                            Your cart has been cleared. Our team is reviewing your message on WhatsApp and will confirm your delivery and payment details shortly.
                         </p>
                     ) : (
                         <>
-                            <div className="bg-[#F9F7F2] border border-[#4A3930]/20 rounded-sm p-6 mb-8 text-left">
-                                <p className="text-[#4A3930]/90 leading-relaxed font-light">
-                                    Your order details have been prepared for WhatsApp. Please ensure the message was successfully dispatched to our business account.{" "}
-                                    <strong className="font-semibold text-[#4A3930]">Our team will confirm stock availability, actual delivery charges, and final payment details.</strong>
+                            <div className="bg-[#F7F1E5] border-l-4 border-[#164A32] p-5 mb-8 text-left rounded-r-xl">
+                                <p className="text-[#2B1812] text-sm leading-relaxed font-inter">
+                                    Your order details have been prepared for WhatsApp. Please ensure you sent the message so our team can immediately confirm stock and delivery charges.
                                 </p>
                             </div>
-
-                            <p className="text-xs uppercase tracking-widest font-semibold text-[#4A3930]/50 mb-8 border-b border-[#4A3930]/10 pb-8">
-                                Please ensure the WhatsApp message was sent.
-                            </p>
 
                             <div className="flex flex-col gap-4">
                                 <button
                                     onClick={handleConfirmed}
-                                    className="w-full bg-[#183921] hover:bg-[#112918] text-white py-4 rounded-full text-[10px] uppercase font-bold tracking-[0.2em] transition-colors"
+                                    className="btn-primary w-full py-4 text-[10px] justify-center"
                                 >
                                     ✓ I Have Sent My Order
                                 </button>
                                 <Link
                                     href="/cart"
-                                    className="w-full text-center border border-[#4A3930]/20 text-[#4A3930] py-4 rounded-full hover:bg-[#F9F7F2] transition-colors text-[10px] uppercase font-bold tracking-[0.2em]"
+                                    className="btn-outline w-full py-4 text-[10px] justify-center"
                                 >
                                     Return to Cart
                                 </Link>
                             </div>
 
-                            <div className="mt-8 pt-8 border-t border-[#4A3930]/10 text-sm text-[#4A3930]/60">
+                            <div className="mt-8 pt-8 border-t border-[#4A281B]/10 text-sm text-[#2B1812]/60 font-inter">
                                 <p className="mb-2">If WhatsApp failed to launch automatically:</p>
                                 <a
                                     href={`https://wa.me/${businessConfig.whatsappNumber}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-block text-[#183921] font-semibold underline mb-2 tracking-wide"
+                                    className="inline-block text-[#164A32] font-semibold hover:text-[#B88745] transition-colors"
                                 >
-                                    Open WhatsApp directly
+                                    Open WhatsApp directly →
                                 </a>
                             </div>
                         </>
                     )}
 
-                    <div className="mt-8 flex gap-6 justify-center">
-                        <Link href="/shop" className="text-xs uppercase tracking-widest font-bold text-[#4A3930]/80 hover:text-[#183921] underline-offset-4 hover:underline">
-                            Shop
+                    <div className="mt-10 flex gap-6 justify-center">
+                        <Link href="/shop" className="label-caps text-[9px] text-[#2B1812]/80 hover:text-[#164A32] underline-offset-4 hover:underline">
+                            Continue Shopping
                         </Link>
-                        <span className="text-[#4A3930]/20">|</span>
-                        <Link href="/" className="text-xs uppercase tracking-widest font-bold text-[#4A3930]/80 hover:text-[#183921] underline-offset-4 hover:underline">
-                            Home
+                        <span className="text-[#2B1812]/20">|</span>
+                        <Link href="/" className="label-caps text-[9px] text-[#2B1812]/80 hover:text-[#164A32] underline-offset-4 hover:underline">
+                            Return Home
                         </Link>
                     </div>
                 </div>
@@ -86,4 +83,3 @@ export default function ThankYouClient() {
         </>
     );
 }
-

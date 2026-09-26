@@ -87,7 +87,7 @@ export default function ProductCard({ product }: { product: Product }) {
                         {hasPrice ? (
                             <div className="flex items-end gap-3">
                                 <span className="text-xl font-semibold text-brand-dark">₹{selectedVariant.sellingPrice}</span>
-                                {selectedVariant.mrp > selectedVariant.sellingPrice && (
+                                {selectedVariant.mrp != null && selectedVariant.mrp > selectedVariant.sellingPrice && (
                                     <span className="text-sm text-brand-dark/40 line-through mb-0.5">₹{selectedVariant.mrp}</span>
                                 )}
                             </div>

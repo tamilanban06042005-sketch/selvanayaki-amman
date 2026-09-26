@@ -1,19 +1,13 @@
 import { CartItem } from "./cart";
-import { ShippingResult } from "./shipping";
 
-export type OrderStatus =
-    | "pending_whatsapp"
-    | "sent_whatsapp"
-    | "confirmed"
-    | "cancelled";
-
-export interface PendingOrder {
+export interface Order {
     id: string;
     items: CartItem[];
-    shipping: ShippingResult;
     subtotal: number;
+    shippingFee: number;
     total: number;
+    status: "PENDING" | "CONFIRMED" | "FULFILLED";
     createdAt: string;
-    status: OrderStatus;
-    pincode?: string;
+    customerPhone?: string;
+    customerName?: string;
 }
