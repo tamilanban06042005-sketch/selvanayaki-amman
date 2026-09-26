@@ -11,18 +11,18 @@ export default function AboutPage() {
     return (
         <>
             <Navbar />
-            <main className="bg-[#FFFDF7] font-inter">
+            <main className="bg-[#F3EFE6] font-inter">
 
                 {/* HERO */}
-                <section className="pt-32 pb-24 md:pt-48 md:pb-32 px-6 lg:px-12 text-center bg-[#F7F1E5] border-b border-[#4A281B]/10 rounded-b-3xl">
+                <section className="pt-32 pb-24 md:pt-48 md:pb-32 px-6 lg:px-12 text-center bg-[#F3EFE6] border-b border-[#2B1812]/5 rounded-b-3xl">
                     <div className="max-w-4xl mx-auto">
-                        <span className="label-caps text-[#B88745] mb-6">
+                        <span className="font-inter font-bold text-[10px] text-[#B88745] tracking-[0.2em] uppercase mb-6 block">
                             Sree Selvanayaki Amman
                         </span>
-                        <h1 className="heading-display text-5xl md:text-7xl text-[#2B1812] mb-8">
+                        <h1 className="font-cormorant font-bold text-5xl md:text-7xl text-[#2B1812] uppercase tracking-widest mb-8">
                             Our Story
                         </h1>
-                        <p className="text-xl md:text-2xl text-[#2B1812]/70 font-light leading-relaxed max-w-3xl mx-auto">
+                        <p className="text-xl md:text-2xl text-[#2B1812]/70 font-light leading-relaxed max-w-3xl mx-auto italic font-cormorant">
                             Rooted in Pidariyur, Erode, we are committed to sharing authentic South Indian traditions through our carefully processed everyday essentials.
                         </p>
                     </div>
@@ -35,8 +35,8 @@ export default function AboutPage() {
                         {/* WHO WE ARE */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                             <div>
-                                <h2 className="heading-display text-4xl md:text-5xl text-[#2B1812] mb-8 border-b border-[#4A281B]/10 pb-4">Who We Are</h2>
-                                <div className="space-y-6 text-[#2B1812]/80 font-light text-lg leading-relaxed">
+                                <h2 className="font-cormorant font-bold text-4xl md:text-5xl text-[#164A32] uppercase tracking-widest mb-8 border-b border-[#2B1812]/10 pb-4">Who We Are</h2>
+                                <div className="space-y-6 text-[#2B1812]/70 font-light text-lg leading-relaxed">
                                     <p>
                                         Sree Selvanayaki Amman Oil & Flour Mill is a family-oriented local business operating proudly in Pidariyur, Tamil Nadu. Our foundation is built upon direct trust with our local community, ensuring that every product reaching our customers' homes is met with familiarity and authenticity.
                                     </p>
@@ -45,9 +45,9 @@ export default function AboutPage() {
                                     </p>
                                 </div>
                             </div>
-                            <div className="relative aspect-[4/5] bg-white p-4 hidden md:block border border-[#4A281B]/10 rounded-2xl shadow-sm">
+                            <div className="relative aspect-[4/5] bg-white p-4 hidden md:block border border-[#2B1812]/5 rounded-2xl shadow-sm">
                                 <div className="absolute inset-6 border border-[#2B1812]/10 rounded-xl flex items-center justify-center overflow-hidden">
-                                    <div className="text-[#2B1812]/5 font-cormorant text-8xl font-bold uppercase tracking-widest whitespace-nowrap -rotate-90">
+                                    <div className="text-[#164A32]/5 font-cormorant text-8xl font-bold uppercase tracking-widest whitespace-nowrap -rotate-90">
                                         Heritage
                                     </div>
                                 </div>
@@ -56,12 +56,14 @@ export default function AboutPage() {
 
                         {/* WHAT WE MAKE */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                            <div className="relative aspect-[4/5] bg-[#F7F1E5] hidden md:block rounded-2xl overflow-hidden border border-[#4A281B]/10">
-                                <Image src="/groundnut oil.jpeg" alt="Groundnut Oil" fill className="object-cover opacity-90 mix-blend-multiply" />
+                            <div className="relative aspect-[4/5] bg-white hidden md:block rounded-2xl overflow-hidden border border-[#2B1812]/5 p-4 shadow-sm">
+                                <div className="relative w-full h-full rounded-xl overflow-hidden">
+                                    <Image src="/groundnut oil.jpeg" alt="Groundnut Oil" fill className="object-cover opacity-90 mix-blend-multiply" />
+                                </div>
                             </div>
                             <div>
-                                <h2 className="heading-display text-4xl md:text-5xl text-[#2B1812] mb-8 border-b border-[#4A281B]/10 pb-4">What We Make</h2>
-                                <div className="space-y-6 text-[#2B1812]/80 font-light text-lg leading-relaxed">
+                                <h2 className="font-cormorant font-bold text-4xl md:text-5xl text-[#164A32] uppercase tracking-widest mb-8 border-b border-[#2B1812]/10 pb-4">What We Make</h2>
+                                <div className="space-y-6 text-[#2B1812]/70 font-light text-lg leading-relaxed">
                                     <p>
                                         We specialize in extracting traditional oils—such as Groundnut, Gingelly, and Coconut—and milling essential food powders. Our offerings are simple, practical, and deeply embedded in our regional culinary habits.
                                     </p>
@@ -73,27 +75,27 @@ export default function AboutPage() {
                         </div>
 
                         {/* OUR APPROACH & VALUES */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 border-t border-[#4A281B]/10 pt-24">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 border-t border-[#2B1812]/10 pt-24">
                             <div>
-                                <h3 className="font-cormorant text-3xl font-semibold text-[#2B1812] mb-6">Our Approach</h3>
-                                <p className="text-[#2B1812]/80 font-inter font-light leading-loose text-lg">
+                                <h3 className="font-cormorant text-2xl font-bold uppercase tracking-widest text-[#2B1812] mb-6">Our Approach</h3>
+                                <p className="text-[#2B1812]/70 font-inter font-light leading-relaxed text-base">
                                     Every step of our process—from selecting raw ingredients to milling, quality checking, and packing—is handled manually and methodically at our facility. We prioritize hygiene, maintaining strict standards required by our FSSAI license.
                                 </p>
                             </div>
                             <div>
-                                <h3 className="font-cormorant text-3xl font-semibold text-[#2B1812] mb-6">Our Values</h3>
-                                <ul className="space-y-6 text-[#2B1812]/80 font-inter font-light text-lg">
+                                <h3 className="font-cormorant text-2xl font-bold uppercase tracking-widest text-[#2B1812] mb-6">Our Values</h3>
+                                <ul className="space-y-6 text-[#2B1812]/70 font-inter font-light text-base">
                                     <li className="flex items-start gap-4">
-                                        <span className="text-[#164A32] mt-1">✓</span>
-                                        <span><strong className="text-[#2B1812] font-semibold">Authenticity:</strong> Providing ingredients as nature intended.</span>
+                                        <span className="text-[#B88745] mt-1">✓</span>
+                                        <span><strong className="text-[#2B1812] font-semibold uppercase tracking-wider text-xs block mb-1">Authenticity</strong> Providing ingredients as nature intended.</span>
                                     </li>
                                     <li className="flex items-start gap-4">
-                                        <span className="text-[#164A32] mt-1">✓</span>
-                                        <span><strong className="text-[#2B1812] font-semibold">Community Trust:</strong> Serving real families with reliable products.</span>
+                                        <span className="text-[#B88745] mt-1">✓</span>
+                                        <span><strong className="text-[#2B1812] font-semibold uppercase tracking-wider text-xs block mb-1">Community Trust</strong> Serving real families with reliable products.</span>
                                     </li>
                                     <li className="flex items-start gap-4">
-                                        <span className="text-[#164A32] mt-1">✓</span>
-                                        <span><strong className="text-[#2B1812] font-semibold">Simplicity:</strong> Focusing on everyday household needs locally.</span>
+                                        <span className="text-[#B88745] mt-1">✓</span>
+                                        <span><strong className="text-[#2B1812] font-semibold uppercase tracking-wider text-xs block mb-1">Simplicity</strong> Focusing on everyday household needs locally.</span>
                                     </li>
                                 </ul>
                             </div>

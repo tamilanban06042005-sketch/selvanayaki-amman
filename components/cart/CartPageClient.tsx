@@ -29,7 +29,7 @@ export default function CartPageClient() {
     return (
         <>
             <Navbar />
-            <main className="min-h-screen bg-[#FFFDF7] pt-28 lg:pt-36 pb-24 font-inter">
+            <main className="min-h-screen bg-[#F3EFE6] pt-28 lg:pt-36 pb-24 font-inter">
                 <div className="container-wide">
                     <div className="text-center mb-12">
                         <span className="label-caps text-[#164A32] mb-4">Secure Checkout</span>
@@ -121,7 +121,7 @@ export default function CartPageClient() {
                                         </div>
 
                                         {!summary.freeShipping && (
-                                            <div className="bg-[#FFFDF7] p-4 rounded-xl border border-[#B88745]/30 mb-8 text-center text-sm font-medium text-[#2B1812]/80 overflow-hidden relative">
+                                            <div className="bg-[#F3EFE6] p-4 rounded-xl border border-[#B88745]/30 mb-8 text-center text-sm font-medium text-[#2B1812]/80 overflow-hidden relative">
                                                 <div className="absolute top-0 left-0 h-1 bg-[#B88745] transition-all" style={{ width: `${Math.min(100, (summary.subtotal / 1000) * 100)}%` }} />
                                                 <p className="relative z-10 pt-2">
                                                     Add <strong className="text-[#B88745]">{formatPrice(1000 - summary.subtotal)}</strong> more for free delivery

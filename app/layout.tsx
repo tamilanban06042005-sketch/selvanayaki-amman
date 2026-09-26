@@ -49,7 +49,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="antialiased font-inter bg-[#FFFDF7] text-[#2B1812]">
+      {/* 
+        bg color changed to parchment beige (#F3EFE6) to match the new moodboard.
+        Text color changed to dark green or very dark brown. 
+      */}
+      <body className="antialiased font-inter bg-[#F3EFE6] text-[#2B1812] relative min-h-screen selection:bg-[#164A32] selection:text-white">
+
+        {/* Global Architectural Background Elements */}
+        <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
+          {/* Top Left Leaf Abstract */}
+          <div className="absolute -top-32 -left-32 w-96 h-96 bg-[#164A32]/5 rounded-full blur-3xl rounded-tr-[100px] transform rotate-12"></div>
+          {/* Bottom Right Leaf Abstract */}
+          <div className="absolute -bottom-40 -right-20 w-[600px] h-[600px] bg-[#B88745]/10 rounded-[120px] blur-3xl transform -rotate-12"></div>
+          {/* Large faint SSA monogram placeholder */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] md:w-[40vw] md:h-[40vw] max-w-[800px] max-h-[800px] opacity-[0.03] mix-blend-multiply flex items-center justify-center">
+            <span className="font-cormorant font-bold text-[30vw] md:text-[20vw] italic text-[#164A32]">SSA</span>
+          </div>
+        </div>
+
         {children}
       </body>
     </html>

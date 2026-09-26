@@ -19,7 +19,7 @@ export default function FAQPage() {
     return (
         <>
             <Navbar />
-            <main className="bg-[#FFFDF7] font-inter pt-28 lg:pt-36 pb-24 min-h-screen">
+            <main className="bg-[#F3EFE6] font-inter pt-28 lg:pt-36 pb-24 min-h-screen">
                 <div className="container-narrow mt-12">
 
                     <div className="text-center mb-16">

@@ -1,54 +1,36 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function BrandStory() {
     return (
-        <section className="section-pad bg-[#FFFDF7] border-y border-[#4A281B]/8">
-            <div className="container-narrow text-center">
+        <section className="py-24 overflow-hidden relative">
+            <div className="container-wide">
+                <div className="bg-[#123A25] rounded-l-[120px] rounded-r-3xl overflow-hidden relative shadow-2xl flex flex-col md:flex-row items-center min-h-[450px]">
 
-                <div className="flex items-center justify-center gap-3 mb-6">
-                    <span className="divider-gold" />
-                    <span className="label-caps text-[#B88745]">Our Story</span>
-                    <span className="divider-gold" />
-                </div>
-
-                <h2 className="heading-display text-4xl md:text-5xl text-[#2B1812] mb-8">
-                    A Mill. A Family.<br />
-                    <span className="text-[#164A32] italic">A Tradition of Care.</span>
-                </h2>
-
-                <p className="text-[#2B1812]/70 text-base md:text-lg font-inter font-light leading-relaxed mb-6 max-w-2xl mx-auto">
-                    Sree Selvanayaki Amman Oil &amp; Flour Mill is based in Pidariyur, Erode district, Tamil Nadu.
-                    Our mill presses oils and grinds flours for families who value honest, traditionally made products.
-                </p>
-
-                <p className="text-[#2B1812]/60 text-sm md:text-base font-inter font-light leading-relaxed mb-12 max-w-xl mx-auto">
-                    We keep it simple: select the best raw materials, process them carefully, pack them hygienically,
-                    and deliver directly to you — with the same standards we hold for our own family.
-                </p>
-
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <Link href="/about" className="btn-outline text-[10px] px-8 py-3.5">
-                        Read Our Story →
-                    </Link>
-                    <Link href="/shop" className="btn-primary text-[10px] px-8 py-3.5">
-                        Shop Products
-                    </Link>
-                </div>
-
-                {/* Stat row */}
-                <div className="grid grid-cols-3 gap-8 mt-16 pt-10 border-t border-[#4A281B]/10">
-                    {[
-                        { num: "7", label: "Products" },
-                        { num: "5+", label: "States Delivered" },
-                        { num: "100%", label: "FSSAI Licensed" },
-                    ].map((s) => (
-                        <div key={s.label} className="flex flex-col items-center gap-1">
-                            <span className="font-cormorant font-bold text-[#164A32] text-4xl md:text-5xl">{s.num}</span>
-                            <span className="label-caps text-[9px] text-[#2B1812]/50">{s.label}</span>
+                    {/* Background texture for the block */}
+                    <div className="absolute inset-0 opacity-[0.05] pointer-events-none mix-blend-screen bg-floral-pattern"></div>
+                    <div className="absolute right-0 top-0 h-full w-full md:w-1/2 opacity-10 flex justify-end items-end pointer-events-none">
+                        <div className="relative w-full h-[150%] translate-x-1/4 translate-y-1/4">
+                            <Image src="/main-logo.jpg" alt="Watermark" fill className="object-cover mix-blend-screen" />
                         </div>
-                    ))}
-                </div>
+                    </div>
 
+                    {/* Content */}
+                    <div className="relative z-10 p-12 md:p-20 lg:p-24 w-full md:w-3/5 text-[#F3EFE6]">
+                        <h2 className="font-cormorant font-bold text-4xl md:text-5xl lg:text-6xl uppercase leading-tight mb-8">
+                            From Our Mill<br />To Your Home
+                        </h2>
+
+                        <p className="font-inter font-light text-base md:text-lg leading-relaxed mb-10 max-w-lg opacity-80">
+                            Sree Selvanayaki Amman Oil &amp; Flour Mill is based in Pidariyur, Erode, Tamil Nadu. We offer everyday essentials with a focus on quality and customer trust.
+                        </p>
+
+                        <Link href="/about" className="inline-flex border border-[#F3EFE6] text-[#F3EFE6] hover:bg-[#F3EFE6] hover:text-[#123A25] transition-colors rounded-full px-8 py-3.5 text-xs font-bold uppercase tracking-widest whitespace-nowrap">
+                            Our Story →
+                        </Link>
+                    </div>
+
+                </div>
             </div>
         </section>
     );

@@ -13,7 +13,7 @@ export default function ContactPage() {
     return (
         <>
             <Navbar />
-            <main className="bg-[#FFFDF7] font-inter pt-28 lg:pt-36 pb-24 min-h-screen">
+            <main className="bg-[#F3EFE6] font-inter pt-28 lg:pt-36 pb-24 min-h-screen">
                 <div className="container-wide">
 
                     {/* Header */}

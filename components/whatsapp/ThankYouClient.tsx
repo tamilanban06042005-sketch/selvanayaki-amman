@@ -18,7 +18,7 @@ export default function ThankYouClient() {
     return (
         <>
             <Navbar />
-            <main className="bg-[#FFFDF7] font-inter pt-32 pb-24 min-h-screen flex items-center justify-center">
+            <main className="bg-[#F3EFE6] font-inter pt-32 pb-24 min-h-screen flex items-center justify-center">
                 <div className="max-w-xl w-full bg-white rounded-3xl border border-[#4A281B]/10 shadow-[0_8px_30px_rgba(74,40,27,0.04)] p-10 md:p-14 text-center mx-4">
 
                     <div className="text-5xl mb-6">💬</div>

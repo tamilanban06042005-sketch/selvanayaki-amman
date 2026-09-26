@@ -9,10 +9,10 @@ import { businessConfig } from "@/lib/config";
 
 const navLinks = [
     { label: "Home", href: "/" },
-    { label: "Products", href: "/shop" },
+    { label: "Shop", href: "/shop" },
     { label: "Our Story", href: "/about" },
-    { label: "Our Process", href: "/#process" },
     { label: "Contact", href: "/contact" },
+    { label: "Account", href: "/account" },
 ];
 
 const whatsappUrl = `https://wa.me/${businessConfig.whatsappNumber}?text=${encodeURIComponent(
@@ -55,9 +55,9 @@ export default function Navbar() {
             {/* ── Sticky Header ───────────────────────────────────────────────────── */}
             <header
                 ref={headerRef}
-                className={`sticky top-0 z-50 w-full transition-all duration-500 ${scrolled
-                        ? "bg-[#FFFDF7]/95 backdrop-blur-md shadow-[0_2px_24px_rgba(74,40,27,0.08)] py-3"
-                        : "bg-[#FFFDF7] py-5"
+                className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled
+                    ? "bg-[#F3EFE6]/95 backdrop-blur-md shadow-[0_2px_24px_rgba(74,40,27,0.08)] py-3"
+                    : "bg-[#F3EFE6] py-5"
                     }`}
             >
                 <div className="container-wide flex items-center justify-between gap-6">
@@ -83,49 +83,39 @@ export default function Navbar() {
                         </div>
                     </Link>
 
-                    {/* Desktop Navigation */}
-                    <nav aria-label="Primary navigation" className="hidden lg:flex items-center gap-8">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.href}
-                                href={link.href}
-                                className="text-[#2B1812]/70 hover:text-[#164A32] font-inter text-[11px] font-medium uppercase tracking-[0.18em] transition-colors duration-200"
-                            >
-                                {link.label}
-                            </Link>
-                        ))}
-                    </nav>
-
                     {/* Desktop Actions */}
-                    <div className="hidden lg:flex items-center gap-4">
-                        <button
-                            aria-label="Search"
-                            className="text-[#2B1812]/60 hover:text-[#164A32] transition-colors"
-                        >
-                            <Search size={17} strokeWidth={1.5} />
-                        </button>
-
-                        <button
-                            aria-label={`Cart — ${summary.itemCount} items`}
-                            onClick={() => isOpen ? closeCart() : openCart()}
-                            className="relative text-[#2B1812]/70 hover:text-[#164A32] transition-colors"
-                        >
-                            <ShoppingCart size={18} strokeWidth={1.5} />
-                            {summary.itemCount > 0 && (
-                                <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-[#B88745] text-white text-[9px] font-bold rounded-full flex items-center justify-center">
-                                    {summary.itemCount > 9 ? "9+" : summary.itemCount}
-                                </span>
-                            )}
-                        </button>
-
-                        <a
-                            href={whatsappUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn-primary text-[9px] px-5 py-2.5"
-                        >
-                            Order on WhatsApp
-                        </a>
+                    <div className="hidden lg:flex flex-col items-end gap-2">
+                        <div className="flex items-center gap-6">
+                            <nav aria-label="Primary navigation" className="flex items-center gap-6">
+                                {navLinks.map((link) => (
+                                    <Link
+                                        key={link.href}
+                                        href={link.href}
+                                        className="text-[#2B1812] hover:text-[#164A32] font-inter text-sm font-medium transition-colors duration-200"
+                                    >
+                                        {link.label}
+                                    </Link>
+                                ))}
+                            </nav>
+                            <div className="w-[1px] h-4 bg-[#4A281B]/20"></div>
+                            <button
+                                aria-label={`Cart — ${summary.itemCount} items`}
+                                onClick={() => isOpen ? closeCart() : openCart()}
+                                className="text-[#2B1812] hover:text-[#164A32] font-inter text-sm font-medium transition-colors flex items-center gap-1.5"
+                            >
+                                Cart {summary.itemCount > 0 ? `[${summary.itemCount} items]` : `[0 items]`}
+                            </button>
+                        </div>
+                        <div className="flex items-center rounded-sm overflow-hidden border border-[#4A281B]/20 w-64 bg-white">
+                            <input
+                                type="text"
+                                placeholder="Search..."
+                                className="bg-transparent px-3 py-1.5 text-sm focus:outline-none flex-1 text-[#2B1812]"
+                            />
+                            <button className="bg-[#164A32] text-[#F7F1E5] px-3 py-2 flex items-center justify-center hover:bg-[#245C40] transition-colors">
+                                <Search size={16} />
+                            </button>
+                        </div>
                     </div>
 
                     {/* Mobile Actions */}
@@ -159,7 +149,7 @@ export default function Navbar() {
             {/* ── Mobile Full-Screen Menu ─────────────────────────────────────────── */}
             {menuOpen && (
                 <div
-                    className="fixed inset-0 z-40 bg-[#FFFDF7] flex flex-col overflow-y-auto"
+                    className="fixed inset-0 z-40 bg-[#F3EFE6] flex flex-col overflow-y-auto"
                     aria-modal="true"
                     role="dialog"
                     aria-label="Navigation menu"

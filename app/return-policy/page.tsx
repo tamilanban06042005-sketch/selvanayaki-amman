@@ -13,7 +13,7 @@ export default function ReturnPolicyPage() {
     return (
         <>
             <Navbar />
-            <main className="bg-[#FFFDF7] min-h-screen pt-28 lg:pt-36 pb-24">
+            <main className="bg-[#F3EFE6] min-h-screen pt-28 lg:pt-36 pb-24">
                 <div className="container-narrow prose prose-lg prose-stone text-[#2B1812]/80 marker:text-[#2B1812]/40 prose-h1:font-cormorant prose-h1:text-5xl prose-h1:text-[#2B1812] prose-h2:font-cormorant prose-h2:text-3xl prose-h2:text-[#2B1812] prose-a:text-[#164A32] prose-a:font-semibold">
                     <h1>Return &amp; Refund Policy</h1>
                     <div className="bg-white border border-[#4A281B]/10 rounded-xl p-6 not-prose mb-8 shadow-sm">

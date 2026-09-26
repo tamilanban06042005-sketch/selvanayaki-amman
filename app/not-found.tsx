@@ -9,7 +9,7 @@ export const metadata = buildMetadata({
 
 export default function NotFound() {
     return (
-        <main className="min-h-screen bg-stone-50 flex flex-col items-center justify-center px-6 text-center">
+        <main className="min-h-screen bg-[#F3EFE6] flex flex-col items-center justify-center px-6 text-center">
             <h1 className="text-5xl font-bold text-stone-800 mb-4">404</h1>
             <p className="text-xl text-stone-600 mb-8">Page not found.</p>
             <div className="flex gap-4 flex-wrap justify-center">
