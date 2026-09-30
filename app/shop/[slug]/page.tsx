@@ -1,147 +1,169 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { getProductBySlug, products } from "@/lib/data/products";
-import AddToCartBlock from "./AddToCartBlock";
 import { businessConfig } from "@/lib/config";
-
-const IMAGE_MAP: Record<string, string> = {
-    "groundnut-oil": "/groundnut oil.jpeg",
-    "gingelly-oil": "/gingelly oil.jpeg",
-    "coconut-oil": "/coconut oil.jpeg",
-};
+import AddToCartBlock from "./AddToCartBlock";
 
 export function generateStaticParams() {
     return products.map((product) => ({ slug: product.slug }));
 }
 
-export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
-    const resolvedParams = await params;
-    const product = getProductBySlug(resolvedParams.slug);
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+    const { slug } = await params;
+    const product = getProductBySlug(slug);
+    if (!product) return {};
+    return {
+        title: product.name,
+        description: product.shortDescription,
+    };
+}
 
-    if (!product) {
-        notFound();
-    }
+const CATEGORY_LABEL: Record<string, string> = {
+    oils: "Traditional Oil",
+    powders: "Mill Powder",
+};
 
-    const img = IMAGE_MAP[product.slug];
+export default async function ProductPage({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}) {
+    const { slug } = await params;
+    const product = getProductBySlug(slug);
+    if (!product) notFound();
+
+    const img = product.images[0];
+    const catLabel = CATEGORY_LABEL[product.category] ?? "Mill Product";
 
     return (
-        <>
-            <Navbar />
-            <main className="bg-[#F3EFE6] min-h-screen pt-28 pb-24">
+        <div className="bg-[#F7F1E5] min-h-screen">
+            <div className="pt-28 pb-24 px-4">
                 <div className="container-wide">
 
                     {/* Breadcrumbs */}
-                    <nav className="flex items-center gap-2 label-caps text-[9px] text-[#2B1812]/50 mb-10">
-                        <Link href="/" className="hover:text-[#164A32] transition-colors">Home</Link>
-                        <span>/</span>
-                        <Link href="/shop" className="hover:text-[#164A32] transition-colors">Shop</Link>
-                        <span>/</span>
+                    <nav className="flex items-center gap-2 font-inter text-[11px] text-[#2B1812]/40 mb-8" aria-label="Breadcrumb">
+                        <Link href="/" className="hover:text-[#2B1812] transition-colors">Home</Link>
+                        <span aria-hidden="true">›</span>
+                        <Link href="/shop" className="hover:text-[#2B1812] transition-colors">Shop</Link>
+                        <span aria-hidden="true">›</span>
                         <span className="text-[#2B1812]">{product.name}</span>
                     </nav>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+                    {/* Main 3-column grid */}
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 mb-16">
 
-                        {/* Left: Product Image */}
-                        <div className="lg:col-span-6 flex gap-4">
-                            {/* Thumbnails placeholder for later */}
-                            <div className="hidden lg:flex flex-col gap-4 w-20 shrink-0">
-                                <div className="aspect-[3/4] bg-white rounded-xl border border-[#2B1812]/10 p-2 cursor-pointer shadow-[0_2px_10px_rgba(43,24,18,0.02)]">
-                                    {img && <Image src={img} alt="Thumb" width={60} height={80} className="object-contain mix-blend-multiply w-full h-full" />}
-                                </div>
-                            </div>
-                            <div className="relative flex-1 aspect-[4/5] bg-white rounded-3xl overflow-hidden border border-[#2B1812]/5 p-8 lg:p-12 mb-8 shadow-[0_2px_15px_rgba(43,24,18,0.03)] flex items-center justify-center">
-                                {img ? (
-                                    <div className="relative w-full h-full">
-                                        <Image
-                                            src={img}
-                                            alt={product.name}
-                                            fill
-                                            className="object-contain mix-blend-multiply"
-                                            priority
-                                            sizes="(max-width: 1024px) 100vw, 50vw"
-                                        />
-                                    </div>
-                                ) : (
-                                    <div className="w-full h-full flex flex-col items-center justify-center">
-                                        <span className="text-6xl opacity-30 mb-4">🫙</span>
-                                        <span className="label-caps text-[#2B1812]/40">Coming Soon</span>
-                                    </div>
+                        {/* Image — 5 cols */}
+                        <div className="lg:col-span-5">
+                            <div className="relative aspect-square bg-[#F9F5EC] border border-[#B88745]/20 rounded-3xl overflow-hidden flex items-center justify-center p-10">
+                                {/* Gold corner accents */}
+                                {["top-3 left-3 border-t-2 border-l-2", "top-3 right-3 border-t-2 border-r-2", "bottom-3 left-3 border-b-2 border-l-2", "bottom-3 right-3 border-b-2 border-r-2"].map((c, i) => (
+                                    <div key={i} className={`absolute w-5 h-5 border-[#B88745]/40 ${c}`} aria-hidden="true" />
+                                ))}
+                                {product.bestSeller && (
+                                    <span className="absolute top-4 left-4 font-inter text-[9px] font-bold uppercase text-[#F7F1E5] bg-[#164A32] px-2.5 py-1 rounded-full z-10">
+                                        Best Seller
+                                    </span>
                                 )}
+                                <div className="relative w-full h-full">
+                                    <Image
+                                        src={img}
+                                        alt={product.name}
+                                        fill
+                                        priority
+                                        sizes="(max-width: 1024px) 100vw, 45vw"
+                                        className="object-contain mix-blend-multiply drop-shadow-lg"
+                                    />
+                                </div>
                             </div>
                         </div>
 
-                        {/* Right: Details & Buying */}
-                        <div className="lg:col-span-6 flex flex-col py-4">
-
-                            <div className="mb-6 border-b border-[#2B1812]/10 pb-8">
-                                <p className="font-cormorant font-bold text-[#164A32] text-sm uppercase tracking-widest mb-3">
-                                    Traditional Standard
-                                </p>
-                                <h1 className="font-cormorant text-4xl lg:text-5xl xl:text-[56px] text-[#2B1812] uppercase font-bold tracking-wider mb-4 leading-[1.1]">
-                                    {product.name}
-                                </h1>
-
-                                <div className="flex items-center gap-3 text-sm text-[#2B1812]/80 font-bold mb-6">
-                                    <span className="flex text-[#D6AD7A] tracking-widest text-lg leading-none">★★★★★</span>
-                                    <span className="text-[#2B1812]">4.9</span>
-                                    <span className="text-[#2B1812]/40">|</span>
-                                    <span className="cursor-pointer hover:text-[#164A32] opacity-70 transition-colors">120 Reviews</span>
-                                </div>
-
-                                <p className="text-[#2B1812]/70 font-inter leading-relaxed text-sm max-w-lg mb-8">
-                                    {product.description}
-                                </p>
-                            </div>
-
-                            {/* Buying Block */}
+                        {/* Product info — 4 cols */}
+                        <div className="lg:col-span-4 flex flex-col py-2">
+                            <p className="font-inter text-[10px] font-bold tracking-[0.22em] uppercase text-[#B88745] mb-2">{catLabel}</p>
+                            <span className="block w-8 h-px bg-[#B88745] mb-4" aria-hidden="true" />
+                            <h1 className="font-cormorant font-bold text-[clamp(2.2rem,4vw,3.2rem)] text-[#2B1812] leading-tight tracking-wide mb-4">
+                                {product.name}
+                            </h1>
+                            <p className="font-cormorant text-xl text-[#2B1812]/65 italic leading-relaxed mb-6">
+                                {product.shortDescription}
+                            </p>
                             <AddToCartBlock product={product} whatsappNumber={businessConfig.whatsappNumber} />
+                        </div>
 
-                            {/* Verified Product Info */}
-                            <div className="mt-10 space-y-6">
-                                {product.storageInstructions && (
-                                    <div className="border-b border-[#2B1812]/5 pb-4">
-                                        <h3 className="font-inter font-bold text-[10px] text-[#2B1812]/60 uppercase tracking-widest mb-2">
-                                            Storage Instructions
-                                        </h3>
-                                        <p className="text-[#2B1812] font-inter text-sm leading-relaxed">
-                                            {product.storageInstructions}
-                                        </p>
+                        {/* Trust sidebar — 3 cols */}
+                        <div className="lg:col-span-3">
+                            <div className="bg-[#064B36] rounded-2xl p-6 flex flex-col gap-5 h-full">
+                                <p className="font-inter text-[9px] font-bold tracking-[0.2em] uppercase text-[#B88745]">Why Choose Us</p>
+                                {[
+                                    { emoji: "🌿", title: "From Our Mill", desc: "Made & packed in Pidariyur, Erode" },
+                                    { emoji: "✅", title: "No Preservatives", desc: "100% natural ingredients" },
+                                    { emoji: "🛡️", title: "FSSAI Licensed", desc: "Lic. No. 22419058000081" },
+                                    { emoji: "📦", title: "Clean Packaging", desc: "Food-grade, hygienic sealing" },
+                                ].map((t) => (
+                                    <div key={t.title} className="flex gap-3 items-start">
+                                        <div className="w-10 h-10 rounded-full border border-[#B88745]/40 flex items-center justify-center shrink-0 text-base">
+                                            {t.emoji}
+                                        </div>
+                                        <div>
+                                            <h4 className="font-cormorant font-bold text-[#F7F1E5] text-base leading-tight mb-0.5">{t.title}</h4>
+                                            <p className="font-inter text-[10px] text-[#F7F1E5]/55 leading-relaxed">{t.desc}</p>
+                                        </div>
                                     </div>
-                                )}
-                                {product.shelfLife && (
-                                    <div className="border-b border-[#2B1812]/5 pb-4">
-                                        <h3 className="font-inter font-bold text-[10px] text-[#2B1812]/60 uppercase tracking-widest mb-2">
-                                            Shelf Life
-                                        </h3>
-                                        <p className="text-[#2B1812] font-inter text-sm leading-relaxed">
-                                            {product.shelfLife}
-                                        </p>
-                                    </div>
-                                )}
-                                <div className="pt-4">
-                                    <div className="flex flex-wrap gap-4">
-                                        {[
-                                            "FSSAI Licensed",
-                                            "Carefully Processed",
-                                            "Direct from our Mill"
-                                        ].map((item) => (
-                                            <div key={item} className="flex items-center gap-2 bg-white border border-[#2B1812]/10 rounded-full px-4 py-2 shadow-sm">
-                                                <span className="text-[#164A32] text-sm leading-none mt-[1px]">✓</span>
-                                                <span className="font-inter font-bold text-[9px] uppercase tracking-widest text-[#2B1812]">{item}</span>
-                                            </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Bottom: Product Details + Delivery */}
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 border-t border-[#B88745]/20 pt-12">
+                        <div className="lg:col-span-8 space-y-6">
+                            {product.description && (
+                                <div>
+                                    <h2 className="font-cormorant font-bold text-2xl text-[#2B1812] mb-2">Description</h2>
+                                    <p className="font-cormorant text-xl text-[#2B1812]/70 leading-relaxed">{product.description}</p>
+                                </div>
+                            )}
+                            {product.ingredients && product.ingredients.length > 0 && (
+                                <div className="border-t border-[#B88745]/15 pt-5">
+                                    <h2 className="font-cormorant font-bold text-2xl text-[#2B1812] mb-3">Ingredients</h2>
+                                    <div className="flex flex-wrap gap-2">
+                                        {product.ingredients.map((ing) => (
+                                            <span key={ing} className="font-inter text-[11px] text-[#2B1812] bg-[#F9F5EC] border border-[#B88745]/25 px-3 py-1.5 rounded-full">{ing}</span>
                                         ))}
                                     </div>
                                 </div>
-                            </div>
+                            )}
+                            {product.processingMethod && (
+                                <div className="border-t border-[#B88745]/15 pt-5">
+                                    <h2 className="font-cormorant font-bold text-2xl text-[#2B1812] mb-2">Processing Method</h2>
+                                    <p className="font-cormorant text-xl text-[#2B1812]/70 leading-relaxed">{product.processingMethod}</p>
+                                </div>
+                            )}
+                        </div>
 
+                        <div className="lg:col-span-4">
+                            <div className="bg-[#F9F5EC] border border-[#B88745]/20 rounded-2xl p-6">
+                                <h2 className="font-cormorant font-bold text-xl text-[#2B1812] mb-5">Delivery</h2>
+                                <div className="space-y-3 font-inter text-xs">
+                                    <div className="flex justify-between"><span className="text-[#2B1812]/55">Standard Shipping</span><span className="font-bold text-[#2B1812]">₹60</span></div>
+                                    <div className="flex justify-between"><span className="text-[#2B1812]/55">Free Shipping</span><span className="font-bold text-[#164A32]">Orders ≥ ₹1,000</span></div>
+                                    <div className="flex justify-between"><span className="text-[#2B1812]/55">Delivery Time</span><span className="font-bold text-[#2B1812]">2–4 working days</span></div>
+                                </div>
+                                {product.shippingInfo && (
+                                    <p className="font-cormorant text-base text-[#2B1812]/55 italic mt-4 pt-4 border-t border-[#B88745]/15 leading-relaxed">{product.shippingInfo}</p>
+                                )}
+                            </div>
                         </div>
                     </div>
+
                 </div>
-            </main>
-            <Footer />
-        </>
+            </div>
+        </div>
     );
 }

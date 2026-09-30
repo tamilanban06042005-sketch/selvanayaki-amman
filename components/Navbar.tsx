@@ -10,9 +10,9 @@ import { businessConfig } from "@/lib/config";
 const navLinks = [
     { label: "Home", href: "/" },
     { label: "Shop", href: "/shop" },
-    { label: "Our Story", href: "/about" },
+    { label: "Our Story", href: "/our-story" },
+    { label: "Our Process", href: "/our-process" },
     { label: "Contact", href: "/contact" },
-    { label: "Account", href: "/account" },
 ];
 
 const whatsappUrl = `https://wa.me/${businessConfig.whatsappNumber}?text=${encodeURIComponent(

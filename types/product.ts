@@ -6,7 +6,8 @@ export interface Product {
     subcategory?: string;
     shortDescription: string;
     description: string;
-    ingredients?: string;
+    ingredients?: string[];
+    shippingInfo?: string;
     processingMethod?: string;
     intendedUse?: string;
     variants: Variant[];
